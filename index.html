@@ -39,6 +39,28 @@
 </head>
 
 <body>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const btn = document.getElementById("startGameBtn");
+
+  btn.addEventListener("click", () => {
+
+    // cache le bouton
+    btn.style.display = "none";
+
+    // tente de lancer le jeu
+    if (typeof startGame === "function") {
+        startGame();
+    }
+
+    // déclenche un event utilisateur (solution iOS)
+    document.dispatchEvent(new Event("userStart"));
+
+  });
+
+});
+</script>
 <div id="app">
   <h1>The Booker</h1>
   <p>Le jeu démarre correctement ✅</p>
