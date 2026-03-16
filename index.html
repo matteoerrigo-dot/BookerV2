@@ -55,27 +55,27 @@ z-index:9999;">
 🚀 Lancer le jeu
 </button>
 
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  const btn = document.getElementById("startGameBtn");
+const btn = document.getElementById("startGameBtn");
 
-  btn.addEventListener("click", () => {
+btn.addEventListener("click", () => {
 
     // cache le bouton
     btn.style.display = "none";
 
-    // tente de lancer le jeu
-    if (typeof startGame === "function") {
-        startGame();
-    }
+    // autorise Safari iOS à lancer audio / canvas
+    document.body.click();
 
-    // déclenche un event utilisateur (solution iOS)
-    document.dispatchEvent(new Event("userStart"));
+    // démarre tout ce qui attend une interaction utilisateur
+    window.dispatchEvent(new Event("click"));
+    document.dispatchEvent(new Event("click"));
 
-  });
+    console.log("🚀 User interaction unlocked");
 
 });
+
 </script>
 <div id="app">
   <h1>The Booker</h1>
