@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Booker</title>
+
+<!-- iOS PWA support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    color: white;
+    font-family: -apple-system, system-ui, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #app {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    opacity: 0.7;
+  }
+</style>
+</head>
+
+<body>
+<div id="app">
+  <h1>The Booker</h1>
+  <p>Le jeu démarre correctement ✅</p>
+</div>
+
+<script>
+// SAFE START SCRIPT (no service worker)
+console.log("The Booker loaded successfully.");
+
+// Example game bootstrap placeholder
+document.body.addEventListener("click", () => {
+  alert("Le jeu peut démarrer ici 🚀");
+});
+</script>
+
+</body>
+</html>
