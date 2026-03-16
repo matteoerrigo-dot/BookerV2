@@ -2454,51 +2454,6 @@ const _r=ReactDOM.createRoot(document.getElementById('root'));
 _r.render(React.createElement(Root));
 `;
 
-loadScript(
-'https://unpkg.com/react@18/umd/react.production.min.js'
-function(){
-setStatus('React OK — ReactDOM…',25);
-loadScript(
-'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js'
-function(){
-setStatus('ReactDOM OK — Babel…',50);
-loadScript(
-'https://unpkg.com/@babel/standalone/babel.min.js'
-function(){
-setStatus('Compilation JSX…',80);
-setTimeout(function(){
-try{
-var out=Babel.transform(GAME,{presets:['react'],filename:'game.jsx'});
-setStatus('Lancement…',95);
-setTimeout(function(){
-try{
-(new Function('React','ReactDOM','useState','useEffect','useCallback',out.code))(
-React,ReactDOM,React.useState,React.useEffect,React.useCallback
-);
-clearInterval(ticker);
-fill.style.width='100%';
-setTimeout(function(){
-document.getElementById('splash').style.display='none';
-},350);
-}catch(e2){
-showError('Erreur au démarrage :<br/>'+e2.message);
-console.error(e2);
-}
-},80);
-}catch(e){
-showError('Erreur de compilation :<br/>'+e.message);
-console.error(e);
-}
-},60);
-},
-'Impossible de charger Babel.<br/>Vérifie ta connexion et recharge.'
-);
-},
-'Impossible de charger ReactDOM.<br/>Vérifie ta connexion et recharge.'
-);
-},
-'Impossible de charger React.<br/>Vérifie ta connexion et recharge.'
-);
 </script>
 <script defer src="./react.production.min.js"></script>
 <script defer src="./react-dom.production.min.js"></script>
