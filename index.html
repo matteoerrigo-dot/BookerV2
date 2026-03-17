@@ -683,8 +683,8 @@ function buildWrestlerNotes(actions, roster){
                      (entry.role==="face"&&["pf","mf","sf","cf"].some(p=>entry.action.id?.startsWith(p)));
     notes[entry.wid]=isCoherent
 notes[entry.wid] = isCoherent
-  ? `${w.name} bien utilisé — action cohérente avec son rôle.`
-  : `${w.name} — attention à la cohérence rôle/action.`;
+  ? `${w.name} bien utilisé — action cohérente`
+  : `${w.name} — attention à la cohérence`;
   return notes;
 }
 
