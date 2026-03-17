@@ -541,9 +541,8 @@ const rc=r=>r==="heel"?"#ff2244":r==="face"?"#00e5aa":"#f5c518";
 const clamp=(v,lo=0,hi=100)=>Math.max(lo,Math.min(hi,v));
 const sevColor=s=>s==="critical"?"#ff2244":s==="opportunity"?"#00e5aa":"#f5c518";
 const rCtx = r => r.map(w =>
-`${w.name} (${w.role}, ${w.tier}, pop:${w.pop}, mom:${w.mom})`
+  `${w.name} (${w.role}, ${w.tier}, pop:${w.pop}, mom:${w.mom})`
 ).join("\n");
-
 /* ─── MOTEUR DE SCORING LOCAL (100% offline, zéro IA) ───────────── */
 
 const CHANTS_HOT=["THIS IS AWESOME","HOLY SHIT","LET'S GO {NAME}","ONE MORE TIME","{NAME} IS GONNA KILL YOU","YOU DESERVE IT","FIGHT FOREVER"];
