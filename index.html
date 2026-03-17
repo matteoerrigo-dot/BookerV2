@@ -44,33 +44,6 @@
   </div>
   <div id="root"></div>
 
-<script>
-var fill=document.getElementById('fill'),status=document.getElementById('status');
-var pct=0;
-var ticker=setInterval(function(){
-  if(pct<88){pct+=1.2;fill.style.width=pct+'%';}
-},120);
-
-function setStatus(txt,p){
-  status.textContent=txt;
-  if(p!==undefined){pct=p;fill.style.width=p+'%';}
-}
-
-function showError(msg){
-  clearInterval(ticker);
-  document.getElementById('splash').innerHTML='<div class="sp-err">'+msg+'</div>';
-}
-
-function loadScript(url,cb,errMsg){
-  var s=document.createElement('script');
-  s.src=url;
-  s.onload=cb;
-  s.onerror=function(){showError(errMsg||'Impossible de charger: '+url+'<br/><br/>Vérifie ta connexion internet et recharge la page.');};
-  document.head.appendChild(s);
-}
-
-var GAME=`const { useState, useEffect, useCallback } = React;
-
 /* ─── MOBILE HOOK ────────────────────────────────────────────────── */
 function useIsMobile(bp=680){
   const [m,setM]=useState(()=>typeof window!=="undefined"?window.innerWidth<bp:false);
