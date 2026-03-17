@@ -540,7 +540,9 @@ function buildCrisisEvent(stepId, roster, plan, promo="WWE"){
 const rc=r=>r==="heel"?"#ff2244":r==="face"?"#00e5aa":"#f5c518";
 const clamp=(v,lo=0,hi=100)=>Math.max(lo,Math.min(hi,v));
 const sevColor=s=>s==="critical"?"#ff2244":s==="opportunity"?"#00e5aa":"#f5c518";
-const rCtx=r=>r.map(w=>`\${w.name}(\${w.role},\${w.tier},pop:\${w.pop},mom:\${w.mom}\${w.title?\`,🏆\${w.title}\`:""}\${w.status!=="active"?",BLESSÉ":""})\`).join("\\n");
+const rCtx = r => r.map(w =>
+`${w.name} (${w.role}, ${w.tier}, pop:${w.pop}, mom:${w.mom})`
+).join("\n");
 
 /* ─── MOTEUR DE SCORING LOCAL (100% offline, zéro IA) ───────────── */
 
