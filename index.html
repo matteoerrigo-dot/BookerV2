@@ -2483,7 +2483,10 @@ function Root() {
 
 const _r=ReactDOM.createRoot(document.getElementById('root'));
 _r.render(<Root />);
-
+setTimeout(() => {
+  const splash = document.getElementById('splash');
+  if (splash) splash.style.display = 'none';
+}, 1000);
 </script>
 </body>
 </html>
