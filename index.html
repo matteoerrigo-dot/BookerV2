@@ -2438,23 +2438,6 @@ function Root(){
       button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
     \`}</style>
 
-```
-{screen==="promo"&&<PromoSelect onSelect={selectPromo}/>}
-{screen==="tuto"&&<TutoScreen promo={promo} onStart={()=>setScreen("home")} onBack={()=>setScreen("promo")}/>}
-{screen==="home"&&<Home promo={promo} onMode={goMode} onChangePromo={()=>setScreen("promo")} globalStars={globalStars} difficulty={difficulty}/>}
-{screen==="mode"&&mode==="storyline"&&<StorylineMode roster={roster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
-{screen==="mode"&&mode==="career"&&<CareerMode roster={roster} setRoster={setRoster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
-{screen==="mode"&&mode==="road"&&<RoadMode roster={roster} setRoster={setRoster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
-```
-
-</>;
-}
-
-const _r=ReactDOM.createRoot(document.getElementById('root'));
-_r.render(React.createElement(Root));
-`;
-
-</script>
 <!-- 1 React -->
 <script src="./react.production.min.js"></script>
 
@@ -2466,5 +2449,24 @@ _r.render(React.createElement(Root));
 
 <!-- 4 TON APP -->
 <script type="text/babel">
+function Root() {
+  return (
+    <>
+{screen==="promo"&&<PromoSelect onSelect={selectPromo}/>}
+{screen==="tuto"&&<TutoScreen promo={promo} onStart={()=>setScreen("home")} onBack={()=>setScreen("promo")}/>}
+{screen==="home"&&<Home promo={promo} onMode={goMode} onChangePromo={()=>setScreen("promo")} globalStars={globalStars} difficulty={difficulty}/>}
+{screen==="mode"&&mode==="storyline"&&<StorylineMode roster={roster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
+{screen==="mode"&&mode==="career"&&<CareerMode roster={roster} setRoster={setRoster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
+{screen==="mode"&&mode==="road"&&<RoadMode roster={roster} setRoster={setRoster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
+</>;
+);
+}
+
+const _r=ReactDOM.createRoot(document.getElementById('root'));
+_r.render(<Root />);
+`;
+
+</script>
+
 </body>
 </html>
