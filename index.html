@@ -43,6 +43,7 @@
     <div class="sp-status" id="status">Connexion internet requise…</div>
   </div>
   <div id="root"></div>
+  <script type="text/babel">
 
 /* ─── MOBILE HOOK ────────────────────────────────────────────────── */
 function useIsMobile(bp=680){
@@ -2479,10 +2480,6 @@ function Root() {
 const _r=ReactDOM.createRoot(document.getElementById('root'));
 _r.render(<Root />);
 
-const splash = document.getElementById('splash');
-if (splash) splash.style.display = 'none';
-
 </script>
-
 </body>
 </html>
