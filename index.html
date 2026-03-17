@@ -769,8 +769,8 @@ async function generateRoadPlan(roster){
     championTitle:champion?.title,
     finalMatch:\`\${wmWinner.name} vs \${wmRival?.name}\`,
     card:[
-      \`\${wmWinner.name} vs \${wmRival?.name} (Main Event WM)\`,
-      \`\${pick(rising)?.name||"Rising Star"} vs \${pick(chamberPool)?.name||"Challenger"}\`,
+      `\${wmWinner.name} vs \${wmRival?.name} (Main Event WM)\`,
+      `\${pick(rising)?.name||"Rising Star"} vs \${pick(chamberPool)?.name||"Challenger"}\`,
     ],
     feuds:[{wrestlers:\`\${wmWinner.name} & \${wmRival?.name}\`,arc:pick(ARCS)}],
     narrative:pick(ARCS),
