@@ -747,12 +747,12 @@ async function generateRoadPlan(roster){
 
   const chaos=pick(roster.filter(w=>w.status==="active"&&w.id!==wmWinner.id));
 
-  const ARCS=[
-    \`\${wmWinner.name} cherche à prouver qu'il est le meilleur, \${wmRival?.name} fait tout pour l'en empêcher.\`,
-    \`La rivalité entre \${wmWinner.name} et \${wmRival?.name} atteint son point de rupture.\`,
-    \`\${wmWinner.name} doit surmonter la trahison de \${wmRival?.name} pour atteindre le sommet.\`,
-    \`Deux visions s'affrontent : l'honneur de \${wmWinner.name} contre la domination de \${wmRival?.name}.\`,
-  ];
+  const ARCS = [
+`${wmWinner.name} cherche à prouver qu'il est le meilleur, ${wmRival?.name} fait tout pour l'en empêcher.`,
+`La rivalité entre ${wmWinner.name} et ${wmRival?.name} atteint son point de rupture.`,
+`${wmWinner.name} doit surmonter la trahison de ${wmRival?.name} pour atteindre le sommet.`,
+`Deux visions s'affrontent : l'honneur de ${wmWinner.name} contre la domination de ${wmRival?.name}.`,
+];
 
   return{
     winner:wmWinner.id,
