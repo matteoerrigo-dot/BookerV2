@@ -1,3 +1,2 @@
-const message = "Booker V2 démarre 🚀";
-
-document.body.innerHTML += `<h1>${message}</h1>`;
+const root = document.getElementById("root");
+root.innerHTML = "<h1>ÇA MARCHE ✅</h1>";
