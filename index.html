@@ -57,11 +57,6 @@ window.addEventListener("load", function () {
 </script>
   <script type="text/babel">
   
-  setTimeout(() => {
-  const splash = document.getElementById("splash");
-  if (splash) splash.style.display = "none";
-}, 1200);
-
 /* ─── MOBILE HOOK ────────────────────────────────────────────────── */
 function useIsMobile(bp=680){
   const [m,setM]=useState(()=>typeof window!=="undefined"?window.innerWidth<bp:false);
