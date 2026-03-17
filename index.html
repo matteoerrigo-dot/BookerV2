@@ -767,14 +767,14 @@ const ARCS = [
     championId:champion?.id,
     championName:champion?.name,
     championTitle:champion?.title,
-    finalMatch:\`\${wmWinner.name} vs \${wmRival?.name}\`,
+    finalMatch:\`${wmWinner.name} vs ${wmRival?.name}\`,
     card:[
-      `\${wmWinner.name} vs \${wmRival?.name} (Main Event WM)\`,
-      `\${pick(rising)?.name||"Rising Star"} vs \${pick(chamberPool)?.name||"Challenger"}\`,
+      `${wmWinner.name} vs ${wmRival?.name} (Main Event WM)\`,
+      `${pick(rising)?.name||"Rising Star"} vs ${pick(chamberPool)?.name||"Challenger"}\`,
     ],
-    feuds:[{wrestlers:\`\${wmWinner.name} & \${wmRival?.name}\`,arc:pick(ARCS)}],
+    feuds:[{wrestlers:\`${wmWinner.name} & ${wmRival?.name}\`,arc:pick(ARCS)}],
     narrative:pick(ARCS),
-    chaos:{who:chaos.id,what:\`\${chaos.name} perturbe le plan principal.\`,impact:"Le booking doit être repensé."},
+    chaos:{who:chaos.id,what:\`${chaos.name} perturbe le plan principal.\`,impact:"Le booking doit être repensé."},
   };
 }
 
@@ -788,13 +788,13 @@ function Stars({v=0,size=20,color="#f5c518"}){
   </span>;
 }
 function Tag({children,color="#555"}){
-  return <span style={{background:\`\${color}18\`,border:\`1px solid \${color}44\`,color,fontSize:9,letterSpacing:2,padding:"2px 8px",borderRadius:3,fontWeight:700,textTransform:"uppercase"}}>{children}</span>;
+  return <span style={{background:\`${color}18\`,border:\`1px solid ${color}44\`,color,fontSize:9,letterSpacing:2,padding:"2px 8px",borderRadius:3,fontWeight:700,textTransform:"uppercase"}}>{children}</span>;
 }
 function Btn({children,onClick,disabled,variant="primary",t,small,full}){
   const isPrimary=variant==="primary";
   return <button onClick={onClick} disabled={disabled} style={{
-    background:isPrimary?(disabled?"#1a1a1a":\`linear-gradient(135deg,\${t?.accent||"#c8102e"},\${t?.alt||"#f5c518"})\`):"transparent",
-    border:isPrimary?"none":\`1px solid \${t?.border||"#222"}\`,
+    background:isPrimary?(disabled?"#1a1a1a":\`linear-gradient(135deg,${t?.accent||"#c8102e"},${t?.alt||"#f5c518"})\`):"transparent",
+    border:isPrimary?"none":\`1px solid ${t?.border||"#222"}\`,
     color:isPrimary?(disabled?"#333":"#000"):"#666",
     fontFamily:t?.font||"inherit",fontSize:small?11:13,letterSpacing:small?2:3,
     padding:small?"8px 14px":"13px 20px",borderRadius:8,cursor:disabled?"not-allowed":"pointer",
@@ -804,7 +804,7 @@ function Btn({children,onClick,disabled,variant="primary",t,small,full}){
   </button>;
 }
 function Surface({children,t,style={}}){
-  return <div style={{background:t.surface,border:\`1px solid \${t.border}\`,borderRadius:12,padding:14,...style}}>{children}</div>;
+  return <div style={{background:t.surface,border:\`1px solid ${t.border}\`,borderRadius:12,padding:14,...style}}>{children}</div>;
 }
 function Label({children,color}){
   return <div style={{color:color||"#333",fontSize:9,letterSpacing:3,textTransform:"uppercase",fontWeight:700,marginBottom:8}}>{children}</div>;
@@ -815,7 +815,7 @@ function MiniBar({label,v,color}){
       <span style={{color:"#2a2a3a",fontSize:8}}>{label}</span>
       <span style={{color,fontSize:9,fontWeight:700}}>{v}</span>
     </div>
-    <div style={{height:2,background:"#111",borderRadius:1}}><div style={{width:\`\${v}%\`,height:"100%",background:color,borderRadius:1}}/></div>
+    <div style={{height:2,background:"#111",borderRadius:1}}><div style={{width:\`${v}%\`,height:"100%",background:color,borderRadius:1}}/></div>
   </div>;
 }
 function PageWrap({children,t}){
@@ -828,9 +828,9 @@ function PageWrap({children,t}){
   </div>;
 }
 function NavBar({title,onHome,t,extras=[]}){
-  return <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16,paddingBottom:12,borderBottom:\`1px solid \${t.border}\`,flexWrap:"wrap"}}>
+  return <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16,paddingBottom:12,borderBottom:\`1px solid ${t.border}\`,flexWrap:"wrap"}}>
     <Btn onClick={onHome} variant="ghost" t={t} small>← Home</Btn>
-    <div style={{color:t.accent,fontFamily:t.font,fontSize:16,letterSpacing:3,textTransform:"uppercase",textShadow:\`0 0 14px \${t.glow}33\`,flexShrink:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{title}</div>
+    <div style={{color:t.accent,fontFamily:t.font,fontSize:16,letterSpacing:3,textTransform:"uppercase",textShadow:\`0 0 14px ${t.glow}33\`,flexShrink:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{title}</div>
     {extras.length>0&&<div style={{marginLeft:"auto",display:"flex",gap:6,alignItems:"center",flexWrap:"wrap"}}>{extras}</div>}
   </div>;
 }
@@ -838,12 +838,12 @@ function NavBar({title,onHome,t,extras=[]}){
 /* ─── BOTTOM SHEET wrapper ───────────────────────────────────────── */
 function Sheet({children,onClose,t,title}){
   return <div style={{position:"fixed",inset:0,zIndex:200,background:"#000c",display:"flex",alignItems:"flex-end",justifyContent:"center"}} onClick={onClose}>
-    <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid \${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:560,maxHeight:"88vh",overflowY:"auto",animation:"slideUp .3s ease"}}>
-      <div style={{position:"sticky",top:0,background:t.bg,padding:"12px 16px 8px",borderBottom:\`1px solid \${t.border}\`,zIndex:10}}>
+    <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid ${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:560,maxHeight:"88vh",overflowY:"auto",animation:"slideUp .3s ease"}}>
+      <div style={{position:"sticky",top:0,background:t.bg,padding:"12px 16px 8px",borderBottom:\`1px solid ${t.border}\`,zIndex:10}}>
         <div style={{width:36,height:4,background:"#333",borderRadius:2,margin:"0 auto 10px"}}/>
         {title&&<div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
           <div style={{color:t.accent,fontSize:13,fontFamily:t.font,letterSpacing:3,textTransform:"uppercase"}}>{title}</div>
-          <button onClick={onClose} style={{background:"none",border:\`1px solid \${t.border}\`,color:"#555",width:26,height:26,borderRadius:5,cursor:"pointer",fontSize:12}}>×</button>
+          <button onClick={onClose} style={{background:"none",border:\`1px solid ${t.border}\`,color:"#555",width:26,height:26,borderRadius:5,cursor:"pointer",fontSize:12}}>×</button>
         </div>}
       </div>
       <div style={{padding:14}}>{children}</div>
@@ -874,8 +874,8 @@ function TitleChangePanel({roster, titleChange, setTitleChange, t}){
         </div>
       </div>
       <button onClick={toggle} style={{
-        background:enabled?\`\${t.alt}18\`:"none",
-        border:\`1.5px solid \${enabled?t.alt:t.border}\`,
+        background:enabled?\`${t.alt}18\`:"none",
+        border:\`1.5px solid ${enabled?t.alt:t.border}\`,
         color:enabled?t.alt:"#444",
         borderRadius:20,padding:"5px 14px",cursor:"pointer",fontSize:11,
         fontFamily:t.font,letterSpacing:1,fontWeight:700,transition:"all .15s",
@@ -893,7 +893,7 @@ function TitleChangePanel({roster, titleChange, setTitleChange, t}){
               const sel=titleChange.fromId===w.id;
               const c=rc(w.role);
               return <div key={w.id} onClick={()=>setTitleChange(p=>({...p,fromId:w.id,toId:null}))}
-                style={{background:sel?\`\${c}14\`:t.surface,border:\`1.5px solid \${sel?c:t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+                style={{background:sel?\`${c}14\`:t.surface,border:\`1.5px solid ${sel?c:t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
                 <div style={{color:sel?c:"#ccc",fontFamily:t.font,fontSize:11,fontWeight:700,textTransform:"uppercase"}}>{w.short}</div>
                 <div style={{color:t.alt,fontSize:9,marginTop:2}}>🏆 {w.title}</div>
               </div>;
@@ -909,7 +909,7 @@ function TitleChangePanel({roster, titleChange, setTitleChange, t}){
             const sel=titleChange.toId===w.id;
             const c=rc(w.role);
             return <div key={w.id} onClick={()=>setTitleChange(p=>({...p,toId:w.id}))}
-              style={{background:sel?\`\${c}14\`:t.surface,border:\`1.5px solid \${sel?c:t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+              style={{background:sel?\`${c}14\`:t.surface,border:\`1.5px solid ${sel?c:t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
               <div style={{color:sel?c:"#ccc",fontFamily:t.font,fontSize:11,fontWeight:700,textTransform:"uppercase"}}>{w.short}</div>
               {sel&&<div style={{color:c,fontSize:9,marginTop:2}}>→ Nouveau champion</div>}
             </div>;
@@ -920,7 +920,7 @@ function TitleChangePanel({roster, titleChange, setTitleChange, t}){
       {titleChange.fromId&&titleChange.toId&&(()=>{
         const from=roster.find(w=>w.id===titleChange.fromId);
         const to=roster.find(w=>w.id===titleChange.toId);
-        return <div style={{marginTop:10,background:\`\${t.alt}0a\`,border:\`1px solid \${t.alt}33\`,borderRadius:8,padding:"9px 12px",display:"flex",alignItems:"center",gap:8}}>
+        return <div style={{marginTop:10,background:\`${t.alt}0a\`,border:\`1px solid ${t.alt}33\`,borderRadius:8,padding:"9px 12px",display:"flex",alignItems:"center",gap:8}}>
           <span style={{fontSize:16}}>🏆</span>
           <span style={{color:"#888",fontSize:11}}>{from?.name} perd le <span style={{color:t.alt}}>{from?.title}</span></span>
           <span style={{color:"#333",fontSize:14}}>→</span>
@@ -982,7 +982,7 @@ function MatchFormatPanel({roster, matchFormat, setMatchFormat, t}){
       {MATCH_FORMATS.map(f=>{
         const sel=format===f.id;
         return <div key={f.id} onClick={()=>setFormat(f.id)}
-          style={{background:sel?\`\${t.accent}18\`:t.surface,border:\`1.5px solid \${sel?t.accent:t.border}\`,borderRadius:8,padding:"7px 11px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:6,WebkitTapHighlightColor:"transparent"}}>
+          style={{background:sel?\`${t.accent}18\`:t.surface,border:\`1.5px solid ${sel?t.accent:t.border}\`,borderRadius:8,padding:"7px 11px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:6,WebkitTapHighlightColor:"transparent"}}>
           <span style={{fontSize:14}}>{f.icon}</span>
           <div>
             <div style={{color:sel?t.accent:"#bbb",fontFamily:t.font,fontSize:10,fontWeight:700,letterSpacing:1,textTransform:"uppercase"}}>{f.label}</div>
@@ -994,7 +994,7 @@ function MatchFormatPanel({roster, matchFormat, setMatchFormat, t}){
     </div>
 
     {/* Format description */}
-    <div style={{background:\`\${t.accent}08\`,border:\`1px solid \${t.accent}22\`,borderRadius:7,padding:"7px 10px",marginBottom:12,display:"flex",alignItems:"center",gap:8}}>
+    <div style={{background:\`${t.accent}08\`,border:\`1px solid ${t.accent}22\`,borderRadius:7,padding:"7px 10px",marginBottom:12,display:"flex",alignItems:"center",gap:8}}>
       <span style={{fontSize:16}}>{curFmt.icon}</span>
       <span style={{color:"#666",fontSize:11,fontStyle:"italic"}}>{curFmt.desc}</span>
     </div>
@@ -1011,7 +1011,7 @@ function MatchFormatPanel({roster, matchFormat, setMatchFormat, t}){
           const full=!inMatch&&participants.length>=curFmt.n;
           const c=rc(w.role);
           return <div key={w.id} onClick={()=>!full&&toggleParticipant(w.id)}
-            style={{background:inMatch?\`\${c}18\`:t.surface,border:\`1.5px solid \${inMatch?c:t.border}\`,borderRadius:8,padding:"8px 10px",cursor:full?"not-allowed":"pointer",opacity:full?.35:1,transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+            style={{background:inMatch?\`${c}18\`:t.surface,border:\`1.5px solid ${inMatch?c:t.border}\`,borderRadius:8,padding:"8px 10px",cursor:full?"not-allowed":"pointer",opacity:full?.35:1,transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
             <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
               <span style={{color:inMatch?c:"#ccc",fontFamily:t.font,fontSize:10,fontWeight:700,textTransform:"uppercase"}}>{w.short}</span>
               {inMatch&&<span style={{color:c,fontSize:11}}>✓</span>}
@@ -1030,7 +1030,7 @@ function MatchFormatPanel({roster, matchFormat, setMatchFormat, t}){
             const sel=winnerId===w.id;
             const c=rc(w.role);
             return <div key={w.id} onClick={()=>setWinner(w.id)}
-              style={{background:sel?\`\${c}14\`:t.surface,border:\`1.5px solid \${sel?c:t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:6,WebkitTapHighlightColor:"transparent"}}>
+              style={{background:sel?\`${c}14\`:t.surface,border:\`1.5px solid ${sel?c:t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:6,WebkitTapHighlightColor:"transparent"}}>
               <div style={{width:5,height:5,borderRadius:"50%",background:c}}/>
               <span style={{color:sel?c:"#ccc",fontFamily:t.font,fontSize:11,textTransform:"uppercase"}}>{w.name}</span>
               {sel&&<span style={{color:c}}>✓</span>}
@@ -1040,7 +1040,7 @@ function MatchFormatPanel({roster, matchFormat, setMatchFormat, t}){
       </>}
 
       {/* Summary */}
-      {isComplete&&<div style={{background:\`\${t.accent}0a\`,border:\`1px solid \${t.accent}33\`,borderRadius:8,padding:"9px 12px",display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+      {isComplete&&<div style={{background:\`${t.accent}0a\`,border:\`1px solid ${t.accent}33\`,borderRadius:8,padding:"9px 12px",display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
         <span style={{fontSize:16}}>{curFmt.icon}</span>
         <span style={{color:"#666",fontSize:11}}>{curFmt.label} :</span>
         {partW.map((w,i)=><span key={w.id} style={{color:rc(w.role),fontSize:11,fontWeight:w.id===winnerId?700:400}}>
@@ -1058,14 +1058,14 @@ function CrowdResult({result,loading,t}){
     <div style={{fontSize:30,animation:"pulse .7s infinite alternate"}}>📣</div>
     <div style={{color:"#444",fontSize:11,letterSpacing:4,marginTop:8,fontFamily:t.font}}>LA FOULE RÉAGIT…</div>
     <div style={{display:"flex",justifyContent:"center",gap:5,marginTop:10}}>
-      {[0,1,2].map(i=><div key={i} style={{width:5,height:5,borderRadius:"50%",background:t.accent,animation:\`bounce .7s \${i*.15}s infinite alternate\`}}/>)}
+      {[0,1,2].map(i=><div key={i} style={{width:5,height:5,borderRadius:"50%",background:t.accent,animation:\`bounce .7s ${i*.15}s infinite alternate\`}}/>)}
     </div>
   </Surface>;
   if(!result)return null;
   const vc=VERDICT_C[result.verdict]||"#888";
   const nl=NOISE_LVL[result.noise]||NOISE_LVL[3];
-  return <div style={{background:t.surface,border:\`1px solid \${vc}33\`,borderRadius:12,overflow:"hidden",marginTop:12,animation:"slideUp .4s ease"}}>
-    <div style={{background:\`\${nl.c}10\`,borderBottom:\`1px solid \${nl.c}18\`,padding:"10px 14px",display:"flex",alignItems:"center",gap:10}}>
+  return <div style={{background:t.surface,border:\`1px solid ${vc}33\`,borderRadius:12,overflow:"hidden",marginTop:12,animation:"slideUp .4s ease"}}>
+    <div style={{background:\`${nl.c}10\`,borderBottom:\`1px solid ${nl.c}18\`,padding:"10px 14px",display:"flex",alignItems:"center",gap:10}}>
       <span style={{fontSize:20}}>{nl.emoji}</span>
       <div style={{flex:1}}>
         <div style={{display:"flex",gap:2,marginBottom:3}}>{[1,2,3,4,5].map(n=><div key={n} style={{flex:1,height:3,borderRadius:1,background:n<=result.noise?nl.c:"#111"}}/>)}</div>
@@ -1076,14 +1076,14 @@ function CrowdResult({result,loading,t}){
     <div style={{padding:14}}>
       <div style={{display:"flex",alignItems:"baseline",gap:8,marginBottom:10}}>
         <Stars v={result.stars} size={22} color={t.alt}/>
-        <span style={{color:t.alt,fontFamily:t.font,fontSize:30,lineHeight:1,textShadow:\`0 0 10px \${t.alt}44\`}}>{result.stars}</span>
+        <span style={{color:t.alt,fontFamily:t.font,fontSize:30,lineHeight:1,textShadow:\`0 0 10px ${t.alt}44\`}}>{result.stars}</span>
         <span style={{color:"#333",fontSize:13}}>/5</span>
       </div>
-      <div style={{background:"#ffffff04",border:\`1px solid \${nl.c}15\`,borderRadius:8,padding:"8px 12px",marginBottom:10,textAlign:"center"}}>
+      <div style={{background:"#ffffff04",border:\`1px solid ${nl.c}15\`,borderRadius:8,padding:"8px 12px",marginBottom:10,textAlign:"center"}}>
         <span style={{color:nl.c,fontFamily:t.font,fontSize:13,letterSpacing:3}}>📣 « {result.chant} »</span>
       </div>
       <p style={{color:"#aaa",fontSize:13,fontStyle:"italic",lineHeight:1.7,margin:"0 0 10px"}}>"{result.reaction}"</p>
-      <div style={{borderLeft:\`3px solid \${vc}\`,paddingLeft:12,marginBottom:10}}>
+      <div style={{borderLeft:\`3px solid ${vc}\`,paddingLeft:12,marginBottom:10}}>
         <Label>La foule</Label>
         <p style={{color:"#666",fontSize:12,lineHeight:1.7,margin:0}}>{result.voice}</p>
       </div>
@@ -1171,7 +1171,7 @@ function FicheModal({wrestler,onClose,allResults=[],t}){
         <Label color="#ff2244">💥 Finisher</Label>
         <div style={{color:"#f5a0a8",fontSize:12,fontWeight:700}}>{FINISHERS[wrestler.id]||"Finisher"}</div>
       </div>
-      <div style={{background:\`\${t.accent}08\`,border:\`1px solid \${t.accent}18\`,borderRadius:8,padding:10}}>
+      <div style={{background:\`${t.accent}08\`,border:\`1px solid ${t.accent}18\`,borderRadius:8,padding:10}}>
         <Label color={t.accent}>🎭 Rôle</Label>
         <div style={{color:"#aaa",fontSize:11}}>{wrestler.role==="face"?"Babyface":wrestler.role==="heel"?"Heel — build the heat":"Tweener"}</div>
       </div>
@@ -1204,16 +1204,16 @@ function ActionPicker({wrestler,currentAction,role,onPick,onClose,t,promo="WWE"}
   const c=rc(role);
   const acts=getActs(promo);
   return <div style={{position:"fixed",inset:0,zIndex:150,background:"#000d",display:"flex",alignItems:"flex-end",justifyContent:"center"}} onClick={onClose}>
-    <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid \${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:680,maxHeight:"82vh",overflowY:"auto",animation:"slideUp .3s ease"}}>
-      <div style={{position:"sticky",top:0,background:t.bg,padding:"12px 16px 8px",borderBottom:\`1px solid \${t.border}\`,zIndex:10}}>
-        <div style={{position:"absolute",top:0,left:0,right:0,height:2,background:\`linear-gradient(90deg,\${c},\${t.alt},transparent)\`,borderRadius:"16px 16px 0 0"}}/>
+    <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid ${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:680,maxHeight:"82vh",overflowY:"auto",animation:"slideUp .3s ease"}}>
+      <div style={{position:"sticky",top:0,background:t.bg,padding:"12px 16px 8px",borderBottom:\`1px solid ${t.border}\`,zIndex:10}}>
+        <div style={{position:"absolute",top:0,left:0,right:0,height:2,background:\`linear-gradient(90deg,${c},${t.alt},transparent)\`,borderRadius:"16px 16px 0 0"}}/>
         <div style={{width:36,height:4,background:"#333",borderRadius:2,margin:"0 auto 10px"}}/>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
           <div>
             <div style={{color:c,fontFamily:t.font,fontSize:15,letterSpacing:3,textTransform:"uppercase"}}>{wrestler.name}</div>
             <div style={{color:"#444",fontSize:10}}>Choisir une action · <span style={{color:c}}>{role}</span></div>
           </div>
-          <button onClick={onClose} style={{background:"none",border:\`1px solid \${t.border}\`,color:"#555",width:28,height:28,borderRadius:6,cursor:"pointer",fontSize:13}}>×</button>
+          <button onClick={onClose} style={{background:"none",border:\`1px solid ${t.border}\`,color:"#555",width:28,height:28,borderRadius:6,cursor:"pointer",fontSize:13}}>×</button>
         </div>
       </div>
       <div style={{padding:14}}>
@@ -1229,7 +1229,7 @@ function ActionPicker({wrestler,currentAction,role,onPick,onClose,t,promo="WWE"}
               {catActs.map(action=>{
                 const sel=currentAction?.action?.id===action.id;
                 return <button key={action.id} onClick={()=>onPick(cat,action)}
-                  style={{background:sel?\`\${c}14\`:t.surface,border:\`1.5px solid \${sel?c:t.border}\`,borderRadius:8,padding:"9px 10px",cursor:"pointer",textAlign:"left",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+                  style={{background:sel?\`${c}14\`:t.surface,border:\`1.5px solid ${sel?c:t.border}\`,borderRadius:8,padding:"9px 10px",cursor:"pointer",textAlign:"left",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
                   <div style={{color:sel?c:"#ddd",fontSize:11,fontWeight:700,marginBottom:2}}>{action.label}</div>
                   <div style={{color:"#444",fontSize:9,lineHeight:1.4,marginBottom:4}}>{action.desc}</div>
                   <div style={{display:"flex",gap:6}}><span style={{color:t.alt,fontSize:9}}>+{action.mom} MOM</span><span style={{color:"#ff2244",fontSize:9}}>+{action.heat} HEAT</span></div>
@@ -1250,7 +1250,7 @@ function RosterPanel({roster,ficheId,setFicheId,t,mobile}){
     {roster.map(w=>{
       const c=rc(w.role),isActive=ficheId===w.id;
       return <div key={w.id} onClick={()=>{setFicheId(isActive?null:w.id);if(mobile)setOpen(false);}}
-        style={{display:"flex",alignItems:"center",gap:7,padding:"7px 9px",background:isActive?\`\${c}10\`:"#ffffff04",border:\`1px solid \${isActive?c+"44":"transparent"}\`,borderRadius:7,opacity:w.status!=="active"?.3:1,cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+        style={{display:"flex",alignItems:"center",gap:7,padding:"7px 9px",background:isActive?\`${c}10\`:"#ffffff04",border:\`1px solid ${isActive?c+"44":"transparent"}\`,borderRadius:7,opacity:w.status!=="active"?.3:1,cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
         <div style={{width:3,height:18,borderRadius:2,background:c,flexShrink:0}}/>
         <div style={{flex:1,minWidth:0}}>
           <div style={{color:"#ddd",fontSize:11,fontWeight:700,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",fontFamily:t.font}}>{w.short}</div>
@@ -1262,9 +1262,9 @@ function RosterPanel({roster,ficheId,setFicheId,t,mobile}){
   </div>;
   if(!mobile)return <Surface t={t} style={{padding:12}}><Label color={t.accent}>ROSTER</Label>{list}</Surface>;
   return <>
-    <button onClick={()=>setOpen(true)} style={{position:"fixed",bottom:20,right:16,zIndex:80,background:\`linear-gradient(135deg,\${t.accent},\${t.alt})\`,border:"none",borderRadius:"50%",width:52,height:52,fontSize:20,cursor:"pointer",boxShadow:\`0 4px 20px \${t.glow}44\`,WebkitTapHighlightColor:"transparent"}}>👥</button>
+    <button onClick={()=>setOpen(true)} style={{position:"fixed",bottom:20,right:16,zIndex:80,background:\`linear-gradient(135deg,${t.accent},${t.alt})\`,border:"none",borderRadius:"50%",width:52,height:52,fontSize:20,cursor:"pointer",boxShadow:\`0 4px 20px ${t.glow}44\`,WebkitTapHighlightColor:"transparent"}}>👥</button>
     {open&&<div style={{position:"fixed",inset:0,zIndex:160,background:"#000c"}} onClick={()=>setOpen(false)}>
-      <div onClick={e=>e.stopPropagation()} style={{position:"absolute",bottom:0,left:0,right:0,background:t.bg,border:\`1px solid \${t.border}\`,borderRadius:"16px 16px 0 0",padding:16,maxHeight:"65vh",overflowY:"auto",animation:"slideUp .3s ease"}}>
+      <div onClick={e=>e.stopPropagation()} style={{position:"absolute",bottom:0,left:0,right:0,background:t.bg,border:\`1px solid ${t.border}\`,borderRadius:"16px 16px 0 0",padding:16,maxHeight:"65vh",overflowY:"auto",animation:"slideUp .3s ease"}}>
         <div style={{width:36,height:4,background:"#333",borderRadius:2,margin:"0 auto 12px"}}/>
         <Label color={t.accent}>ROSTER</Label>
         {list}
@@ -1279,7 +1279,7 @@ function WrestlerCard({w,role,onSetRole,slots,onSlotClick,onClearSlot,ficheId,se
   const c=rc(role);
   const filled=slots.filter(Boolean).length;
   return <div style={{marginBottom:7}}>
-    <div onClick={()=>setOpen(o=>!o)} style={{background:t.surface,border:\`1px solid \${c}22\`,borderRadius:open?"10px 10px 0 0":10,padding:"10px 12px",display:"flex",alignItems:"center",gap:10,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>
+    <div onClick={()=>setOpen(o=>!o)} style={{background:t.surface,border:\`1px solid ${c}22\`,borderRadius:open?"10px 10px 0 0":10,padding:"10px 12px",display:"flex",alignItems:"center",gap:10,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>
       <div style={{width:3,height:28,borderRadius:2,background:c,flexShrink:0}}/>
       <div style={{flex:1}}>
         <div style={{display:"flex",alignItems:"center",gap:7}}>
@@ -1295,21 +1295,21 @@ function WrestlerCard({w,role,onSetRole,slots,onSlotClick,onClearSlot,ficheId,se
         </div>
       </div>
       <div style={{display:"flex",alignItems:"center",gap:6}}>
-        {filled>0&&<div style={{background:\`\${c}18\`,border:\`1px solid \${c}44\`,borderRadius:10,padding:"2px 7px",color:c,fontSize:10,fontWeight:700}}>{filled}✓</div>}
+        {filled>0&&<div style={{background:\`${c}18\`,border:\`1px solid ${c}44\`,borderRadius:10,padding:"2px 7px",color:c,fontSize:10,fontWeight:700}}>{filled}✓</div>}
         <span style={{color:"#333",fontSize:14,transform:open?"rotate(180deg)":"none",transition:"transform .2s"}}>▾</span>
       </div>
     </div>
-    {open&&<div style={{background:t.surface,border:\`1px solid \${c}22\`,borderTop:"none",borderRadius:"0 0 10px 10px",padding:"10px 12px"}}>
+    {open&&<div style={{background:t.surface,border:\`1px solid ${c}22\`,borderTop:"none",borderRadius:"0 0 10px 10px",padding:"10px 12px"}}>
       <div style={{display:"flex",gap:4,marginBottom:10}}>
         {["face","heel","tweener"].map(r=><button key={r} onClick={()=>onSetRole(r)}
-          style={{flex:1,padding:"5px 0",fontSize:8,textTransform:"uppercase",background:role===r?\`\${rc(r)}14\`:"none",border:\`1px solid \${role===r?rc(r):t.border}\`,color:role===r?rc(r):"#333",borderRadius:4,cursor:"pointer",fontFamily:t.font,WebkitTapHighlightColor:"transparent"}}>{r}</button>)}
+          style={{flex:1,padding:"5px 0",fontSize:8,textTransform:"uppercase",background:role===r?\`${rc(r)}14\`:"none",border:\`1px solid ${role===r?rc(r):t.border}\`,color:role===r?rc(r):"#333",borderRadius:4,cursor:"pointer",fontFamily:t.font,WebkitTapHighlightColor:"transparent"}}>{r}</button>)}
       </div>
       {slots.map((a,wi)=><div key={wi} style={{marginBottom:8}}>
         <div style={{color:"#333",fontSize:8,letterSpacing:2,marginBottom:4,fontFamily:t.font}}>SEMAINE {wi+1}</div>
-        {a?<div style={{background:\`\${c}0a\`,border:\`1.5px solid \${c}33\`,borderRadius:8,padding:"8px 10px",display:"flex",gap:8,alignItems:"center"}}>
+        {a?<div style={{background:\`${c}0a\`,border:\`1.5px solid ${c}33\`,borderRadius:8,padding:"8px 10px",display:"flex",gap:8,alignItems:"center"}}>
           <span style={{fontSize:14}}>{getActs(promo)[a.cat]?.icon}</span>
           <div style={{flex:1}}><div style={{color:c,fontSize:11,fontWeight:700}}>{a.action.label}</div><div style={{color:"#444",fontSize:9}}>{a.action.desc}</div></div>
-          <button onClick={()=>onClearSlot(wi)} style={{background:"none",border:\`1px solid \${t.border}\`,color:"#555",width:22,height:22,borderRadius:4,cursor:"pointer",fontSize:10,flexShrink:0}}>×</button>
+          <button onClick={()=>onClearSlot(wi)} style={{background:"none",border:\`1px solid ${t.border}\`,color:"#555",width:22,height:22,borderRadius:4,cursor:"pointer",fontSize:10,flexShrink:0}}>×</button>
         </div>
         :<button onClick={()=>onSlotClick(wi)} style={{width:"100%",padding:"10px",background:"#ffffff03",border:\`1px dashed \${t.border}\`,borderRadius:8,color:"#2a2a3a",fontSize:12,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>+ Action semaine {wi+1}</button>}
       </div>)}
@@ -1339,7 +1339,7 @@ function PromoSelect({onSelect}){
         const sel=diff===v;
         const col=v==="hard"?"#ff2244":"#00e5aa";
         return <div key={v} onClick={()=>setDiff(v)}
-          style={{background:sel?\`\${col}12\`:"#0a0a0a",border:\`2px solid \${sel?col:"#1a1a1a"}\`,borderRadius:10,padding:"10px 16px",cursor:"pointer",textAlign:"center",transition:"all .2s",minWidth:130,WebkitTapHighlightColor:"transparent"}}>
+          style={{background:sel?\`${col}12\`:"#0a0a0a",border:\`2px solid ${sel?col:"#1a1a1a"}\`,borderRadius:10,padding:"10px 16px",cursor:"pointer",textAlign:"center",transition:"all .2s",minWidth:130,WebkitTapHighlightColor:"transparent"}}>
           <div style={{fontSize:16,marginBottom:3}}>{icon}</div>
           <div style={{color:sel?col:"#444",fontFamily:"'Anton',Impact,sans-serif",fontSize:12,letterSpacing:3,marginBottom:2}}>{label}</div>
           <div style={{color:"#333",fontSize:9,lineHeight:1.4}}>{desc}</div>
@@ -1350,12 +1350,12 @@ function PromoSelect({onSelect}){
 
     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,maxWidth:520,width:"100%",position:"relative",zIndex:1,opacity:show?1:0,transform:show?"translateY(0)":"translateY(16px)",transition:"all .7s .25s ease"}}>
       {Object.values(T).map(p=><div key={p.id} onClick={()=>onSelect(p.id,diff)} onMouseEnter={()=>setHov(p.id)} onMouseLeave={()=>setHov(null)}
-        style={{background:hov===p.id?\`\${p.accent}0e\`:"#0a0a0a",border:\`2px solid \${hov===p.id?p.accent:"#1a1a1a"}\`,borderRadius:14,padding:"26px 18px",cursor:"pointer",textAlign:"center",transition:"all .2s",transform:hov===p.id?"scale(1.02)":"scale(1)",boxShadow:hov===p.id?\`0 0 40px \${p.glow}22\`:"none",position:"relative",overflow:"hidden",WebkitTapHighlightColor:"transparent"}}>
-        <div style={{position:"absolute",top:0,left:0,width:0,height:0,borderStyle:"solid",borderWidth:"26px 26px 0 0",borderColor:\`\${p.accent} transparent transparent transparent\`}}/>
-        <div style={{fontFamily:p.font,fontSize:"clamp(2rem,9vw,3.5rem)",fontWeight:900,letterSpacing:4,color:p.accent,textShadow:\`0 0 20px \${p.glow}55\`,lineHeight:1,marginBottom:8,textTransform:"uppercase"}}>{p.badge}</div>
+        style={{background:hov===p.id?\`${p.accent}0e\`:"#0a0a0a",border:\`2px solid ${hov===p.id?p.accent:"#1a1a1a"}\`,borderRadius:14,padding:"26px 18px",cursor:"pointer",textAlign:"center",transition:"all .2s",transform:hov===p.id?"scale(1.02)":"scale(1)",boxShadow:hov===p.id?\`0 0 40px ${p.glow}22\`:"none",position:"relative",overflow:"hidden",WebkitTapHighlightColor:"transparent"}}>
+        <div style={{position:"absolute",top:0,left:0,width:0,height:0,borderStyle:"solid",borderWidth:"26px 26px 0 0",borderColor:\`${p.accent} transparent transparent transparent\`}}/>
+        <div style={{fontFamily:p.font,fontSize:"clamp(2rem,9vw,3.5rem)",fontWeight:900,letterSpacing:4,color:p.accent,textShadow:\`0 0 20px ${p.glow}55\`,lineHeight:1,marginBottom:8,textTransform:"uppercase"}}>{p.badge}</div>
         <div style={{color:"#444",fontSize:9,letterSpacing:3,marginBottom:14}}>{p.tagline}</div>
         <div style={{color:"#333",fontSize:10,marginBottom:14}}>{ROSTERS[p.id].length} superstars · {ROSTERS[p.id].filter(w=>w.title).length} champions</div>
-        <div style={{background:\`\${p.accent}16\`,border:\`1px solid \${p.accent}44\`,borderRadius:7,padding:"7px 12px",color:p.accent,fontFamily:p.font,fontSize:11,letterSpacing:3,textTransform:"uppercase"}}>{hov===p.id?"ENTRER →":"SÉLECTIONNER"}</div>
+        <div style={{background:\`${p.accent}16\`,border:\`1px solid ${p.accent}44\`,borderRadius:7,padding:"7px 12px",color:p.accent,fontFamily:p.font,fontSize:11,letterSpacing:3,textTransform:"uppercase"}}>{hov===p.id?"ENTRER →":"SÉLECTIONNER"}</div>
       </div>)}
     </div>
   </div>;
@@ -1385,7 +1385,7 @@ function Home({promo,onMode,onChangePromo,globalStars,difficulty="normal"}){
             <div style={{color:t.alt,fontFamily:t.font,fontSize:24,lineHeight:1,marginTop:3}}>{avg}/5</div>
           </Surface>}
           <Btn onClick={onChangePromo} variant="ghost" t={t} small>Changer de promo</Btn>
-          <div style={{background:difficulty==="hard"?"#ff224412":"#00e5aa12",border:\`1px solid \${difficulty==="hard"?"#ff244433":"#00e5aa33"}\`,borderRadius:6,padding:"4px 10px",textAlign:"center"}}>
+          <div style={{background:difficulty==="hard"?"#ff224412":"#00e5aa12",border:\`1px solid ${difficulty==="hard"?"#ff244433":"#00e5aa33"}\`,borderRadius:6,padding:"4px 10px",textAlign:"center"}}>
             <div style={{color:difficulty==="hard"?"#ff2244":"#00e5aa",fontFamily:t.font,fontSize:9,letterSpacing:3}}>{difficulty==="hard"?"💀 HARD":"🎮 NORMAL"}</div>
           </div>
         </div>
@@ -1394,8 +1394,8 @@ function Home({promo,onMode,onChangePromo,globalStars,difficulty="normal"}){
         {modes.map(m=>{
           const [h,setH]=useState(false);
           return <div key={m.key} onClick={()=>onMode(m.key)} onMouseEnter={()=>setH(true)} onMouseLeave={()=>setH(false)}
-            style={{background:h?\`\${m.c}0a\`:t.surface,border:\`1.5px solid \${h?m.c:t.border}\`,borderRadius:12,padding:"18px 14px",cursor:"pointer",transition:"all .18s",transform:h?"translateY(-2px)":"none",boxShadow:h?\`0 8px 20px \${m.c}18\`:"none",position:"relative",overflow:"hidden",WebkitTapHighlightColor:"transparent"}}>
-            <div style={{position:"absolute",top:0,left:0,right:0,height:2,background:h?\`linear-gradient(90deg,transparent,\${m.c},transparent)\`:"transparent",transition:"all .25s"}}/>
+            style={{background:h?\`${m.c}0a\`:t.surface,border:\`1.5px solid ${h?m.c:t.border}\`,borderRadius:12,padding:"18px 14px",cursor:"pointer",transition:"all .18s",transform:h?"translateY(-2px)":"none",boxShadow:h?\`0 8px 20px ${m.c}18\`:"none",position:"relative",overflow:"hidden",WebkitTapHighlightColor:"transparent"}}>
+            <div style={{position:"absolute",top:0,left:0,right:0,height:2,background:h?\`linear-gradient(90deg,transparent,${m.c},transparent)\`:"transparent",transition:"all .25s"}}/>
             <div style={{fontSize:24,marginBottom:8}}>{m.icon}</div>
             <div style={{color:m.c,fontFamily:t.font,fontSize:13,letterSpacing:3,marginBottom:5,textTransform:"uppercase"}}>{m.title}</div>
             <p style={{color:"#555",fontSize:12,lineHeight:1.6,margin:"0 0 8px"}}>{m.desc}</p>
@@ -1406,7 +1406,7 @@ function Home({promo,onMode,onChangePromo,globalStars,difficulty="normal"}){
       <Surface t={t} style={{padding:10}}>
         <Label color={t.accent}>Roster — {t.badge}</Label>
         <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
-          {ROSTERS[promo].map(w=><div key={w.id} style={{background:"#ffffff05",border:\`1px solid \${rc(w.role)}18\`,borderRadius:6,padding:"4px 9px",display:"flex",alignItems:"center",gap:4}}>
+          {ROSTERS[promo].map(w=><div key={w.id} style={{background:"#ffffff05",border:\`1px solid ${rc(w.role)}18\`,borderRadius:6,padding:"4px 9px",display:"flex",alignItems:"center",gap:4}}>
             <div style={{width:3,height:3,borderRadius:"50%",background:rc(w.role)}}/>
             <span style={{color:"#666",fontSize:11,fontFamily:t.font}}>{w.short}</span>
             {w.title&&<span style={{fontSize:8}}>🏆</span>}
@@ -1465,7 +1465,7 @@ function StorylineMode({roster,onHome,onStars,promo,difficulty="normal"}){
             <Surface t={t} style={{marginBottom:10}}>
               <Label color={t.accent}>1 — Titre (optionnel)</Label>
               <input value={storyTitle} onChange={e=>setStoryTitle(e.target.value)} placeholder="Ex: La trahison de Seth…"
-                style={{width:"100%",background:"#ffffff05",border:\`1px solid \${t.border}\`,borderRadius:7,padding:"10px 12px",color:"#ddd",fontSize:13,outline:"none"}}
+                style={{width:"100%",background:"#ffffff05",border:\`1px solid ${t.border}\`,borderRadius:7,padding:"10px 12px",color:"#ddd",fontSize:13,outline:"none"}}
                 onFocus={e=>e.target.style.borderColor=t.accent} onBlur={e=>e.target.style.borderColor=t.border}/>
             </Surface>
             <Surface t={t} style={{marginBottom:10}}>
@@ -1473,7 +1473,7 @@ function StorylineMode({roster,onHome,onStars,promo,difficulty="normal"}){
               <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(130px,1fr))",gap:6}}>
                 {roster.map(w=>{const sel=selected.includes(w.id);const c=rc(w.role);
                   return <div key={w.id} onClick={()=>toggleW(w.id)}
-                    style={{background:sel?\`\${c}14\`:t.surface,border:\`1.5px solid \${sel?c:t.border}\`,borderRadius:8,padding:"9px 10px",cursor:"pointer",transition:"all .12s",opacity:(!sel&&selected.length>=6)?.35:1,WebkitTapHighlightColor:"transparent"}}>
+                    style={{background:sel?\`${c}14\`:t.surface,border:\`1.5px solid ${sel?c:t.border}\`,borderRadius:8,padding:"9px 10px",cursor:"pointer",transition:"all .12s",opacity:(!sel&&selected.length>=6)?.35:1,WebkitTapHighlightColor:"transparent"}}>
                     <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
                       <span style={{color:sel?c:"#ddd",fontFamily:t.font,fontSize:11,fontWeight:700,textTransform:"uppercase"}}>{w.short}</span>
                       {sel&&<span style={{color:c,fontSize:12}}>✓</span>}
@@ -1489,7 +1489,7 @@ function StorylineMode({roster,onHome,onStars,promo,difficulty="normal"}){
                 <Label color={t.accent}>3 — Stipulation PPV final</Label>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(138px,1fr))",gap:5}}>
                   {getStips(promo).map(s=><div key={s.id} onClick={()=>setStip(s.id)}
-                    style={{background:stip===s.id?\`\${t.accent}14\`:t.surface,border:\`1.5px solid \${stip===s.id?t.accent:t.border}\`,borderRadius:8,padding:"8px 10px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:7,WebkitTapHighlightColor:"transparent"}}>
+                    style={{background:stip===s.id?\`${t.accent}14\`:t.surface,border:\`1.5px solid ${stip===s.id?t.accent:t.border}\`,borderRadius:8,padding:"8px 10px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:7,WebkitTapHighlightColor:"transparent"}}>
                     <span style={{fontSize:13}}>{s.icon}</span>
                     <span style={{color:stip===s.id?t.accent:"#bbb",fontSize:11,fontWeight:700}}>{s.label}</span>
                   </div>)}
@@ -1499,7 +1499,7 @@ function StorylineMode({roster,onHome,onStars,promo,difficulty="normal"}){
                 <Label color={t.accent}>4 — Vainqueur</Label>
                 <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
                   {selW.map(w=><div key={w.id} onClick={()=>setWinner(w.id)}
-                    style={{background:winner===w.id?\`\${rc(w.role)}14\`:t.surface,border:\`1.5px solid \${winner===w.id?rc(w.role):t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:6,WebkitTapHighlightColor:"transparent"}}>
+                    style={{background:winner===w.id?\`${rc(w.role)}14\`:t.surface,border:\`1.5px solid ${winner===w.id?rc(w.role):t.border}\`,borderRadius:8,padding:"8px 12px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:6,WebkitTapHighlightColor:"transparent"}}>
                     <div style={{width:5,height:5,borderRadius:"50%",background:rc(w.role)}}/>
                     <span style={{color:winner===w.id?rc(w.role):"#ccc",fontFamily:t.font,fontSize:12,textTransform:"uppercase"}}>{w.name}</span>
                     {winner===w.id&&<span style={{color:rc(w.role)}}>✓</span>}
@@ -1587,27 +1587,27 @@ function buildCareerEvent(week, ppvId, hero, roster, promo){
   if(!rival) return null;
 
   const ppvEvents={
-    rr: [{id:"rumble_win",    icon:"🔢", sev:"epic",    title:"ROYAL RUMBLE — MOMENT DÉCISIF",    text:\`\${hero.name} entre au Rumble. Le Garden retient son souffle. Chaque élimination te rapproche de WrestleMania.\`}],
-    ec: [{id:"chamber_entry", icon:"⛓️", sev:"critical",title:"ELIMINATION CHAMBER — SURVIE",     text:\`\${hero.name} entre dans la Chambre. 5 adversaires. Une seule issue : ressortir champion ou challenger.\`}],
-    wm: [{id:"mania_night",   icon:"🌟", sev:"epic",    title:"WRESTLEMANIA — LA NUIT DU DESTIN", text:\`\${hero.name} sous les projecteurs de WrestleMania. Toute l'année mène à ce moment. Tout se joue ici.\`}],
-    ss: [{id:"survivor_war",  icon:"☀️", sev:"critical",title:"SUMMERSLAM — LA GUERRE D'ÉTÉ",     text:\`\${hero.name} au cœur de SummerSlam. La chaleur de l'été, le plus grand show après WM.\`}],
-    mitb:[{id:"mitb_ladder",  icon:"💼", sev:"critical",title:"MONEY IN THE BANK — L'ÉCHELLE",    text:\`\${hero.name} dans un ladder match pour la mallette. Un seul geste peut tout changer.\`}],
-    dou: [{id:"casino_battle",icon:"🃏", sev:"epic",    title:"CASINO BATTLE ROYALE",              text:\`\${hero.name} participe à la Casino Battle Royale. La Joker Card peut changer tout.\`}],
-    ai:  [{id:"all_in_night", icon:"🏟️", sev:"epic",    title:"ALL IN — WEMBLEY/METLIFE",          text:\`\${hero.name} devant 80 000 personnes. All In est le moment d'une vie entière.\`}],
-    fd:  [{id:"forbidden_cross",icon:"🌏",sev:"critical",title:"FORBIDDEN DOOR — CROSS-PROMO",     text:\`\${hero.name} face à un talent NJPW. Le monde entier regarde cette confrontation.\`}],
+    rr: [{id:"rumble_win",    icon:"🔢", sev:"epic",    title:"ROYAL RUMBLE — MOMENT DÉCISIF",    text:\`${hero.name} entre au Rumble. Le Garden retient son souffle. Chaque élimination te rapproche de WrestleMania.\`}],
+    ec: [{id:"chamber_entry", icon:"⛓️", sev:"critical",title:"ELIMINATION CHAMBER — SURVIE",     text:\`${hero.name} entre dans la Chambre. 5 adversaires. Une seule issue : ressortir champion ou challenger.\`}],
+    wm: [{id:"mania_night",   icon:"🌟", sev:"epic",    title:"WRESTLEMANIA — LA NUIT DU DESTIN", text:\`${hero.name} sous les projecteurs de WrestleMania. Toute l'année mène à ce moment. Tout se joue ici.\`}],
+    ss: [{id:"survivor_war",  icon:"☀️", sev:"critical",title:"SUMMERSLAM — LA GUERRE D'ÉTÉ",     text:\`${hero.name} au cœur de SummerSlam. La chaleur de l'été, le plus grand show après WM.\`}],
+    mitb:[{id:"mitb_ladder",  icon:"💼", sev:"critical",title:"MONEY IN THE BANK — L'ÉCHELLE",    text:\`${hero.name} dans un ladder match pour la mallette. Un seul geste peut tout changer.\`}],
+    dou: [{id:"casino_battle",icon:"🃏", sev:"epic",    title:"CASINO BATTLE ROYALE",              text:\`${hero.name} participe à la Casino Battle Royale. La Joker Card peut changer tout.\`}],
+    ai:  [{id:"all_in_night", icon:"🏟️", sev:"epic",    title:"ALL IN — WEMBLEY/METLIFE",          text:\`${hero.name} devant 80 000 personnes. All In est le moment d'une vie entière.\`}],
+    fd:  [{id:"forbidden_cross",icon:"🌏",sev:"critical",title:"FORBIDDEN DOOR — CROSS-PROMO",     text:\`${hero.name} face à un talent NJPW. Le monde entier regarde cette confrontation.\`}],
   };
 
   const weekEvents=[
-    {id:"rival_attack",   icon:"💥", sev:"critical",title:"ATTAQUE SURPRISE",          text:\`\${rival.name} t'attaque par derrière en fin d'émission. Message clair — il veut ta place.\`,         effect:{type:"feud",withId:rival.id}},
+    {id:"rival_attack",   icon:"💥", sev:"critical",title:"ATTAQUE SURPRISE",          text:\`${rival.name} t'attaque par derrière en fin d'émission. Message clair — il veut ta place.\`,         effect:{type:"feud",withId:rival.id}},
     {id:"title_shot",     icon:"🏆", sev:"epic",    title:"OPPORTUNITÉ TITLE SHOT",     text:\`Le GM t'accorde un title shot surprise pour le prochain PPV. Saisis l'occasion.\`,                   effect:{type:"push"}},
-    {id:"ally_turn",      icon:"🗡️", sev:"critical",title:"TON ALLIÉ TE TRAHIT",        text:\`\${ally?.name||rival.name} que tu pensais dans ton camp vient de te planter dans le dos en direct.\`, effect:{type:"betray",withId:ally?.id||rival.id}},
+    {id:"ally_turn",      icon:"🗡️", sev:"critical",title:"TON ALLIÉ TE TRAHIT",        text:\`${ally?.name||rival.name} que tu pensais dans ton camp vient de te planter dans le dos en direct.\`, effect:{type:"betray",withId:ally?.id||rival.id}},
     {id:"mystery_return", icon:"👊", sev:"warning", title:"UN REVENANT CIBLE",          text:\`Un superstar absent de longue date revient — et il met ton nom dans sa promo d'entrée.\`,             effect:{type:"feud"}},
-    {id:"contract_signed",icon:"📋", sev:"info",    title:"CONTRAT SIGNÉ",              text:\`Le GM officialise ton match contre \${rival.name} pour le prochain PPV. L'affrontement est inévitable.\`,effect:{type:"match",withId:rival.id}},
+    {id:"contract_signed",icon:"📋", sev:"info",    title:"CONTRAT SIGNÉ",              text:\`Le GM officialise ton match contre ${rival.name} pour le prochain PPV. L'affrontement est inévitable.\`,effect:{type:"match",withId:rival.id}},
     {id:"locker_unrest",  icon:"🎭", sev:"warning", title:"TENSIONS EN COULISSE",       text:\`La moitié de la locker room ne veut plus te voir dans le main event. Pression maximale.\`,            effect:{type:"heat"}},
     {id:"injury_scare",   icon:"🚑", sev:"critical",title:"BLESSURE ALARMANTE",         text:\`Tu quittes l'arène en boitant après ton dernier match. Incertitude sur ta présence au prochain PPV.\`, effect:{type:"injury_risk"}},
     {id:"fan_petition",   icon:"📣", sev:"info",    title:"LES FANS SE MOBILISENT",     text:\`Les hashtags s'emballent. La foule réclame que tu sois dans le main event du prochain PPV.\`,         effect:{type:"pop_boost"}},
-    {id:"cult_following", icon:"🌊", sev:"info",    title:"MOUVEMENT ORGANIQUE",        text:\`Sans push du management, les fans ont adopté \${hero.name} comme leur favori underground.\`,           effect:{type:"organic_pop"}},
-    {id:"heel_alliance",  icon:"😈", sev:"warning", title:"PROPOSITION TROUBLE",        text:\`\${rival.name} te propose une alliance. Rejoindre le côté obscur — ou refuser et faire face aux conséquences.\`, effect:{type:"choice"}}
+    {id:"cult_following", icon:"🌊", sev:"info",    title:"MOUVEMENT ORGANIQUE",        text:\`Sans push du management, les fans ont adopté ${hero.name} comme leur favori underground.\`,           effect:{type:"organic_pop"}},
+    {id:"heel_alliance",  icon:"😈", sev:"warning", title:"PROPOSITION TROUBLE",        text:\`${rival.name} te propose une alliance. Rejoindre le côté obscur — ou refuser et faire face aux conséquences.\`, effect:{type:"choice"}}
   ];
 
   if(ppvId&&ppvEvents[ppvId]) return ppvEvents[ppvId][0];
@@ -1625,7 +1625,7 @@ function buildCareerCalendar(promo, duration){
     const weeksCount = i===0 ? 3 : 4;
     for(let w=1;w<=weeksCount;w++){
       const show=promo==="AEW"?(w%2===0?"Collision":"Dynamite"):(w%2===0?"SmackDown":"Raw");
-      result.push({id:\`w\${result.length+1}\`,label:\`\${show} — Sem. \${result.length+1}\`,type:"week",ppvId:null});
+      result.push({id:\`w${result.length+1}\`,label:\`${show} — Sem. ${result.length+1}\`,type:"week",ppvId:null});
     }
     result.push({...ppv,type:"ppv"});
   });
@@ -1737,7 +1737,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
             {roster.map(w=>{
               const sel=hero?.id===w.id;const c=rc(w.role);
               return <div key={w.id} onClick={()=>setHero(w)}
-                style={{background:sel?\`\${c}14\`:t.surface,border:\`1.5px solid \${sel?c:t.border}\`,borderRadius:9,padding:"10px 11px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+                style={{background:sel?\`${c}14\`:t.surface,border:\`1.5px solid ${sel?c:t.border}\`,borderRadius:9,padding:"10px 11px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
                 <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
                   <span style={{color:sel?c:"#ddd",fontFamily:t.font,fontSize:11,fontWeight:700,textTransform:"uppercase"}}>{w.short}</span>
                   {sel&&<span style={{color:c,fontSize:11}}>✓</span>}
@@ -1762,7 +1762,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
             {[["full","Saison complète","Tous les PPV de l'année","📆"],["half","Demi-saison","Jusqu'au PPV central","📅"]].map(([v,label,desc,icon])=>{
               const sel=duration===v;
               return <div key={v} onClick={()=>setDuration(v)}
-                style={{flex:1,background:sel?\`\${t.accent}14\`:t.surface,border:\`1.5px solid \${sel?t.accent:t.border}\`,borderRadius:9,padding:"11px 12px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
+                style={{flex:1,background:sel?\`${t.accent}14\`:t.surface,border:\`1.5px solid ${sel?t.accent:t.border}\`,borderRadius:9,padding:"11px 12px",cursor:"pointer",transition:"all .12s",WebkitTapHighlightColor:"transparent"}}>
                 <div style={{fontSize:22,marginBottom:5}}>{icon}</div>
                 <div style={{color:sel?t.accent:"#ccc",fontFamily:t.font,fontSize:11,fontWeight:700,textTransform:"uppercase",marginBottom:3}}>{label}</div>
                 <div style={{color:"#444",fontSize:10}}>{desc}</div>
@@ -1776,7 +1776,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
           <Label color={t.accent}>3 — Tire ton arc de départ</Label>
           {arc
             ?<>
-              <div style={{background:\`\${t.alt}0a\`,border:\`2px solid \${t.alt}44\`,borderRadius:10,padding:"14px 16px",marginBottom:10,animation:"slideUp .3s ease"}}>
+              <div style={{background:\`${t.alt}0a\`,border:\`2px solid ${t.alt}44\`,borderRadius:10,padding:"14px 16px",marginBottom:10,animation:"slideUp .3s ease"}}>
                 <div style={{fontSize:28,marginBottom:6}}>{arc.icon}</div>
                 <div style={{color:t.alt,fontFamily:t.font,fontSize:15,fontWeight:700,textTransform:"uppercase",letterSpacing:2,marginBottom:8}}>{arc.title}</div>
                 <div style={{color:"#888",fontSize:12,lineHeight:1.7}}>{arc.text}</div>
@@ -1803,7 +1803,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
     return <PageWrap t={t}>
       <div style={{maxWidth:620,margin:"0 auto",padding:"32px 14px",textAlign:"center"}}>
         <NavBar title="🎭 Mode Carrière" onHome={onHome} t={t}/>
-        <div style={{fontFamily:t.font,fontSize:"clamp(2rem,8vw,4rem)",color:t.alt,letterSpacing:4,lineHeight:.85,marginBottom:16,textTransform:"uppercase",textShadow:\`0 0 30px \${t.alt}55\`}}>FIN DE<br/>SAISON</div>
+        <div style={{fontFamily:t.font,fontSize:"clamp(2rem,8vw,4rem)",color:t.alt,letterSpacing:4,lineHeight:.85,marginBottom:16,textTransform:"uppercase",textShadow:\`0 0 30px ${t.alt}55\`}}>FIN DE<br/>SAISON</div>
         <div style={{fontSize:48,marginBottom:8}}>{verdict.split(" ")[0]}</div>
         <div style={{color:t.alt,fontFamily:t.font,fontSize:20,letterSpacing:3,marginBottom:6}}>{verdict.split(" ").slice(1).join(" ")}</div>
         <div style={{color:"#555",fontSize:13,marginBottom:24}}>{heroInRoster?.name||hero?.name} · {history.length} semaines</div>
@@ -1816,7 +1816,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
         </Surface>
         {ppvResults.length>0&&<Surface t={t} style={{marginBottom:16,textAlign:"left"}}>
           <Label color={t.alt}>Résultats PPV</Label>
-          {ppvResults.map((h,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"6px 0",borderBottom:i<ppvResults.length-1?\`1px solid \${t.border}\`:"none"}}>
+          {ppvResults.map((h,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"6px 0",borderBottom:i<ppvResults.length-1?\`1px solid ${t.border}\`:"none"}}>
             <div style={{color:"#888",fontSize:11,flex:1,fontFamily:t.font,textTransform:"uppercase"}}>{h.label}</div>
             <Stars v={h.stars} size={11} color={t.alt}/>
             <div style={{color:h.stars>=4?"#00e5aa":h.stars>=3?"#f5c518":"#ff2244",fontSize:10}}>{h.verdict}</div>
@@ -1830,8 +1830,8 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
   // ── PHASE PLAYING ────────────────────────────────────────────────
   return <PageWrap t={t}>
     <div style={{maxWidth:720,margin:"0 auto",padding:"20px 14px 120px"}}>
-      <NavBar title={\`🎭 \${heroInRoster?.short||hero?.short}\`} onHome={onHome} t={t} extras={[
-        <div key="avg" style={{background:\`\${t.alt}12\`,border:\`1px solid \${t.alt}33\`,borderRadius:6,padding:"4px 10px",display:"flex",gap:5,alignItems:"center"}}>
+      <NavBar title={\`🎭 ${heroInRoster?.short||hero?.short}\`} onHome={onHome} t={t} extras={[
+        <div key="avg" style={{background:\`${t.alt}12\`,border:\`1px solid ${t.alt}33\`,borderRadius:6,padding:"4px 10px",display:"flex",gap:5,alignItems:"center"}}>
           <Stars v={parseFloat(avgStars)||0} size={10} color={t.alt}/>
           <span style={{color:t.alt,fontFamily:t.font,fontSize:12}}>{avgStars}</span>
         </div>,
@@ -1840,7 +1840,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
 
       {/* Progress bar */}
       <div style={{height:3,background:t.border,borderRadius:2,marginBottom:14,overflow:"hidden"}}>
-        <div style={{height:"100%",width:\`\${progress}%\`,background:\`linear-gradient(90deg,\${t.accent},\${t.alt})\`,transition:"width .5s ease",borderRadius:2}}/>
+        <div style={{height:"100%",width:\`${progress}%\`,background:\`linear-gradient(90deg,${t.accent},${t.alt})\`,transition:"width .5s ease",borderRadius:2}}/>
       </div>
 
       {/* Hero card */}
@@ -1864,7 +1864,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
       </Surface>}
 
       {/* Arc reminder */}
-      {arc&&<div style={{background:\`\${t.alt}08\`,border:\`1px solid \${t.alt}18\`,borderRadius:8,padding:"8px 12px",marginBottom:12,display:"flex",gap:8,alignItems:"center"}}>
+      {arc&&<div style={{background:\`${t.alt}08\`,border:\`1px solid ${t.alt}18\`,borderRadius:8,padding:"8px 12px",marginBottom:12,display:"flex",gap:8,alignItems:"center"}}>
         <span style={{fontSize:16}}>{arc.icon}</span>
         <span style={{color:t.alt,fontFamily:t.font,fontSize:10,letterSpacing:2,textTransform:"uppercase"}}>{arc.title}</span>
         <div style={{marginLeft:"auto",display:"flex",gap:4,alignItems:"center"}}>
@@ -1880,7 +1880,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
           {cur?.month&&<span style={{color:"#333",fontSize:10,marginLeft:"auto"}}>{cur.month}</span>}
         </div>
         {/* Stip PPV spécifique */}
-        {isPpv&&cur?.stip&&<div style={{background:\`\${t.alt}0a\`,border:\`1.5px solid \${t.alt}33\`,borderRadius:8,padding:"10px 12px",display:"flex",gap:10,alignItems:"center"}}>
+        {isPpv&&cur?.stip&&<div style={{background:\`${t.alt}0a\`,border:\`1.5px solid ${t.alt}33\`,borderRadius:8,padding:"10px 12px",display:"flex",gap:10,alignItems:"center"}}>
           <span style={{fontSize:20}}>{cur.stip.icon}</span>
           <div>
             <div style={{color:t.alt,fontFamily:t.font,fontSize:12,letterSpacing:2,fontWeight:700}}>{cur.stip.label}</div>
@@ -1890,13 +1890,13 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
       </Surface>
 
       {/* Événement aléatoire */}
-      {event&&<div style={{background:event.sev==="epic"?\`\${t.alt}0c\`:event.sev==="critical"?"#ff224408":"#f5c51808",border:\`1.5px solid \${event.sev==="epic"?t.alt:event.sev==="critical"?"#ff2244":"#f5c518"}44\`,borderRadius:10,padding:"12px 14px",marginBottom:12,animation:"shakeIn .4s ease"}}>
+      {event&&<div style={{background:event.sev==="epic"?\`${t.alt}0c\`:event.sev==="critical"?"#ff224408":"#f5c51808",border:\`1.5px solid ${event.sev==="epic"?t.alt:event.sev==="critical"?"#ff2244":"#f5c518"}44\`,borderRadius:10,padding:"12px 14px",marginBottom:12,animation:"shakeIn .4s ease"}}>
         <div style={{display:"flex",gap:8,alignItems:"center",marginBottom:6}}>
           <span style={{fontSize:20}}>{event.icon}</span>
           <div>
             <div style={{color:event.sev==="epic"?t.alt:event.sev==="critical"?"#ff2244":"#f5c518",fontFamily:t.font,fontSize:11,letterSpacing:2,fontWeight:700}}>{event.title}</div>
           </div>
-          <div style={{marginLeft:"auto",background:event.sev==="epic"?\`\${t.alt}22\`:"none",border:\`1px solid \${event.sev==="epic"?t.alt:"#333"}\`,borderRadius:4,padding:"2px 7px",color:event.sev==="epic"?t.alt:"#555",fontSize:9,fontFamily:t.font}}>{event.sev==="epic"?"ÉPIQUE":event.sev==="critical"?"CRITIQUE":"INFO"}</div>
+          <div style={{marginLeft:"auto",background:event.sev==="epic"?\`${t.alt}22\`:"none",border:\`1px solid ${event.sev==="epic"?t.alt:"#333"}\`,borderRadius:4,padding:"2px 7px",color:event.sev==="epic"?t.alt:"#555",fontSize:9,fontFamily:t.font}}>{event.sev==="epic"?"ÉPIQUE":event.sev==="critical"?"CRITIQUE":"INFO"}</div>
         </div>
         <div style={{color:"#888",fontSize:12,lineHeight:1.6}}>{event.text}</div>
       </div>}
@@ -1905,7 +1905,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
       <Surface t={t} style={{marginBottom:10}}>
         <Label color={t.accent}>Ton action cette semaine</Label>
         {weekAction
-          ?<div style={{background:\`\${rc(heroInRoster?.role||"face")}0a\`,border:\`1.5px solid \${rc(heroInRoster?.role||"face")}44\`,borderRadius:8,padding:"11px 13px",display:"flex",gap:10,alignItems:"center"}}>
+          ?<div style={{background:\`${rc(heroInRoster?.role||"face")}0a\`,border:\`1.5px solid ${rc(heroInRoster?.role||"face")}44\`,borderRadius:8,padding:"11px 13px",display:"flex",gap:10,alignItems:"center"}}>
             <span style={{fontSize:16}}>{getActs(promo)[weekAction.cat]?.icon}</span>
             <div style={{flex:1}}>
               <div style={{color:rc(heroInRoster?.role||"face"),fontFamily:t.font,fontSize:12,fontWeight:700}}>{weekAction.action.label}</div>
@@ -1924,14 +1924,14 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
       </>}
 
       <Btn onClick={submitWeek} disabled={loading||(!weekAction)} t={t} full>
-        {loading?"⏳ La foule réagit…":isPpv?\`📣 Soumettre — \${cur?.label}\`:"📣 Soumettre la semaine"}
+        {loading?"⏳ La foule réagit…":isPpv?\`📣 Soumettre — ${cur?.label}\`:"📣 Soumettre la semaine"}
       </Btn>
 
       {/* History */}
       {history.length>0&&<div style={{marginTop:16}}>
         <Label color="#444">Historique saison</Label>
         <div style={{display:"flex",flexDirection:"column",gap:3}}>
-          {history.slice(-8).reverse().map((h,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:8,background:t.surface,border:\`1px solid \${h.isPpv?t.alt+"33":t.border}\`,borderRadius:7,padding:"6px 10px"}}>
+          {history.slice(-8).reverse().map((h,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:8,background:t.surface,border:\`1px solid ${h.isPpv?t.alt+"33":t.border}\`,borderRadius:7,padding:"6px 10px"}}>
             <span style={{fontSize:10}}>{h.isPpv?"🏆":"📅"}</span>
             <span style={{color:h.isPpv?t.alt:"#777",fontFamily:t.font,fontSize:9,textTransform:"uppercase",flex:1,letterSpacing:1}}>{h.label}</span>
             <Stars v={h.stars} size={9} color={t.alt}/>
@@ -1943,7 +1943,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
 
     {/* Turn picker */}
     {showTurn&&heroInRoster&&<div style={{position:"fixed",inset:0,zIndex:200,background:"#000c",display:"flex",alignItems:"flex-end",justifyContent:"center"}} onClick={()=>setShowTurn(false)}>
-      <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid \${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:520,padding:16,animation:"slideUp .3s ease"}}>
+      <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid ${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:520,padding:16,animation:"slideUp .3s ease"}}>
         <div style={{width:36,height:4,background:"#333",borderRadius:2,margin:"0 auto 14px"}}/>
         <Label color={t.accent}>Choisir un turn</Label>
         {TURN_OPTIONS.map(opt=>{
@@ -1951,7 +1951,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
           return <div key={opt.id} onClick={()=>{
             if(!isCurrent){setRoster(prev=>prev.map(w=>w.id===hero.id?{...w,role:opt.newRole,mom:clamp(w.mom+(opt.momBonus||0)),pop:clamp(w.pop+(opt.popBonus||0)),heat:clamp((w.heat||80)+(opt.heatBonus||0))}:w));}
             setShowTurn(false);
-          }} style={{background:isCurrent?\`\${t.accent}0a\`:t.surface,border:\`1.5px solid \${isCurrent?t.accent:t.border}\`,borderRadius:9,padding:"12px 14px",marginBottom:8,cursor:isCurrent?"default":"pointer",opacity:isCurrent?.5:1,WebkitTapHighlightColor:"transparent"}}>
+          }} style={{background:isCurrent?\`${t.accent}0a\`:t.surface,border:\`1.5px solid ${isCurrent?t.accent:t.border}\`,borderRadius:9,padding:"12px 14px",marginBottom:8,cursor:isCurrent?"default":"pointer",opacity:isCurrent?.5:1,WebkitTapHighlightColor:"transparent"}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
               <span style={{fontSize:18}}>{opt.icon}</span>
               <span style={{color:isCurrent?t.accent:"#ddd",fontFamily:t.font,fontSize:13,fontWeight:700,textTransform:"uppercase"}}>{opt.label}</span>
@@ -1966,7 +1966,7 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
 
     {/* Result sheet */}
     {showResult&&result&&<div style={{position:"fixed",inset:0,zIndex:100,background:"#000c",display:"flex",alignItems:"flex-end",justifyContent:"center"}} onClick={nextStep}>
-      <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid \${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:520,maxHeight:"85vh",overflowY:"auto",animation:"slideUp .4s ease",padding:16}}>
+      <div onClick={e=>e.stopPropagation()} style={{background:t.bg,border:\`1px solid ${t.border}\`,borderRadius:"16px 16px 0 0",width:"100%",maxWidth:520,maxHeight:"85vh",overflowY:"auto",animation:"slideUp .4s ease",padding:16}}>
         <div style={{width:36,height:4,background:"#333",borderRadius:2,margin:"0 auto 12px"}}/>
         <CrowdResult result={result} loading={false} t={t}/>
         <div style={{marginTop:12}}><Btn onClick={nextStep} t={t} full>{step+1>=calendar.length?"Voir le bilan final →":"Semaine suivante →"}</Btn></div>
@@ -2060,10 +2060,10 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
 
   if(phase==="intro")return <PageWrap t={t}>
     <div style={{maxWidth:620,margin:"0 auto",padding:"32px 14px",textAlign:"center"}}>
-      <NavBar title={\`🎲 Road to \${finalPPV}\`} onHome={onHome} t={t}/>
-      <div style={{fontFamily:t.font,fontSize:"clamp(1.8rem,7vw,3.5rem)",color:t.alt,letterSpacing:5,lineHeight:.85,marginBottom:20,textTransform:"uppercase",textShadow:\`0 0 20px \${t.alt}33\`}}>ROAD TO<br/>{finalPPV}</div>
+      <NavBar title={\`🎲 Road to ${finalPPV}\`} onHome={onHome} t={t}/>
+      <div style={{fontFamily:t.font,fontSize:"clamp(1.8rem,7vw,3.5rem)",color:t.alt,letterSpacing:5,lineHeight:.85,marginBottom:20,textTransform:"uppercase",textShadow:\`0 0 20px ${t.alt}33\`}}>ROAD TO<br/>{finalPPV}</div>
       <Surface t={t} style={{textAlign:"left",marginBottom:20}}>
-        {[{i:"🤖",tx:"L'IA génère un plan : vainqueur, feuds, card finale."},{i:"💥",tx:"Elle déclenche une crise qui brise son propre plan."},{i:"📅",tx:"Tu books chaque semaine avec la grille d'actions."},{i:"🎲",tx:"Des crises aléatoires surgissent. Adapte-toi."},{i:"📣",tx:\`La foule note chaque étape jusqu'à \${finalPPV}.\`}].map(({i,tx},idx)=>
+        {[{i:"🤖",tx:"L'IA génère un plan : vainqueur, feuds, card finale."},{i:"💥",tx:"Elle déclenche une crise qui brise son propre plan."},{i:"📅",tx:"Tu books chaque semaine avec la grille d'actions."},{i:"🎲",tx:"Des crises aléatoires surgissent. Adapte-toi."},{i:"📣",tx:\`La foule note chaque étape jusqu'à ${finalPPV}.\`}].map(({i,tx},idx)=>
           <div key={idx} style={{display:"flex",gap:10,alignItems:"flex-start",marginBottom:8}}>
             <span style={{fontSize:16,flexShrink:0}}>{i}</span>
             <p style={{color:"#666",fontSize:12,lineHeight:1.6,margin:0}}>{tx}</p>
@@ -2082,9 +2082,9 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
 
   if(phase==="final")return <PageWrap t={t}>
     <div style={{maxWidth:680,margin:"0 auto",padding:"26px 14px 80px"}}>
-      <NavBar title={\`🏆 Bilan — \${finalPPV}\`} onHome={onHome} t={t}/>
+      <NavBar title={\`🏆 Bilan — ${finalPPV}\`} onHome={onHome} t={t}/>
       <div style={{textAlign:"center",marginBottom:20}}>
-        <div style={{color:t.alt,fontFamily:t.font,fontSize:"clamp(3rem,11vw,5rem)",lineHeight:1,textShadow:\`0 0 20px \${t.alt}44\`}}>{avg}</div>
+        <div style={{color:t.alt,fontFamily:t.font,fontSize:"clamp(3rem,11vw,5rem)",lineHeight:1,textShadow:\`0 0 20px ${t.alt}44\`}}>{avg}</div>
         <div style={{color:"#444",fontSize:12,fontFamily:t.font,marginBottom:6}}>/ 5 — ROAD TO {finalPPV.toUpperCase()}</div>
         <Stars v={parseFloat(avg)||0} size={22} color={t.alt}/>
       </div>
@@ -2098,7 +2098,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
         </div>
       </Surface>}
       <div style={{display:"flex",flexDirection:"column",gap:4,marginBottom:14}}>
-        {weekResults.map((r,i)=><div key={i} style={{background:t.surface,border:\`1px solid \${r.stars>=4?"#00e5aa":r.stars>=3?"#f5c518":"#ff2244"}18\`,borderRadius:8,padding:"8px 12px",display:"flex",gap:10,alignItems:"center"}}>
+        {weekResults.map((r,i)=><div key={i} style={{background:t.surface,border:\`1px solid ${r.stars>=4?"#00e5aa":r.stars>=3?"#f5c518":"#ff2244"}18\`,borderRadius:8,padding:"8px 12px",display:"flex",gap:10,alignItems:"center"}}>
           <div style={{color:"#444",fontSize:11,minWidth:100,fontFamily:t.font}}>{r._label}</div>
           <Stars v={r.stars} size={10} color={t.alt}/>
           <div style={{color:"#444",fontSize:10,flex:1}}>{r.verdict}</div>
@@ -2111,9 +2111,9 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
   // ── ACTIVE ──
   return <PageWrap t={t}>
     <div style={{maxWidth:1100,margin:"0 auto",padding:"20px 14px 100px"}}>
-      <NavBar title={\`🎲 Road to \${finalPPV}\`} onHome={onHome} t={t} extras={[
+      <NavBar title={\`🎲 Road to ${finalPPV}\`} onHome={onHome} t={t} extras={[
         <Btn key="plan" onClick={()=>setShowPlan(s=>!s)} variant="ghost" t={t} small>{showPlan?"Cacher":"Plan IA"}</Btn>,
-        weekResults.length>0&&<div key="avg" style={{background:\`\${t.alt}12\`,border:\`1px solid \${t.alt}33\`,borderRadius:6,padding:"4px 9px",display:"flex",gap:4,alignItems:"center"}}><Stars v={parseFloat(avg)||0} size={10} color={t.alt}/><span style={{color:t.alt,fontFamily:t.font,fontSize:13}}>{avg}</span></div>,
+        weekResults.length>0&&<div key="avg" style={{background:\`${t.alt}12\`,border:\`1px solid ${t.alt}33\`,borderRadius:6,padding:"4px 9px",display:"flex",gap:4,alignItems:"center"}}><Stars v={parseFloat(avg)||0} size={10} color={t.alt}/><span style={{color:t.alt,fontFamily:t.font,fontSize:13}}>{avg}</span></div>,
       ].filter(Boolean)}/>
 
       {/* Timeline */}
@@ -2124,7 +2124,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
             const res=weekResults.find(r=>r.stepId===s.id);
             const bc=isCur?t.accent:done?(res?.stars>=4?"#00e5aa":res?.stars>=3?"#f5c518":"#ff2244"):"#111";
             return <div key={s.id} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:2,minWidth:isPpv?68:40}}>
-              <div style={{width:"100%",height:isPpv?24:20,borderRadius:4,background:isCur?\`\${t.accent}14\`:done?\`\${bc}12\`:"#ffffff03",border:\`1.5px solid \${bc}\`,display:"flex",alignItems:"center",justifyContent:"center",transition:"all .3s"}}>
+              <div style={{width:"100%",height:isPpv?24:20,borderRadius:4,background:isCur?\`${t.accent}14\`:done?\`${bc}12\`:"#ffffff03",border:\`1.5px solid ${bc}\`,display:"flex",alignItems:"center",justifyContent:"center",transition:"all .3s"}}>
                 {done&&res?<span style={{fontSize:8,color:bc,fontFamily:t.font}}>{res.stars}★</span>:isCur?<span style={{color:t.accent,fontSize:9,animation:"pulse .7s infinite alternate"}}>▶</span>:<span style={{color:"#1a1a1a",fontSize:7,fontFamily:t.font}}>{isPpv?"PPV":"—"}</span>}
               </div>
               <div style={{color:isCur?t.accent:done?"#444":"#1a1a1a",fontSize:6,textAlign:"center",fontFamily:t.font,lineHeight:1.2,maxWidth:isPpv?68:40}}>{s.label}</div>
@@ -2135,7 +2135,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
 
       <div style={{display:"grid",gridTemplateColumns:mob?"1fr":"1fr 185px",gap:14}}>
         <div>
-          {showPlan&&plan&&<Surface t={t} style={{marginBottom:12,borderColor:\`\${t.accent}33\`,animation:"slideUp .3s ease"}}>
+          {showPlan&&plan&&<Surface t={t} style={{marginBottom:12,borderColor:\`${t.accent}33\`,animation:"slideUp .3s ease"}}>
             <Label color={t.accent}>🤖 Plan IA (secret)</Label>
             <p style={{color:"#666",fontSize:12,lineHeight:1.7,margin:"0 0 8px"}}>{plan.narrative}</p>
             <div style={{background:"#ff224408",border:"1px solid #ff224418",borderRadius:8,padding:10}}>
@@ -2145,7 +2145,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
             </div>
           </Surface>}
 
-          {crisis&&<div style={{background:\`\${sevColor(crisis.sev)}08\`,border:\`2px solid \${sevColor(crisis.sev)}\`,borderRadius:10,padding:14,marginBottom:12,animation:"shakeIn .5s ease"}}>
+          {crisis&&<div style={{background:\`${sevColor(crisis.sev)}08\`,border:\`2px solid ${sevColor(crisis.sev)}\`,borderRadius:10,padding:14,marginBottom:12,animation:"shakeIn .5s ease"}}>
             <div style={{display:"flex",gap:12,alignItems:"flex-start",marginBottom:10}}>
               <span style={{fontSize:26,flexShrink:0}}>{crisis.icon}</span>
               <div>
@@ -2153,7 +2153,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
                 <p style={{color:"#ddd",fontSize:13,lineHeight:1.7,margin:0}}>{crisis.desc}</p>
               </div>
             </div>
-            {crisis.consequence&&<div style={{display:"flex",alignItems:"center",gap:8,background:"#ffffff05",border:\`1px solid \${sevColor(crisis.sev)}22\`,borderRadius:7,padding:"8px 11px"}}>
+            {crisis.consequence&&<div style={{display:"flex",alignItems:"center",gap:8,background:"#ffffff05",border:\`1px solid ${sevColor(crisis.sev)}22\`,borderRadius:7,padding:"8px 11px"}}>
               <span style={{fontSize:13}}>⚠️</span>
               <span style={{color:"#777",fontSize:11,fontStyle:"italic"}}>{crisis.consequence}</span>
             </div>}
@@ -2161,7 +2161,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
 
           {lastResult&&<CrowdResult result={lastResult} loading={false} t={t}/>}
 
-          <Surface t={t} style={{marginBottom:10,borderColor:cur?.type==="ppv"?\`\${t.accent}55\`:t.border}}>
+          <Surface t={t} style={{marginBottom:10,borderColor:cur?.type==="ppv"?\`${t.accent}55\`:t.border}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:cur?.type==="ppv"?10:0}}>
               <div style={{display:"flex",alignItems:"center",gap:8}}>
                 <Tag color={cur?.type==="ppv"?t.alt:t.accent}>{cur?.type==="ppv"?"🏆 PPV":"📅 Semaine"}</Tag>
@@ -2172,7 +2172,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
             {cur?.type==="ppv"&&<div>
               {cur.specialStip&&<div style={{marginBottom:10}}>
                 <Label color={t.alt}>Match principal imposé</Label>
-                <div style={{background:\`\${t.alt}0a\`,border:\`2px solid \${t.alt}44\`,borderRadius:9,padding:"10px 13px",display:"flex",gap:10,alignItems:"center"}}>
+                <div style={{background:\`${t.alt}0a\`,border:\`2px solid ${t.alt}44\`,borderRadius:9,padding:"10px 13px",display:"flex",gap:10,alignItems:"center"}}>
                   <span style={{fontSize:20}}>{cur.specialStip.icon}</span>
                   <div>
                     <div style={{color:t.alt,fontFamily:t.font,fontSize:13,letterSpacing:2,fontWeight:700}}>{cur.specialStip.label}</div>
@@ -2183,7 +2183,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
               <Label>Stipulation match secondaire</Label>
               <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(118px,1fr))",gap:5}}>
                 {getStips(promo).map(s=><div key={s.id} onClick={()=>setPpvStip(s.id)}
-                  style={{background:ppvStip===s.id?\`\${t.accent}14\`:t.surface,border:\`1.5px solid \${ppvStip===s.id?t.accent:t.border}\`,borderRadius:7,padding:"7px 9px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:5,WebkitTapHighlightColor:"transparent"}}>
+                  style={{background:ppvStip===s.id?\`${t.accent}14\`:t.surface,border:\`1.5px solid ${ppvStip===s.id?t.accent:t.border}\`,borderRadius:7,padding:"7px 9px",cursor:"pointer",transition:"all .12s",display:"flex",alignItems:"center",gap:5,WebkitTapHighlightColor:"transparent"}}>
                   <span style={{fontSize:11}}>{s.icon}</span>
                   <span style={{color:ppvStip===s.id?t.accent:"#aaa",fontSize:10,fontWeight:700}}>{s.label}</span>
                 </div>)}
@@ -2197,39 +2197,39 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
                 const w=roster.find(r=>r.id===entry.wid);if(!w)return null;
                 const c=rc(entry.role);
                 return <div key={entry.wid} style={{marginBottom:7}}>
-                  <div style={{background:t.surface,border:\`1px solid \${c}18\`,borderRadius:8,padding:"9px 11px",display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                  <div style={{background:t.surface,border:\`1px solid ${c}18\`,borderRadius:8,padding:"9px 11px",display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
                     <div style={{width:3,height:20,borderRadius:2,background:c,flexShrink:0}}/>
                     <button onClick={()=>setFicheId(ficheId===w.id?null:w.id)} style={{background:"none",border:"none",padding:0,cursor:"pointer",flex:1,textAlign:"left"}}>
                       <div style={{color:"#ccc",fontFamily:t.font,fontSize:12,textTransform:"uppercase"}}>{w.short}{w.title?" 🏆":""}</div>
                     </button>
                     <div style={{display:"flex",gap:2}}>
                       {["face","heel","tweener"].map(r=><button key={r} onClick={()=>setRole(entry.wid,r)}
-                        style={{padding:"2px 5px",fontSize:7,textTransform:"uppercase",background:entry.role===r?\`\${rc(r)}14\`:"none",border:\`1px solid \${entry.role===r?rc(r):t.border}\`,color:entry.role===r?rc(r):"#2a2a3a",borderRadius:3,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>{r}</button>)}
+                        style={{padding:"2px 5px",fontSize:7,textTransform:"uppercase",background:entry.role===r?\`${rc(r)}14\`:"none",border:\`1px solid ${entry.role===r?rc(r):t.border}\`,color:entry.role===r?rc(r):"#2a2a3a",borderRadius:3,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>{r}</button>)}
                     </div>
                   </div>
                   {entry.action
-                    ?<div style={{background:\`\${c}0a\`,border:\`1.5px solid \${c}33\`,borderRadius:8,padding:"9px 11px",display:"flex",gap:8,alignItems:"center"}} onClick={()=>setModal({wid:w.id})}>
+                    ?<div style={{background:\`${c}0a\`,border:\`1.5px solid ${c}33\`,borderRadius:8,padding:"9px 11px",display:"flex",gap:8,alignItems:"center"}} onClick={()=>setModal({wid:w.id})}>
                       <span style={{fontSize:14}}>{getActs(promo)[entry.action.cat]?.icon}</span>
                       <div style={{flex:1}}>
                         <div style={{color:c,fontSize:11,fontWeight:700}}>{entry.action.action.label}</div>
                         <div style={{color:"#444",fontSize:9}}>{entry.action.action.desc}</div>
                       </div>
-                      <button onClick={e=>{e.stopPropagation();clearAct(w.id);}} style={{background:"none",border:\`1px solid \${t.border}\`,color:"#555",width:22,height:22,borderRadius:4,cursor:"pointer",fontSize:10,flexShrink:0}}>×</button>
+                      <button onClick={e=>{e.stopPropagation();clearAct(w.id);}} style={{background:"none",border:\`1px solid ${t.border}\`,color:"#555",width:22,height:22,borderRadius:4,cursor:"pointer",fontSize:10,flexShrink:0}}>×</button>
                     </div>
-                    :<button onClick={()=>setModal({wid:w.id})} style={{width:"100%",padding:"10px",background:t.surface,border:\`1px dashed \${t.border}\`,borderRadius:8,color:"#2a2a3a",fontSize:12,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>+ Ajouter une action</button>}
+                    :<button onClick={()=>setModal({wid:w.id})} style={{width:"100%",padding:"10px",background:t.surface,border:\`1px dashed ${t.border}\`,borderRadius:8,color:"#2a2a3a",fontSize:12,cursor:"pointer",WebkitTapHighlightColor:"transparent"}}>+ Ajouter une action</button>}
                 </div>;
               })
             :<>
               <div style={{display:"grid",gridTemplateColumns:"150px 1fr 80px",gap:6,marginBottom:6}}>
-                <div style={{color:"#222",fontSize:8,letterSpacing:2,fontFamily:t.font,paddingBottom:4,borderBottom:\`1px solid \${t.border}\`}}>SUPERSTAR</div>
-                <div style={{color:"#222",fontSize:8,letterSpacing:2,fontFamily:t.font,paddingBottom:4,borderBottom:\`1px solid \${t.border}\`}}>ACTION</div>
-                <div style={{color:"#222",fontSize:8,letterSpacing:2,fontFamily:t.font,paddingBottom:4,borderBottom:\`1px solid \${t.border}\`,textAlign:"center"}}>RÔLE</div>
+                <div style={{color:"#222",fontSize:8,letterSpacing:2,fontFamily:t.font,paddingBottom:4,borderBottom:\`1px solid ${t.border}\`}}>SUPERSTAR</div>
+                <div style={{color:"#222",fontSize:8,letterSpacing:2,fontFamily:t.font,paddingBottom:4,borderBottom:\`1px solid ${t.border}\`}}>ACTION</div>
+                <div style={{color:"#222",fontSize:8,letterSpacing:2,fontFamily:t.font,paddingBottom:4,borderBottom:\`1px solid ${t.border}\`,textAlign:"center"}}>RÔLE</div>
               </div>
               {weekPlan.map(entry=>{
                 const w=roster.find(r=>r.id===entry.wid);if(!w)return null;
                 const c=rc(entry.role);
                 return <div key={entry.wid} style={{display:"grid",gridTemplateColumns:"150px 1fr 80px",gap:6,marginBottom:5,alignItems:"stretch"}}>
-                  <div style={{background:t.surface,border:\`1px solid \${c}1a\`,borderRadius:8,padding:"8px 10px",display:"flex",flexDirection:"column",gap:4}}>
+                  <div style={{background:t.surface,border:\`1px solid ${c}1a\`,borderRadius:8,padding:"8px 10px",display:"flex",flexDirection:"column",gap:4}}>
                     <button onClick={()=>setFicheId(ficheId===w.id?null:w.id)} style={{background:"none",border:"none",padding:0,cursor:"pointer",textAlign:"left"}}>
                       <div style={{color:ficheId===w.id?c:"#ccc",fontFamily:t.font,fontSize:10,textTransform:"uppercase"}}>{w.short}</div>
                       {w.title&&<div style={{color:t.alt,fontSize:7}}>🏆</div>}
@@ -2237,7 +2237,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
                     <div style={{display:"flex",gap:3}}><MiniBar label="MOM" v={w.mom} color={t.accent}/><MiniBar label="POP" v={w.pop} color="#00e5aa"/></div>
                   </div>
                   {entry.action
-                    ?<div style={{background:\`\${c}0a\`,border:\`1.5px solid \${c}33\`,borderRadius:8,padding:"8px 10px",cursor:"pointer",minHeight:70}} onClick={()=>setModal({wid:w.id})}>
+                    ?<div style={{background:\`${c}0a\`,border:\`1.5px solid ${c}33\`,borderRadius:8,padding:"8px 10px",cursor:"pointer",minHeight:70}} onClick={()=>setModal({wid:w.id})}>
                       <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
                         <span style={{fontSize:13}}>{getActs(promo)[entry.action.cat]?.icon}</span>
                         <button onClick={e=>{e.stopPropagation();clearAct(w.id);}} style={{background:"none",border:"none",color:"#2a2a3a",cursor:"pointer",fontSize:11,padding:0}}
@@ -2246,11 +2246,11 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
                       <div style={{color:c,fontSize:11,fontWeight:700}}>{entry.action.action.label}</div>
                       <div style={{color:"#444",fontSize:9,marginTop:2}}>{entry.action.action.desc}</div>
                     </div>
-                    :<button onClick={()=>setModal({wid:w.id})} style={{background:t.surface,border:\`1px dashed \${t.border}\`,borderRadius:8,minHeight:70,width:"100%",color:"#222",fontSize:18,cursor:"pointer"}}
+                    :<button onClick={()=>setModal({wid:w.id})} style={{background:t.surface,border:\`1px dashed ${t.border}\`,borderRadius:8,minHeight:70,width:"100%",color:"#222",fontSize:18,cursor:"pointer"}}
                       onMouseEnter={e=>e.currentTarget.style.borderColor=c+"44"} onMouseLeave={e=>e.currentTarget.style.borderColor=t.border}>+</button>}
                   <div style={{display:"flex",flexDirection:"column",gap:3,justifyContent:"center"}}>
                     {["face","heel","tweener"].map(r=><button key={r} onClick={()=>setRole(entry.wid,r)}
-                      style={{flex:1,padding:"3px 4px",fontSize:7,textTransform:"uppercase",background:entry.role===r?\`\${rc(r)}14\`:"none",border:\`1px solid \${entry.role===r?rc(r):t.border}\`,color:entry.role===r?rc(r):"#2a2a3a",borderRadius:3,cursor:"pointer",fontFamily:t.font}}>{r}</button>)}
+                      style={{flex:1,padding:"3px 4px",fontSize:7,textTransform:"uppercase",background:entry.role===r?\`${rc(r)}14\`:"none",border:\`1px solid ${entry.role===r?rc(r):t.border}\`,color:entry.role===r?rc(r):"#2a2a3a",borderRadius:3,cursor:"pointer",fontFamily:t.font}}>{r}</button>)}
                   </div>
                 </div>;
               })}
@@ -2259,7 +2259,7 @@ function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
           <MatchFormatPanel roster={roster} matchFormat={matchFormat} setMatchFormat={setMatchFormat} t={t}/>
           <TitleChangePanel roster={roster} titleChange={titleChange} setTitleChange={setTitleChange} t={t}/>
           <div style={{marginTop:12}}>
-            <Btn onClick={submitWeek} disabled={loading} t={t} full>{loading?"⏳ La foule réagit…":\`📣 Soumettre — \${cur?.label}\`}</Btn>
+            <Btn onClick={submitWeek} disabled={loading} t={t} full>{loading?"⏳ La foule réagit…":\`📣 Soumettre — ${cur?.label}\`}</Btn>
           </div>
         </div>
         {!mob&&<RosterPanel roster={roster} ficheId={ficheId} setFicheId={setFicheId} t={t} mobile={false}/>}
@@ -2291,7 +2291,7 @@ function TutoScreen({promo,onStart,onBack}){
         <p style={{color:"#aaa",fontSize:14,lineHeight:1.8,marginBottom:16}}>
           Une fois ton booking soumis, <span style={{color:t.alt,fontWeight:700}}>le moteur de la foule calcule ta note</span> — 15 000 fans qui réagissent en direct. Tu reçois une note sur 5 étoiles et un retour sur ce qui a marché ou pas.
         </p>
-        <div style={{background:\`\${t.accent}0e\`,border:\`1px solid \${t.accent}33\`,borderRadius:10,padding:14}}>
+        <div style={{background:\`${t.accent}0e\`,border:\`1px solid ${t.accent}33\`,borderRadius:10,padding:14}}>
           <div style={{color:t.accent,fontSize:12,fontWeight:700,letterSpacing:2,marginBottom:6}}>🎯 L'OBJECTIF</div>
           <p style={{color:"#888",fontSize:13,lineHeight:1.7,margin:0}}>Maximise la réaction de la foule. Crée des storylines cohérentes, des feuds intenses, des moments mémorables. La foule ne ment pas.</p>
         </div>
@@ -2319,7 +2319,7 @@ function TutoScreen({promo,onStart,onBack}){
             </div>
           </div>)}
         </div>
-        <div style={{background:"#ffffff05",border:\`1px solid \${t.border}\`,borderRadius:8,padding:12}}>
+        <div style={{background:"#ffffff05",border:\`1px solid ${t.border}\`,borderRadius:8,padding:12}}>
           <div style={{color:"#555",fontSize:12,lineHeight:1.6}}>Chaque action impacte le <span style={{color:t.accent}}>momentum</span> et le <span style={{color:"#ff2244"}}>heat</span> du superstar. Ces stats évoluent au fil du temps et influencent les réactions de la foule.</div>
         </div>
       </>
@@ -2346,8 +2346,8 @@ function TutoScreen({promo,onStart,onBack}){
               desc:"L'IA génère un plan secret pour arriver au grand PPV. Elle déclenche ensuite une crise qui brise son propre plan. Toi tu books semaine par semaine en t'adaptant au chaos.",
               tip:"Le plus imprévisible — chaque partie est unique."
             },
-          ].map(({icon,color,title,desc,tip})=><div key={title} style={{background:t.surface,border:\`1px solid \${color}33\`,borderRadius:10,padding:14,position:"relative",overflow:"hidden"}}>
-            <div style={{position:"absolute",top:0,left:0,right:0,height:2,background:\`linear-gradient(90deg,\${color},transparent)\`}}/>
+          ].map(({icon,color,title,desc,tip})=><div key={title} style={{background:t.surface,border:\`1px solid ${color}33\`,borderRadius:10,padding:14,position:"relative",overflow:"hidden"}}>
+            <div style={{position:"absolute",top:0,left:0,right:0,height:2,background:\`linear-gradient(90deg,${color},transparent)\`}}/>
             <div style={{display:"flex",gap:10,alignItems:"flex-start",marginBottom:8}}>
               <span style={{fontSize:22,flexShrink:0}}>{icon}</span>
               <div style={{color,fontFamily:t.font,fontSize:15,letterSpacing:3,textTransform:"uppercase",lineHeight:1}}>{title}</div>
@@ -2371,7 +2371,7 @@ function TutoScreen({promo,onStart,onBack}){
 
       {/* Header */}
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:28}}>
-        <button onClick={onBack} style={{background:"none",border:\`1px solid \${t.border}\`,color:"#444",padding:"7px 12px",borderRadius:7,cursor:"pointer",fontSize:11,fontFamily:t.font,letterSpacing:2,WebkitTapHighlightColor:"transparent"}}>← RETOUR</button>
+        <button onClick={onBack} style={{background:"none",border:\`1px solid ${t.border}\`,color:"#444",padding:"7px 12px",borderRadius:7,cursor:"pointer",fontSize:11,fontFamily:t.font,letterSpacing:2,WebkitTapHighlightColor:"transparent"}}>← RETOUR</button>
         <div style={{display:"flex",gap:6}}>
           {pages.map((_,i)=><div key={i} onClick={()=>setPage(i)} style={{width:i===page?20:6,height:6,borderRadius:3,background:i===page?t.accent:t.border,transition:"all .3s",cursor:"pointer"}}/>)}
         </div>
@@ -2390,8 +2390,8 @@ function TutoScreen({promo,onStart,onBack}){
 
       {/* Navigation */}
       <div style={{marginTop:28,display:"flex",gap:10}}>
-        {page>0&&<button onClick={()=>setPage(p=>p-1)} style={{flex:1,padding:"13px",background:"none",border:\`1px solid \${t.border}\`,color:"#555",borderRadius:8,cursor:"pointer",fontSize:12,fontFamily:t.font,letterSpacing:2,textTransform:"uppercase",WebkitTapHighlightColor:"transparent"}}>← Précédent</button>}
-        <button onClick={isLast?onStart:()=>setPage(p=>p+1)} style={{flex:2,padding:"13px",background:\`linear-gradient(135deg,\${t.accent},\${t.alt})\`,border:"none",color:"#000",borderRadius:8,cursor:"pointer",fontSize:13,fontFamily:t.font,letterSpacing:3,fontWeight:900,textTransform:"uppercase",WebkitTapHighlightColor:"transparent"}}>
+        {page>0&&<button onClick={()=>setPage(p=>p-1)} style={{flex:1,padding:"13px",background:"none",border:\`1px solid ${t.border}\`,color:"#555",borderRadius:8,cursor:"pointer",fontSize:12,fontFamily:t.font,letterSpacing:2,textTransform:"uppercase",WebkitTapHighlightColor:"transparent"}}>← Précédent</button>}
+        <button onClick={isLast?onStart:()=>setPage(p=>p+1)} style={{flex:2,padding:"13px",background:\`linear-gradient(135deg,${t.accent},${t.alt})\`,border:"none",color:"#000",borderRadius:8,cursor:"pointer",fontSize:13,fontFamily:t.font,letterSpacing:3,fontWeight:900,textTransform:"uppercase",WebkitTapHighlightColor:"transparent"}}>
           {isLast?"C'est parti ! →":"Suivant →"}
         </button>
       </div>
@@ -2426,8 +2426,8 @@ function Root(){
       html{font-size:16px;-webkit-text-size-adjust:100%}
       body{background:#000;overscroll-behavior:none;-webkit-font-smoothing:antialiased}
       ::-webkit-scrollbar{width:3px;height:3px}
-      ::-webkit-scrollbar-thumb{background:\${T[promo]?.accent||"#c8102e"};border-radius:3px}
-      textarea,input{caret-color:\${T[promo]?.accent||"#c8102e"}}
+      ::-webkit-scrollbar-thumb{background:${T[promo]?.accent||"#c8102e"};border-radius:3px}
+      textarea,input{caret-color:${T[promo]?.accent||"#c8102e"}}
       select option{background:#0a0a0a}
       button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
     \`}</style>
