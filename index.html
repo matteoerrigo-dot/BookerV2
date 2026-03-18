@@ -2,69 +2,45 @@
 
 <html lang="fr">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <meta name="mobile-web-app-capable" content="yes"/>
   <title>The Booker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/babel.min.js"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-    html{height:100%;background:#000;font-size:16px;-webkit-text-size-adjust:100%}
-    body{height:100%;background:#000;overflow-y:auto;overscroll-behavior:none;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+    html,body{height:100%;background:#000;overscroll-behavior:none;-webkit-font-smoothing:antialiased}
+    body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
     #root{min-height:100%}
     button{touch-action:manipulation;cursor:pointer}
     input,textarea{font-size:16px!important}
-    #splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px}
-    .sp-logo{font-family:Impact,sans-serif;text-align:center;line-height:.85}
-    .sp-t{font-size:clamp(2.5rem,12vw,5rem);letter-spacing:6px;color:#fff}
-    .sp-b{font-size:clamp(2rem,10vw,4rem);letter-spacing:6px;-webkit-text-stroke:2px #fff;-webkit-text-fill-color:transparent}
-    .sp-bar{width:180px;height:3px;background:#111;border-radius:2px;overflow:hidden}
-    .sp-fill{height:100%;background:linear-gradient(90deg,#c8102e,#f5c518);width:0%;border-radius:2px;transition:width .4s}
-    .sp-status{color:#333;font-family:Impact,sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;text-align:center}
-    .sp-err{color:#ff2244;font-family:monospace;font-size:12px;padding:20px;max-width:90vw;word-break:break-word;background:#0a0000;border-radius:12px;border:1px solid #ff224433;line-height:1.6;text-align:center}
+    #loading{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+    .ld-logo{font-family:Impact,sans-serif;text-align:center;line-height:.85}
+    .ld-t{font-size:clamp(2.5rem,12vw,5rem);letter-spacing:6px;color:#fff}
+    .ld-b{font-size:clamp(2rem,10vw,4rem);letter-spacing:6px;-webkit-text-stroke:2px #fff;-webkit-text-fill-color:transparent}
+    .ld-bar{width:160px;height:3px;background:#222;border-radius:2px;overflow:hidden;margin-top:8px}
+    .ld-fill{height:100%;width:0%;background:linear-gradient(90deg,#c8102e,#f5c518);border-radius:2px;transition:width .3s;animation:ldpulse 1.5s infinite}
+    @keyframes ldpulse{0%{width:20%}50%{width:80%}100%{width:20%}}
   </style>
 </head>
 <body>
-  <div id="splash">
-    <div class="sp-logo">
-      <div class="sp-t">THE</div>
-      <div class="sp-b">BOOKER</div>
+  <div id="loading">
+    <div class="ld-logo">
+      <div class="ld-t">THE</div>
+      <div class="ld-b">BOOKER</div>
     </div>
-    <div class="sp-bar"><div class="sp-fill" id="fill"></div></div>
-    <div class="sp-status" id="status">Connexion internet requise…</div>
+    <div class="ld-bar"><div class="ld-fill"></div></div>
   </div>
   <div id="root"></div>
 
-<script>
-var fill=document.getElementById('fill'),status=document.getElementById('status');
-var pct=0;
-var ticker=setInterval(function(){
-  if(pct<88){pct+=1.2;fill.style.width=pct+'%';}
-},120);
-
-function setStatus(txt,p){
-  status.textContent=txt;
-  if(p!==undefined){pct=p;fill.style.width=p+'%';}
-}
-
-function showError(msg){
-  clearInterval(ticker);
-  document.getElementById('splash').innerHTML='<div class="sp-err">'+msg+'</div>';
-}
-
-function loadScript(url,cb,errMsg){
-  var s=document.createElement('script');
-  s.src=url;
-  s.onload=cb;
-  s.onerror=function(){showError(errMsg||'Impossible de charger: '+url+'<br/><br/>Vérifie ta connexion internet et recharge la page.');};
-  document.head.appendChild(s);
-}
-
-var GAME=`const { useState, useEffect, useCallback } = React;
+<script type="text/babel">
+const { useState, useEffect, useCallback } = React;
 
 /* ─── MOBILE HOOK ────────────────────────────────────────────────── */
 function useIsMobile(bp=680){
@@ -2412,53 +2388,27 @@ function Root(){
 
 const _r=ReactDOM.createRoot(document.getElementById(‘root’));
 _r.render(React.createElement(Root));
-`;
 
-loadScript(
-‘https://unpkg.com/react@18/umd/react.production.min.js’,
-function(){
-setStatus(‘React OK — ReactDOM…’,25);
-loadScript(
-‘https://unpkg.com/react-dom@18/umd/react-dom.production.min.js’,
-function(){
-setStatus(‘ReactDOM OK — Babel…’,50);
-loadScript(
-‘https://unpkg.com/@babel/standalone/babel.min.js’,
-function(){
-setStatus(‘Compilation JSX…’,80);
-setTimeout(function(){
-try{
-var out=Babel.transform(GAME,{presets:[‘react’],filename:‘game.jsx’});
-setStatus(‘Lancement…’,95);
-setTimeout(function(){
-try{
-(new Function(‘React’,‘ReactDOM’,‘useState’,‘useEffect’,‘useCallback’,out.code))(
-React,ReactDOM,React.useState,React.useEffect,React.useCallback
-);
-clearInterval(ticker);
-fill.style.width=‘100%’;
-setTimeout(function(){
-document.getElementById(‘splash’).style.display=‘none’;
-},350);
-}catch(e2){
-showError(‘Erreur au démarrage :<br/>’+e2.message);
-console.error(e2);
-}
-},80);
-}catch(e){
-showError(‘Erreur de compilation :<br/>’+e.message);
-console.error(e);
-}
-},60);
-},
-‘Impossible de charger Babel.<br/>Vérifie ta connexion et recharge.’
-);
-},
-‘Impossible de charger ReactDOM.<br/>Vérifie ta connexion et recharge.’
-);
-},
-‘Impossible de charger React.<br/>Vérifie ta connexion et recharge.’
-);
+</script>
+
+<script>
+// Hide loading screen once React mounts
+(function(){
+  var obs = new MutationObserver(function(){
+    var root = document.getElementById('root');
+    if(root && root.children.length > 0){
+      var ld = document.getElementById('loading');
+      if(ld) ld.style.display = 'none';
+      obs.disconnect();
+    }
+  });
+  obs.observe(document.getElementById('root')||document.body, {childList:true, subtree:true});
+  // Fallback: hide after 5s
+  setTimeout(function(){
+    var ld = document.getElementById('loading');
+    if(ld) ld.style.display = 'none';
+  }, 5000);
+})();
 </script>
 
 </body>
