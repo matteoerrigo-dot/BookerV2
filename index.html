@@ -1,21 +1,7 @@
-<!-- FORCE UPDATE -->
 <!DOCTYPE html>
 
 <html lang="fr">
 <head>
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- React 18 -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-
-  <!-- Babel -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <title>Mon App React</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
@@ -41,10 +27,6 @@
     .sp-status{color:#333;font-family:Impact,sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;text-align:center}
     .sp-err{color:#ff2244;font-family:monospace;font-size:12px;padding:20px;max-width:90vw;word-break:break-word;background:#0a0000;border-radius:12px;border:1px solid #ff224433;line-height:1.6;text-align:center}
   </style>
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000000">
-  
 </head>
 <body>
   <div id="splash">
@@ -55,27 +37,35 @@
     <div class="sp-bar"><div class="sp-fill" id="fill"></div></div>
     <div class="sp-status" id="status">Connexion internet requise…</div>
   </div>
-<div id="root"></div>
-<script>
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    var splash = document.getElementById("splash");
-    if (splash) splash.remove();
-  }, 1200);
-});
-</script>
+  <div id="root"></div>
 
 <script>
-window.onerror = function(msg, url, line) {
-  document.body.innerHTML =
-    "<pre style='color:red;padding:20px'>" +
-    msg + "\nligne: " + line +
-    "</pre>";
-};
-</script>
+var fill=document.getElementById('fill'),status=document.getElementById('status');
+var pct=0;
+var ticker=setInterval(function(){
+  if(pct<88){pct+=1.2;fill.style.width=pct+'%';}
+},120);
 
-<script type="text/babel">
-  
+function setStatus(txt,p){
+  status.textContent=txt;
+  if(p!==undefined){pct=p;fill.style.width=p+'%';}
+}
+
+function showError(msg){
+  clearInterval(ticker);
+  document.getElementById('splash').innerHTML='<div class="sp-err">'+msg+'</div>';
+}
+
+function loadScript(url,cb,errMsg){
+  var s=document.createElement('script');
+  s.src=url;
+  s.onload=cb;
+  s.onerror=function(){showError(errMsg||'Impossible de charger: '+url+'<br/><br/>Vérifie ta connexion internet et recharge la page.');};
+  document.head.appendChild(s);
+}
+
+var GAME=`const { useState, useEffect, useCallback } = React;
+
 /* ─── MOBILE HOOK ────────────────────────────────────────────────── */
 function useIsMobile(bp=680){
   const [m,setM]=useState(()=>typeof window!=="undefined"?window.innerWidth<bp:false);
@@ -344,7 +334,7 @@ const ROAD={
 
 
 // ─── CRISIS ENGINE v2 ─────────────────────────────────────────────────────────
-const CRISIS_HISTORY = new Set(); // track seen crisis IDs this session
+const CRISIS_HISTORY = new Set();
 
 function buildCrisisEvent(stepId, roster, plan, promo="WWE"){
   const isAEW = promo === "AEW";
@@ -352,191 +342,163 @@ function buildCrisisEvent(stepId, roster, plan, promo="WWE"){
   const show1 = isAEW ? "Dynamite" : "Raw";
   const show2 = isAEW ? "Collision" : "SmackDown";
 
-  const act    = roster.filter(w => w.status === "active");
+  const act     = roster.filter(w => w.status === "active");
   const injured = roster.filter(w => w.status === "injured");
-  if (!act.length) return null;
+  if(!act.length) return null;
 
-  const champions = act.filter(w => w.title);
-  const mainEvent = act.filter(w => w.tier === "main-event");
-  const rising    = act.filter(w => w.tier === "rising");
-  const heels     = act.filter(w => w.role === "heel");
-  const faces     = act.filter(w => w.role === "face");
+  const mainEvent  = act.filter(w => w.tier === "main-event");
+  const rising     = act.filter(w => w.tier === "rising");
+  const heels      = act.filter(w => w.role === "heel");
+  const faces      = act.filter(w => w.role === "face");
+  const champions  = act.filter(w => w.title);
 
-  const wmWinner = plan?.winnerId   ? act.find(w => w.id === plan.winnerId)   : pick(mainEvent);
-  const wmRival  = plan?.rivalId    ? act.find(w => w.id === plan.rivalId)    : pick(heels);
-  const champ    = plan?.championId ? roster.find(w => w.id === plan.championId) : champions[0];
-
-  const r1 = pick(rising) || pick(act);
-  const r2 = pick(rising.filter(w => w.id !== r1?.id)) || pick(act.filter(w => w.id !== r1?.id));
-  const randomW = pick(act);
+  const wmWinner  = plan?.winnerId   ? act.find(w => w.id === plan.winnerId)        : pick(mainEvent);
+  const wmRival   = plan?.rivalId    ? act.find(w => w.id === plan.rivalId)         : pick(heels);
+  const champ     = plan?.championId ? roster.find(w => w.id === plan.championId)   : champions[0];
+  const r1        = pick(rising) || pick(act);
+  const r2        = pick(rising.filter(w => w.id !== r1?.id)) || pick(act.filter(w => w.id !== r1?.id));
+  const randomW   = pick(act);
   const randomHeel = pick(heels) || pick(act);
-  const randomFace = pick(faces) || pick(act);
+  const randomFace = pick(faces)  || pick(act);
 
-  // ── Pool universel (toujours disponible) ─────────────────────────────────
   const universalPool = [
     { id:"gm_fired", icon:"💼", sev:"critical",
       title: isAEW ? "TONY KHAN SOUS PRESSION" : "LE GM VIRÉ EN DIRECT",
       desc: isAEW
-        ? `Tony Khan annonce en direct sur ${show1} qu'il prend le contrôle opérationnel du booking à la suite de résultats décevants. Les vestiaires sont en ébullition.`
-        : `Le GM de ${show1} est licencié sans préavis. Un intérimaire est nommé pour la semaine — personne ne sait qui a le pouvoir.`,
+        ? `Tony Khan annonce en direct sur ${show1} qu'il prend le contrôle opérationnel — les vestiaires sont en ébullition.`
+        : `Le GM de ${show1} est licencié sans préavis. Un intérimaire est nommé — personne ne sait qui a le pouvoir.`,
       consequence: "Tous les matchs prévus sont à rebooker." },
-
     { id:"locker_revolt", icon:"⚡", sev:"warning",
       title: "RÉVOLTE DU VESTIAIRE",
-      desc: isAEW
-        ? `Plusieurs talents AEW refusent de se présenter à ${show1} en signe de protestation contre les conditions de travail. Tony Khan est en crise.`
-        : `Un groupe de mid-carders boycotte le show en solidarité avec ${randomW?.name}. La direction est contrainte de revoir la carte en urgence.`,
+      desc: `Un groupe de talents refuse de se présenter à ${show1}. ${isAEW ? "Tony Khan" : "La direction"} est en crise.`,
       consequence: "Certains slots sont vides. Tu dois combler les trous." },
-
     { id:"sponsor_scandal", icon:"📰", sev:"warning",
       title: "SCANDALE MÉDIATIQUE",
-      desc: `${randomW?.name} fait scandale sur les réseaux sociaux. Un tweet controversé déclenche une tempête médiatique qui éclabousse ${isAEW ? "AEW" : "WWE"}.`,
-      consequence: isAEW ? "Tony Khan exige une promo de gestion de crise ce soir." : "La direction ordonne une promo de gestion de crise en direct." },
-
+      desc: `${randomW?.name} fait scandale sur les réseaux sociaux — tempête médiatique garantie.`,
+      consequence: isAEW ? "Tony Khan exige une promo de gestion de crise ce soir." : "La direction ordonne une promo de gestion de crise." },
     { id:"contract_war", icon:"✍️", sev:"opportunity",
       title: "GUERRE DES CONTRATS",
-      desc: isAEW
-        ? `${r1?.name} est contacté par ${isAEW ? "WWE" : "AEW"} — sa loyauté est mise à l'épreuve. Tony Khan doit surenchérir ou perdre une pépite.`
-        : `${r1?.name} entre dans la dernière année de son contrat. Des rumeurs d'approche AEW circulent. La direction veut le verrouiller avec un angle fort.`,
+      desc: `${r1?.name} reçoit une approche de la fédération rivale. Sa loyauté est mise à l'épreuve.`,
       consequence: "Donne-lui un push immédiat pour le fidéliser." },
-
     { id:"injury_surprise", icon:"🚑", sev:"critical",
       title: "BLESSURE EN COULISSE",
-      desc: `${randomW?.name} se blesse à l'entraînement — fracture confirmée. Il sera absent ${Math.floor(Math.random()*3)+4} semaines minimum.`,
+      desc: `${randomW?.name} se blesse à l'entraînement — absent ${Math.floor(Math.random()*3)+4} semaines minimum.`,
       consequence: "Son slot dans la carte doit être recomblé." },
-
     { id:"stable_implosion", icon:"💥", sev:"warning",
       title: "IMPLOSION DE STABLE",
-      desc: isAEW
-        ? `Le stable de ${randomHeel?.name} se déchire en direct — des accusations de leadership toxique fusent. La fissure est irrécupérable.`
-        : `Le groupe de ${randomHeel?.name} vole en éclats après une altercation en coulisse. L'alliance est officiellement terminée.`,
+      desc: `Le groupe de ${randomHeel?.name} vole en éclats — accusations, altercations, alliance officiellement terminée.`,
       consequence: "Les ex-alliés sont désormais des rivaux naturels." },
-
     { id:"face_turns_heel", icon:"🔄", sev:"warning",
       title: "HEEL TURN SPONTANÉ",
-      desc: `${randomFace?.name} vire heel de façon totalement spontanée — attaque son partenaire en plein match. La salle est sous le choc. Ça prend massivement.`,
+      desc: `${randomFace?.name} vire heel en plein match — attaque son partenaire. Ça prend massivement.`,
       consequence: "Exploite le heat pendant qu'il est chaud." },
-
     { id:"heel_turns_face", icon:"⚡", sev:"opportunity",
       title: "FACE TURN INATTENDU",
-      desc: `${randomHeel?.name} sauve ${randomFace?.name} d'un beatdown à 3 contre 1 — moment de face turn organique. La foule explose en pop massif.`,
+      desc: `${randomHeel?.name} sauve ${randomFace?.name} d'un beatdown à 3 contre 1 — pop massif, face turn organique.`,
       consequence: "Push immédiat ou ça retombe." },
-
     { id:"crowd_chant", icon:"📣", sev:"opportunity",
       title: "CHANT VIRAL",
-      desc: `${r1?.name} reçoit un chant spontané monstre durant un segment — les réseaux sociaux s'enflamment. Le public le réclame en main event.`,
+      desc: `${r1?.name} reçoit un chant monstre spontané — les réseaux s'enflamment. Le public le réclame en main event.`,
       consequence: "C'est le moment ou jamais de le pousher." },
-
     { id:"title_defection", icon:"🏆", sev:"critical",
       title: champ ? `${champ.name?.toUpperCase()} EXIGE PLUS` : "LE CHAMPION EXIGE PLUS",
       desc: champ
-        ? `${champ.name}, champion ${champ.title}, exige d'être le main event de ${grandFinal} sans conditions. Il menace de no-show en cas de refus.`
-        : `Le champion en titre exige une renégociation de son contrat en urgence — son avocat a envoyé une lettre.`,
+        ? `${champ.name} exige d'être le main event de ${grandFinal}. Il menace le no-show en cas de refus.`
+        : `Le champion exige une renégociation d'urgence — son avocat a envoyé une lettre.`,
       consequence: "Accorde ou prépare un tourney d'urgence." },
-
     { id:"mystery_attacker", icon:"🎭", sev:"warning",
       title: "ATTAQUANT MASQUÉ",
-      desc: `Un mystérieux attaquant masqué frappe ${wmWinner?.name || randomW?.name} en coulisse. Aucune caméra n'a capté le visage. Les rumeurs vont bon train.`,
+      desc: `Un mystérieux attaquant frappe ${wmWinner?.name || randomW?.name} en coulisse. Aucune caméra n'a capté le visage.`,
       consequence: "Révélation à planifier dans 2-3 semaines." },
-
-    { id:"ppv_city_drama", icon:"🏙️", sev:"warning",
-      title: isAEW ? "INCIDENT AU WEMBLEY" : "INCIDENT À VEGAS",
-      desc: isAEW
-        ? "La vente de billets pour All In au Wembley explose les records — mais les scalpers ont monopolisé les catégories VIP. Tollé médiatique."
-        : "La ville hôte de WrestleMania menace d'annuler les autorisations suite à des incidents en dehors du ring. La pression sur la direction monte.",
-      consequence: "La carte doit être irréprochable pour désamorcer." },
-
     { id:"ratings_crash", icon:"📉", sev:"critical",
       title: "CHUTE D'AUDIENCE",
-      desc: `Le dernier ${show1} a enregistré son plus bas historique depuis 3 ans. ${isAEW ? "Tony Khan" : "La direction"} exige un shake-up immédiat de la carte.`,
-      consequence: "Mets les plus gros noms en avant, cette semaine." },
-
+      desc: `Le dernier ${show1} a enregistré son plus bas historique depuis 3 ans. Shake-up immédiat exigé.`,
+      consequence: "Mets les plus gros noms en avant cette semaine." },
     { id:"return_tease", icon:"⚡", sev:"opportunity",
       title: "TEASE DE RETOUR LÉGENDAIRE",
       desc: isAEW
-        ? "Une silhouette non identifiée apparaît en fin de Dynamite. Les forums s'enflamment. Est-ce un retour légendaire pour All In ?"
-        : "Une musique familière se déclenche en fin de Raw avant d'être coupée. La Twitterverse s'embrase. WrestleMania approche…",
+        ? "Une silhouette non identifiée apparaît en fin de Dynamite. Les forums s'enflamment."
+        : "Une musique familière se déclenche en fin de Raw avant d'être coupée. WrestleMania approche…",
       consequence: "Capitalise sur le buzz — révèle ou entretiens le mystère." },
+    { id:"ppv_drama", icon:"🏙️", sev:"warning",
+      title: isAEW ? "INCIDENT AU WEMBLEY" : "INCIDENT À VEGAS",
+      desc: isAEW
+        ? "La vente de billets pour All In explose — mais les scalpers ont monopolisé les VIP. Tollé médiatique."
+        : "La ville hôte de WrestleMania menace d'annuler les autorisations. Pression maximale.",
+      consequence: "La carte doit être irréprochable pour désamorcer." },
   ];
 
-  // ── Pool contextuel (dépend du plan) ────────────────────────────────────
   const contextPool = [];
 
-  if (wmWinner) {
+  if(wmWinner){
     contextPool.push(
-      { id:`winner_promo_bomb_${wmWinner.id}`, icon:"🎤", sev:"opportunity",
-        title: `PROMO BOMBE DE ${wmWinner.name.toUpperCase()}`,
-        desc: `${wmWinner.name} lâche une promo d'anthologie sur ${show1} qui donne le ton pour ${grandFinal}. La foule est électrisée.`,
+      { id:`winner_promo_${wmWinner.id}`, icon:"🎤", sev:"opportunity",
+        title: `PROMO BOMBE — ${wmWinner.name.toUpperCase()}`,
+        desc: `${wmWinner.name} lâche une promo d'anthologie qui donne le ton pour ${grandFinal}. La foule est électrisée.`,
         consequence: "Son momentum est au max — exploite-le." },
       { id:`winner_doubt_${wmWinner.id}`, icon:"❓", sev:"warning",
         title: `DOUTES SUR ${wmWinner.name.toUpperCase()}`,
-        desc: `${wmWinner.name} perd un match non-télévisé de façon embarrassante. Les doutes sur sa capacité à headliner ${grandFinal} refont surface.`,
+        desc: `${wmWinner.name} perd un match non-télévisé. Les doutes sur sa capacité à headliner ${grandFinal} refont surface.`,
         consequence: "Une victoire propre cette semaine est indispensable." }
     );
   }
-
-  if (wmRival) {
+  if(wmRival){
     contextPool.push(
       { id:`rival_snaps_${wmRival.id}`, icon:"😤", sev:"warning",
         title: `${wmRival.name.toUpperCase()} PÈTE UN CÂBLE`,
-        desc: `${wmRival.name} perd son sang-froid en coulisse et frappe un cadreur. ${isAEW ? "Tony Khan" : "La direction"} envisage une suspension.`,
-        consequence: "Son match à ${grandFinal} est en suspens." },
+        desc: `${wmRival.name} perd son sang-froid et frappe un cadreur. Une suspension est envisagée.`,
+        consequence: `Son match à ${grandFinal} est en suspens.` },
       { id:`rival_ally_${wmRival.id}`, icon:"🤝", sev:"warning",
         title: `${wmRival.name.toUpperCase()} RECRUTE`,
-        desc: `${wmRival.name} approche ${r2?.name || "un inconnu"} pour l'aider à neutraliser ${wmWinner?.name || "son rival"}. L'alliance est en train de se former.`,
-        consequence: "Le 1v1 de ${grandFinal} devient plus compliqué." }
+        desc: `${wmRival.name} approche ${r2?.name || "un inconnu"} pour neutraliser ${wmWinner?.name || "son rival"}.`,
+        consequence: `Le 1v1 de ${grandFinal} devient plus compliqué.` }
     );
   }
-
-  if (injured.length) {
+  if(injured.length){
     const inj = pick(injured);
     contextPool.push(
       { id:`return_${inj.id}`, icon:"⚡", sev:"opportunity",
         title: `RETOUR SURPRISE : ${inj.name.toUpperCase()}`,
-        desc: `${inj.name} revient plus tôt que prévu — il est guéri à 80% mais veut absolument être là pour ${grandFinal}. Les médecins ne sont pas d'accord.`,
-        consequence: "À toi de décider : retour immédiat ou encore 2 semaines ?" }
+        desc: `${inj.name} revient plus tôt que prévu — guéri à 80%, il veut être là pour ${grandFinal}.`,
+        consequence: "Retour immédiat ou encore 2 semaines de repos ?" }
     );
   }
-
-  if (r1) {
+  if(r1){
     contextPool.push(
       { id:`breakout_${r1.id}`, icon:"📈", sev:"opportunity",
         title: `BREAKOUT : ${r1.name.toUpperCase()}`,
-        desc: `${r1.name} vole la vedette sur ${show2} avec une performance de 20 minutes. Les fans votent massivement pour lui en ligne. Il est prêt pour le grand saut.`,
+        desc: `${r1.name} vole la vedette sur ${show2} — les fans votent massivement pour lui en ligne.`,
         consequence: "Push ou jalousie du vestiaire — à toi de choisir." }
     );
   }
-
-  if (isAEW) {
+  if(isAEW){
     contextPool.push(
       { id:"njpw_drama", icon:"🌏", sev:"warning",
         title: "TENSION FORBIDDEN DOOR",
-        desc: `Un talent NJPW prévu pour Forbidden Door refuse les conditions contractuelles AEW. L'accord entre les deux fédérations est fragilisé.`,
+        desc: "Un talent NJPW prévu pour Forbidden Door refuse les conditions contractuelles AEW.",
         consequence: "Le cross-over doit être reconfirmé ou remplacé." },
       { id:"elite_reunion", icon:"🖐️", sev:"opportunity",
         title: "RÉUNION ELITE ?",
-        desc: `Des rumeurs de réunion de l'Elite complète circulent — les fans sont en ébullition sur Twitter. Tony Khan alimente le mystère.`,
+        desc: "Des rumeurs de réunion de l'Elite complète circulent — les fans sont en ébullition sur Twitter.",
         consequence: "Confirme ou démente — les deux créent du buzz." }
     );
   } else {
     contextPool.push(
       { id:"wwe_hall_tease", icon:"🏛️", sev:"opportunity",
         title: "TEASE HALL OF FAME",
-        desc: `Une annonce Hall of Fame surprise est prévue pour WrestleMania Week — une légende va faire son retour dans l'arène. Les paris vont bon train.`,
+        desc: "Une annonce Hall of Fame surprise est prévue pour WrestleMania Week — une légende revient.",
         consequence: "Intègre une interaction avec un acteur de ta carte." },
       { id:"draft_rumor", icon:"📋", sev:"warning",
         title: "RUMEURS DE DRAFT",
-        desc: `Des rumeurs de Draft surprise avant WrestleMania circulent — ${randomW?.name} serait transféré. Plusieurs contrats sont en renégociation.`,
-        consequence: "Planifie les arcs en tenant compte des incertitudes." }
+        desc: `Des rumeurs de Draft surprise circulent — ${randomW?.name} serait transféré.`,
+        consequence: "Planifie en tenant compte des incertitudes." }
     );
   }
 
-  // ── Merge tous les pools et filtrer déjà vus ────────────────────────────
   const allPool = [...universalPool, ...contextPool];
   const fresh = allPool.filter(e => !CRISIS_HISTORY.has(e.id));
-  const pool = fresh.length > 0 ? fresh : allPool; // reset si tout vu
-
-  if (!pool.length) return null;
+  const pool = fresh.length > 0 ? fresh : allPool;
+  if(!pool.length) return null;
   const chosen = pick(pool);
   CRISIS_HISTORY.add(chosen.id);
   return chosen;
@@ -546,9 +508,8 @@ function buildCrisisEvent(stepId, roster, plan, promo="WWE"){
 const rc=r=>r==="heel"?"#ff2244":r==="face"?"#00e5aa":"#f5c518";
 const clamp=(v,lo=0,hi=100)=>Math.max(lo,Math.min(hi,v));
 const sevColor=s=>s==="critical"?"#ff2244":s==="opportunity"?"#00e5aa":"#f5c518";
-const rCtx = r => r.map(w =>
-  `${w.name} (${w.role}, ${w.tier}, pop:${w.pop}, mom:${w.mom})`
-).join("\n");
+const rCtx=r=>r.map(w=>`${w.name}(${w.role},${w.tier},pop:${w.pop},mom:${w.mom}${w.title?`,🏆${w.title}`:""}${w.status!=="active"?",BLESSÉ":""})`).join("\\n");
+
 /* ─── MOTEUR DE SCORING LOCAL (100% offline, zéro IA) ───────────── */
 
 const CHANTS_HOT=["THIS IS AWESOME","HOLY SHIT","LET'S GO {NAME}","ONE MORE TIME","{NAME} IS GONNA KILL YOU","YOU DESERVE IT","FIGHT FOREVER"];
@@ -688,9 +649,9 @@ function buildWrestlerNotes(actions, roster){
     const isCoherent=(entry.role==="heel"&&["ph","mh","sh","ch"].some(p=>entry.action.id?.startsWith(p)))||
                      (entry.role==="face"&&["pf","mf","sf","cf"].some(p=>entry.action.id?.startsWith(p)));
     notes[entry.wid]=isCoherent
-notes[entry.wid] = isCoherent
-  ? `${w.name} bien utilisé — action cohérente`
-  : `${w.name} — attention à la cohérence`;
+      ? `${w.name} bien utilisé — action cohérente avec son rôle.`
+      : `${w.name} — attention à la cohérence rôle/action.`;
+  }
   return notes;
 }
 
@@ -753,12 +714,12 @@ async function generateRoadPlan(roster){
 
   const chaos=pick(roster.filter(w=>w.status==="active"&&w.id!==wmWinner.id));
 
-const ARCS = [
-  `${wmWinner.name} cherche à prouver qu'il est le meilleur, ${wmRival?.name} fait tout pour l'en empêcher.`,
-  `La rivalité entre ${wmWinner.name} et ${wmRival?.name} atteint son point de rupture.`,
-  `${wmWinner.name} doit surmonter la trahison de ${wmRival?.name} pour atteindre le sommet.`,
-  `Deux visions s'affrontent : l'honneur de ${wmWinner.name} contre la domination de ${wmRival?.name}.`
-];
+  const ARCS=[
+    `${wmWinner.name} cherche à prouver qu'il est le meilleur, ${wmRival?.name} fait tout pour l'en empêcher.`,
+    `La rivalité entre ${wmWinner.name} et ${wmRival?.name} atteint son point de rupture.`,
+    `${wmWinner.name} doit surmonter la trahison de ${wmRival?.name} pour atteindre le sommet.`,
+    `Deux visions s'affrontent : l'honneur de ${wmWinner.name} contre la domination de ${wmRival?.name}.`,
+  ];
 
   return{
     winner:wmWinner.id,
@@ -2420,7 +2381,6 @@ function Root(){
   const goHome=()=>{setMode(null);setScreen("home");};
   const goMode=m=>{setMode(m);setScreen("mode");};
   return <>
-  <h1 style={{color:"white"}}>ROOT OK</h1>
     <style>{`
       @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
       @keyframes pulse{from{opacity:.3}to{opacity:1}}
@@ -2432,87 +2392,74 @@ function Root(){
       html{font-size:16px;-webkit-text-size-adjust:100%}
       body{background:#000;overscroll-behavior:none;-webkit-font-smoothing:antialiased}
       ::-webkit-scrollbar{width:3px;height:3px}
-      ::-webkit-scrollbar-thumb{background:#00aaff;}
-      textarea,input{caret-color:#00aaff;}
+      ::-webkit-scrollbar-thumb{background:${T[promo]?.accent||"#c8102e"};border-radius:3px}
+      textarea,input{caret-color:${T[promo]?.accent||"#c8102e"}}
+      select option{background:#0a0a0a}
       button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
     `}</style>
-    
-<div id="root"></div>
 
-<!-- React -->
-<script defer crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
-<script defer crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+```
+{screen==="promo"&&<PromoSelect onSelect={selectPromo}/>}
+{screen==="tuto"&&<TutoScreen promo={promo} onStart={()=>setScreen("home")} onBack={()=>setScreen("promo")}/>}
+{screen==="home"&&<Home promo={promo} onMode={goMode} onChangePromo={()=>setScreen("promo")} globalStars={globalStars} difficulty={difficulty}/>}
+{screen==="mode"&&mode==="storyline"&&<StorylineMode roster={roster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
+{screen==="mode"&&mode==="career"&&<CareerMode roster={roster} setRoster={setRoster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
+{screen==="mode"&&mode==="road"&&<RoadMode roster={roster} setRoster={setRoster} onHome={goHome} onStars={pushStars} promo={promo} difficulty={difficulty}/>}
+```
 
-<!-- Babel -->
-<script defer src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<!-- APP -->
-<script type="text/babel">
-
-</script>
-
-
-function Root() {
-  return (
-    <React.Fragment>
-      {screen==="promo" && (
-        <PromoSelect onSelect={selectPromo} />
-      )}
-
-      {screen==="tuto" && (
-        <TutoScreen
-          promo={promo}
-          onStart={() => setScreen("home")}
-          onBack={() => setScreen("promo")}
-        />
-      )}
-
-      {screen==="home" && (
-        <Home
-          promo={promo}
-          onMode={goMode}
-          onChangePromo={() => setScreen("promo")}
-        />
-      )}
-
-      {screen==="mode" && mode==="storyline" && (
-        <StorylineMode
-          roster={roster}
-          onHome={goHome}
-          onStart={pushStar}
-          promo={promo}
-          difficulty={difficulty}
-        />
-      )}
-
-      {screen==="mode" && mode==="career" && (
-        <CareerMode
-          roster={roster}
-          setRoster={setRoster}
-          onHome={goHome}
-          onStars={pushStars}
-          promo={promo}
-          difficulty={difficulty}
-        />
-      )}
-
-      {screen==="mode" && mode==="road" && (
-        <RoadMode
-          roster={roster}
-          setRoster={setRoster}
-          onHome={goHome}
-          onStars={pushStars}
-          promo={promo}
-          difficulty={difficulty}
-        />
-      )}
-    </React.Fragment>
-  );
+</>;
 }
 
-const _r=ReactDOM.createRoot(document.getElementById('root'));
-_r.render(<Root />);
+const _r=ReactDOM.createRoot(document.getElementById(‘root’));
+_r.render(React.createElement(Root));
+`;
 
+loadScript(
+‘https://unpkg.com/react@18/umd/react.production.min.js’,
+function(){
+setStatus(‘React OK — ReactDOM…’,25);
+loadScript(
+‘https://unpkg.com/react-dom@18/umd/react-dom.production.min.js’,
+function(){
+setStatus(‘ReactDOM OK — Babel…’,50);
+loadScript(
+‘https://unpkg.com/@babel/standalone/babel.min.js’,
+function(){
+setStatus(‘Compilation JSX…’,80);
+setTimeout(function(){
+try{
+var out=Babel.transform(GAME,{presets:[‘react’],filename:‘game.jsx’});
+setStatus(‘Lancement…’,95);
+setTimeout(function(){
+try{
+(new Function(‘React’,‘ReactDOM’,‘useState’,‘useEffect’,‘useCallback’,out.code))(
+React,ReactDOM,React.useState,React.useEffect,React.useCallback
+);
+clearInterval(ticker);
+fill.style.width=‘100%’;
+setTimeout(function(){
+document.getElementById(‘splash’).style.display=‘none’;
+},350);
+}catch(e2){
+showError(‘Erreur au démarrage :<br/>’+e2.message);
+console.error(e2);
+}
+},80);
+}catch(e){
+showError(‘Erreur de compilation :<br/>’+e.message);
+console.error(e);
+}
+},60);
+},
+‘Impossible de charger Babel.<br/>Vérifie ta connexion et recharge.’
+);
+},
+‘Impossible de charger ReactDOM.<br/>Vérifie ta connexion et recharge.’
+);
+},
+‘Impossible de charger React.<br/>Vérifie ta connexion et recharge.’
+);
 </script>
+
 </body>
 </html>
