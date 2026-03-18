@@ -583,7 +583,7 @@ return {page, inner};
 function NavBar(title, onHome, t, extras=[]) {
 const row=div({style:{display:‘flex’,alignItems:‘center’,gap:‘8px’,marginBottom:‘16px’,paddingBottom:‘12px’,borderBottom:`1px solid ${t.border}`,flexWrap:‘wrap’}});
 row.appendChild(Btn(‘← Home’,onHome,t,{ghost:true,small:true}));
-row.appendChild(span({style:{color:t.accent,fontFamily:t.font,fontSize:‘16px’,letterSpacing:‘3px’,textTransform:‘uppercase’}}),title);
+row.appendChild(span({style:{color:t.accent,fontFamily:t.font,fontSize:‘16px’,letterSpacing:‘3px’,textTransform:‘uppercase’}},title));
 if(extras.length) {
 const ex=div({style:{marginLeft:‘auto’,display:‘flex’,gap:‘6px’,alignItems:‘center’}});
 extras.forEach(e=>ex.appendChild(e));
