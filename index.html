@@ -40,6 +40,7 @@
   <div id="root"></div>
 
 <script type="text/babel">
+
 const { useState, useEffect, useCallback } = React;
 
 /* ─── MOBILE HOOK ────────────────────────────────────────────────── */
@@ -875,6 +876,10 @@ function TitleChangePanel({roster, titleChange, setTitleChange, t}){
 }
 
 /* ─── APPLY TITLE CHANGE to roster ──────────────────────────────── */
+</script>
+
+<script type="text/babel">
+
 function applyTitleChange(prev, titleChange){
   if(!titleChange||!titleChange.fromId||!titleChange.toId) return prev;
   const from=prev.find(w=>w.id===titleChange.fromId);
@@ -1928,6 +1933,10 @@ function CareerMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"})
 }
 
 /* ─── ROAD TO PPV ────────────────────────────────────────────────── */
+</script>
+
+<script type="text/babel">
+
 function RoadMode({roster,setRoster,onHome,onStars,promo,difficulty="normal"}){
   const t=T[promo];const mob=useIsMobile();
   const road=ROAD[promo];
