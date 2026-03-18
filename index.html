@@ -45,29 +45,29 @@ window.addEventListener('unhandledrejection', function(e) {
 <script>
 'use strict';
 
-// ═══════════════════════════════════════════════
+// —
 // THEMES
-// ═══════════════════════════════════════════════
+// —
 const T = {
 WWE: {
 id:‘WWE’, badge:‘WWE’, tagline:‘THEN. NOW. FOREVER.’,
-font:”‘Anton’,‘Impact’,sans-serif”,
+font:‘Anton,Impact,sans-serif’,
 accent:’#c8102e’, alt:’#f5c518’, glow:’#c8102e’,
 bg:’#070005’, surface:’#0d0006’, border:’#240010’,
 grad:‘radial-gradient(ellipse 80% 50% at 15% 0%,#250010 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 85% 100%,#180006 0%,transparent 60%)’
 },
 AEW: {
 id:‘AEW’, badge:‘AEW’, tagline:‘ELITE. EVERY. NIGHT.’,
-font:”‘Barlow Condensed’,‘Impact’,sans-serif”,
+font:‘Barlow Condensed,Impact,sans-serif’,
 accent:’#00c8ff’, alt:’#8b2fff’, glow:’#00c8ff’,
 bg:’#00040e’, surface:’#000812’, border:’#001220’,
 grad:‘radial-gradient(ellipse 80% 50% at 15% 0%,#001828 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 85% 100%,#080018 0%,transparent 60%)’
 }
 };
 
-// ═══════════════════════════════════════════════
+// —
 // ROSTERS
-// ═══════════════════════════════════════════════
+// —
 const ROSTERS = {
 WWE:[
 {id:‘cody’,name:‘Cody Rhodes’,short:‘Cody’,role:‘face’,tier:‘main-event’,pop:96,heat:94,mom:90,title:‘WWE Championship’,status:‘active’,feuds:[‘gunther’,‘punk’],allies:[‘sami’,‘jey’]},
@@ -113,9 +113,9 @@ AEW:[
 ]
 };
 
-// ═══════════════════════════════════════════════
+// —
 // ACTIONS
-// ═══════════════════════════════════════════════
+// —
 const ACTS_WWE = {
 promo:{label:‘Promo’,icon:‘🎤’,face:[
 {id:‘pf1’,label:‘Promo de défi’,mom:6,heat:4},
@@ -267,9 +267,9 @@ AEW:[
 ]
 };
 
-// ═══════════════════════════════════════════════
+// —
 // HELPERS
-// ═══════════════════════════════════════════════
+// —
 const rc = r => r===‘heel’?’#ff2244’:r===‘face’?’#00e5aa’:’#f5c518’;
 const clamp = (v,lo=0,hi=100) => Math.max(lo,Math.min(hi,v));
 const pick = arr => arr[Math.floor(Math.random()*arr.length)];
@@ -277,9 +277,9 @@ const pickN = (arr,n) => { const s=[…arr],r=[]; while(r.length<n&&s.length){co
 const sevColor = s => s===‘critical’?’#ff2244’:s===‘opportunity’?’#00e5aa’:’#f5c518’;
 const isMob = () => window.innerWidth < 680;
 
-// ═══════════════════════════════════════════════
+// —
 // SCORING ENGINE
-// ═══════════════════════════════════════════════
+// —
 function scoreBooking(actions, roster, difficulty=‘normal’) {
 if(!actions||!actions.length) return difficulty===‘hard’?1:1.5;
 const H = difficulty===‘hard’;
@@ -393,9 +393,9 @@ const stars=scoreBooking(actions,roster,difficulty);
 return buildCrowdResult(stars,actions,roster);
 }
 
-// ═══════════════════════════════════════════════
+// —
 // CRISIS ENGINE
-// ═══════════════════════════════════════════════
+// —
 const CRISIS_SEEN = new Set();
 
 function buildCrisis(stepId, roster, plan, promo) {
@@ -500,9 +500,9 @@ return w;
 });
 }
 
-// ═══════════════════════════════════════════════
+// —
 // DOM HELPERS
-// ═══════════════════════════════════════════════
+// —
 function h(tag, attrs, …children) {
 const el = document.createElement(tag);
 if(attrs) for(const [k,v] of Object.entries(attrs)) {
@@ -529,9 +529,9 @@ app.appendChild(node);
 window.scrollTo(0,0);
 }
 
-// ═══════════════════════════════════════════════
+// —
 // UI COMPONENTS
-// ═══════════════════════════════════════════════
+// —
 function Stars(v=0, size=20, color=’#f5c518’) {
 const w=div({style:{display:‘inline-flex’,gap:‘1px’,lineHeight:‘1’}});
 const full=Math.floor(v), half=v%1>=.5, empty=5-full-(half?1:0);
@@ -716,9 +716,9 @@ document.body.appendChild(overlay);
 return overlay;
 }
 
-// ═══════════════════════════════════════════════
+// —
 // GLOBAL APP STATE
-// ═══════════════════════════════════════════════
+// —
 const APP = {
 screen: ‘promo’,
 promo: ‘WWE’,
@@ -730,9 +730,9 @@ stars: []
 
 function pushStars(s) { APP.stars.push(s); if(APP.stars.length>30) APP.stars.shift(); }
 
-// ═══════════════════════════════════════════════
+// —
 // SCREEN: PROMO SELECT
-// ═══════════════════════════════════════════════
+// —
 function showPromoSelect() {
 let selDiff=‘normal’;
 const wrap=div({style:{minHeight:‘100vh’,background:’#000’,display:‘flex’,flexDirection:‘column’,alignItems:‘center’,justifyContent:‘center’,padding:‘32px 16px’,position:‘relative’,overflow:‘hidden’,fontFamily:‘system-ui,sans-serif’}});
@@ -803,9 +803,9 @@ wrap.appendChild(inner);
 render(wrap);
 }
 
-// ═══════════════════════════════════════════════
+// —
 // SCREEN: HOME
-// ═══════════════════════════════════════════════
+// —
 function showHome() {
 const t=T[APP.promo];
 const {page,inner}=PageWrap(t);
@@ -882,9 +882,9 @@ inner.appendChild(wrap);
 render(page);
 }
 
-// ═══════════════════════════════════════════════
+// —
 // SCREEN: STORYLINE
-// ═══════════════════════════════════════════════
+// —
 function showStoryline() {
 const t=T[APP.promo];
 let step=0, selected=[], stip=null, winner=null, titleChange=null, weeks=[{},{},{},{}], result=null, loading=false;
@@ -1099,9 +1099,9 @@ return frag;
 rebuild();
 }
 
-// ═══════════════════════════════════════════════
+// —
 // SCREEN: ROAD TO PPV
-// ═══════════════════════════════════════════════
+// —
 function showRoad() {
 const t=T[APP.promo];
 const road=ROAD[APP.promo];
@@ -1423,9 +1423,9 @@ render(page);
 rebuild();
 }
 
-// ═══════════════════════════════════════════════
+// —
 // BOOT
-// ═══════════════════════════════════════════════
+// —
 showPromoSelect();
 </script>
 
