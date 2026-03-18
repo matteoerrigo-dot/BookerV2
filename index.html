@@ -2426,27 +2426,25 @@ function Root(){
     
 <div id="root"></div>
 
-<!-- REACT -->
-<script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js?v=1"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js?v=1"></script>
+<!-- React -->
+<script defer crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script defer crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
 
-<!-- BABEL -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- Babel -->
+<script defer src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-<!-- TEST -->
-<script>
-console.log("React =", React.version);
-console.log("ReactDOM =", ReactDOM);
-</script>
-
-<!-- TON APP -->
+<!-- APP -->
 <script type="text/babel">
+
+console.log("React version:", React.version);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
 
 root.render(<h1>Hello</h1>);
+
+</script>
 
 </script>
 
