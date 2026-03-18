@@ -2447,7 +2447,7 @@ function Root(){
 
 function Root() {
   return (
-    <>
+    <React.Fragment>
       {screen==="promo" && (
         <PromoSelect onSelect={selectPromo} />
       )}
@@ -2499,7 +2499,7 @@ function Root() {
           difficulty={difficulty}
         />
       )}
-    </>
+    </React.Fragment>
   );
 }
 
