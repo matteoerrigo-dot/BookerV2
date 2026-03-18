@@ -117,7 +117,7 @@ AEW:[
 // ACTIONS
 // —
 const ACTS_WWE = {
-promo:{label:‘Promo’,icon:‘🎤’,face:[
+promo:{label:‘Promo’,icon:’\u{1F3A4}’,face:[
 {id:‘pf1’,label:‘Promo de defi’,mom:6,heat:4},
 {id:‘pf2’,label:‘Promo emotion’,mom:8,heat:2},
 {id:‘pf3’,label:‘Reponse heroique’,mom:5,heat:6},
@@ -130,7 +130,7 @@ promo:{label:‘Promo’,icon:‘🎤’,face:[
 {id:‘ph4’,label:‘Trahison verbale’,mom:9,heat:8},
 {id:‘ph5’,label:‘Provocation ciblee’,mom:5,heat:8}
 ]},
-match:{label:‘Match’,icon:‘⚔️’,face:[
+match:{label:‘Match’,icon:’\u2694\uFE0F’,face:[
 {id:‘mf1’,label:‘Victoire propre’,mom:10,heat:5},
 {id:‘mf2’,label:‘Match 5 etoiles’,mom:12,heat:8},
 {id:‘mf3’,label:‘Comeback dramatique’,mom:14,heat:10},
@@ -143,7 +143,7 @@ match:{label:‘Match’,icon:‘⚔️’,face:[
 {id:‘mh4’,label:‘Assault post-match’,mom:7,heat:14},
 {id:‘mh5’,label:‘Domination totale’,mom:9,heat:10}
 ]},
-segment:{label:‘Segment’,icon:‘🎬’,face:[
+segment:{label:‘Segment’,icon:’\u{1F3AC}’,face:[
 {id:‘sf1’,label:‘Sauvetage allie’,mom:7,heat:8},
 {id:‘sf2’,label:‘Revelation choc’,mom:10,heat:7},
 {id:‘sf3’,label:‘Moment feel-good’,mom:5,heat:10},
@@ -156,7 +156,7 @@ segment:{label:‘Segment’,icon:‘🎬’,face:[
 {id:‘sh4’,label:‘Corruption’,mom:9,heat:9},
 {id:‘sh5’,label:‘Otage narratif’,mom:8,heat:12}
 ]},
-coulisse:{label:‘Coulisse’,icon:‘🎭’,face:[
+coulisse:{label:‘Coulisse’,icon:’\u{1F3AD}’,face:[
 {id:‘cf1’,label:‘Demande de match’,mom:6,heat:3},
 {id:‘cf2’,label:‘Interview backstage’,mom:4,heat:5},
 {id:‘cf3’,label:‘Teaser de retour’,mom:5,heat:6},
@@ -170,7 +170,7 @@ coulisse:{label:‘Coulisse’,icon:‘🎭’,face:[
 };
 
 const ACTS_AEW = {
-promo:{label:‘Promo’,icon:‘🎤’,face:[
+promo:{label:‘Promo’,icon:’\u{1F3A4}’,face:[
 {id:‘pf1’,label:‘Pipe bomb AEW’,mom:10,heat:6},
 {id:‘pf2’,label:‘Promo in-ring’,mom:8,heat:3},
 {id:‘pf3’,label:‘Reponse cinglante’,mom:7,heat:6},
@@ -183,8 +183,8 @@ promo:{label:‘Promo’,icon:‘🎤’,face:[
 {id:‘ph4’,label:‘Revele une trahison’,mom:10,heat:9},
 {id:‘ph5’,label:‘Provoc personnelle’,mom:6,heat:11}
 ]},
-match:{label:‘Match’,icon:‘⚔️’,face:[
-{id:‘mf1’,label:‘Match technique 5★’,mom:14,heat:8},
+match:{label:‘Match’,icon:’\u2694\uFE0F’,face:[
+{id:‘mf1’,label:‘Match technique 5\u2605’,mom:14,heat:8},
 {id:‘mf2’,label:‘Deathmatch surprise’,mom:12,heat:12},
 {id:‘mf3’,label:‘Comeback brutal’,mom:15,heat:10},
 {id:‘mf4’,label:‘Defaite honorable’,mom:5,heat:7},
@@ -196,7 +196,7 @@ match:{label:‘Match’,icon:‘⚔️’,face:[
 {id:‘mh4’,label:‘Chair shot a la tete’,mom:8,heat:15},
 {id:‘mh5’,label:‘No-show calcule’,mom:7,heat:11}
 ]},
-segment:{label:‘Segment’,icon:‘🎬’,face:[
+segment:{label:‘Segment’,icon:’\u{1F3AC}’,face:[
 {id:‘sf1’,label:‘Retour de blessure’,mom:15,heat:10},
 {id:‘sf2’,label:‘Signing surprise’,mom:13,heat:8},
 {id:‘sf3’,label:‘Confrontation B&G’,mom:11,heat:9},
@@ -209,7 +209,7 @@ segment:{label:‘Segment’,icon:‘🎬’,face:[
 {id:‘sh4’,label:‘Invasion show rival’,mom:10,heat:10},
 {id:‘sh5’,label:‘Destruction materiel’,mom:9,heat:13}
 ]},
-coulisse:{label:‘Coulisse’,icon:‘🎭’,face:[
+coulisse:{label:‘Coulisse’,icon:’\u{1F3AD}’,face:[
 {id:‘cf1’,label:‘Reclame title shot’,mom:7,heat:4},
 {id:‘cf2’,label:‘Interview Tony/Renee’,mom:5,heat:5},
 {id:‘cf3’,label:‘Hype reseaux’,mom:6,heat:6},
@@ -226,42 +226,42 @@ const CAT_KEYS = [‘promo’,‘match’,‘segment’,‘coulisse’];
 const getActs = p => p===‘AEW’ ? ACTS_AEW : ACTS_WWE;
 
 const STIPS_WWE = [
-{id:‘singles’,label:‘Match Simple’,icon:‘1v1’},{id:‘ladder’,label:‘Ladder Match’,icon:‘🪜’},
-{id:‘hell’,label:‘Hell in a Cell’,icon:‘🔒’},{id:‘extreme’,label:‘Extreme Rules’,icon:‘💢’},
-{id:‘steel’,label:‘Steel Cage’,icon:‘⛓️’},{id:‘lastman’,label:‘Last Man Standing’,icon:‘🥊’},
-{id:‘loser’,label:‘Loser Leaves Town’,icon:‘🚪’},{id:‘ironman’,label:‘Iron Man’,icon:‘⏱️’},
-{id:‘tlc’,label:‘TLC Match’,icon:‘📐’},{id:‘wargames’,label:‘War Games’,icon:‘🏟️’},
-{id:‘submis’,label:‘Submission Match’,icon:‘🤚’},{id:‘strap’,label:‘Strap Match’,icon:‘🪢’}
+{id:‘singles’,label:‘Match Simple’,icon:‘1v1’},{id:‘ladder’,label:‘Ladder Match’,icon:’\u{1FA9C}’},
+{id:‘hell’,label:‘Hell in a Cell’,icon:’\u{1F512}’},{id:‘extreme’,label:‘Extreme Rules’,icon:’\u{1F4A2}’},
+{id:‘steel’,label:‘Steel Cage’,icon:’\u26D3\uFE0F’},{id:‘lastman’,label:‘Last Man Standing’,icon:’\u{1F94A}’},
+{id:‘loser’,label:‘Loser Leaves Town’,icon:’\u{1F6AA}’},{id:‘ironman’,label:‘Iron Man’,icon:’\u23F1\uFE0F’},
+{id:‘tlc’,label:‘TLC Match’,icon:’\u{1F4D0}’},{id:‘wargames’,label:‘War Games’,icon:’\u{1F3DF}\uFE0F’},
+{id:‘submis’,label:‘Submission Match’,icon:’\u{1F91A}’},{id:‘strap’,label:‘Strap Match’,icon:’\u{1FAA2}’}
 ];
 const STIPS_AEW = [
-{id:‘singles’,label:‘Match Simple’,icon:‘1v1’},{id:‘ladder’,label:‘Casino Ladder’,icon:‘🃏’},
-{id:‘unsanctioned’,label:‘Unsanctioned’,icon:‘🩸’},{id:‘deathmatch’,label:‘Deathmatch’,icon:‘💀’},
-{id:‘dogcollar’,label:‘Dog Collar’,icon:‘⛓️’},{id:‘streetfight’,label:‘Street Fight’,icon:‘🥊’},
-{id:‘exploding’,label:‘Exploding Wire’,icon:‘💥’},{id:‘ironman’,label:‘Iron Man’,icon:‘⏱️’},
-{id:‘bloodguts’,label:‘Blood & Guts’,icon:‘🏟️’},{id:‘submis’,label:‘Submission’,icon:‘🤚’},
-{id:‘loser’,label:‘Loser Leaves AEW’,icon:‘🚪’},{id:‘casket’,label:‘Coffin Match’,icon:‘⚰️’}
+{id:‘singles’,label:‘Match Simple’,icon:‘1v1’},{id:‘ladder’,label:‘Casino Ladder’,icon:’\u{1F0CF}’},
+{id:‘unsanctioned’,label:‘Unsanctioned’,icon:’\u{1FA78}’},{id:‘deathmatch’,label:‘Deathmatch’,icon:’\u{1F480}’},
+{id:‘dogcollar’,label:‘Dog Collar’,icon:’\u26D3\uFE0F’},{id:‘streetfight’,label:‘Street Fight’,icon:’\u{1F94A}’},
+{id:‘exploding’,label:‘Exploding Wire’,icon:’\u{1F4A5}’},{id:‘ironman’,label:‘Iron Man’,icon:’\u23F1\uFE0F’},
+{id:‘bloodguts’,label:‘Blood & Guts’,icon:’\u{1F3DF}\uFE0F’},{id:‘submis’,label:‘Submission’,icon:’\u{1F91A}’},
+{id:‘loser’,label:‘Loser Leaves AEW’,icon:’\u{1F6AA}’},{id:‘casket’,label:‘Coffin Match’,icon:’\u26B0\uFE0F’}
 ];
 const getStips = p => p===‘AEW’ ? STIPS_AEW : STIPS_WWE;
 
 const ROAD = {
 WWE:[
-{id:‘rr’,label:‘Royal Rumble’,type:‘ppv’,stip:{id:‘rumble’,label:‘Royal Rumble Match’,icon:‘🔢’}},
+{id:‘rr’,label:‘Royal Rumble’,type:‘ppv’,stip:{id:‘rumble’,label:‘Royal Rumble Match’,icon:’\u{1F522}’}},
 {id:‘w1’,label:‘Raw S1’,type:‘week’},{id:‘w2’,label:‘Raw S2’,type:‘week’},
 {id:‘w3’,label:‘SD S3’,type:‘week’},{id:‘w4’,label:‘SD S4’,type:‘week’},
 {id:‘w5’,label:‘Raw S5’,type:‘week’},{id:‘w6’,label:‘SD S6’,type:‘week’},
-{id:‘ec’,label:‘Elim. Chamber’,type:‘ppv’,stip:{id:‘chamber’,label:‘Elimination Chamber’,icon:‘⛓️’}},
+{id:‘ec’,label:‘Elim. Chamber’,type:‘ppv’,stip:{id:‘chamber’,label:‘Elimination Chamber’,icon:’\u26D3\uFE0F’}},
 {id:‘w7’,label:‘Raw S7’,type:‘week’},{id:‘w8’,label:‘SD S8’,type:‘week’},
 {id:‘w9’,label:‘Raw S9’,type:‘week’},{id:‘w10’,label:‘SD S10’,type:‘week’},
 {id:‘wm’,label:‘WrestleMania’,type:‘ppv’}
 ],
 AEW:[
-{id:‘dou’,label:‘Double or Nothing’,type:‘ppv’,stip:{id:‘casino’,label:‘Casino Battle Royale’,icon:‘🃏’}},
+{id:‘dou’,label:‘Double or Nothing’,type:‘ppv’,stip:{id:‘casino’,label:‘Casino Battle Royale’,icon:’\u{1F0CF}’}},
 {id:‘w1’,label:‘Dynamite S1’,type:‘week’},{id:‘w2’,label:‘Collision S2’,type:‘week’},
 {id:‘w3’,label:‘Dynamite S3’,type:‘week’},{id:‘w4’,label:‘Collision S4’,type:‘week’},
-{id:‘fd’,label:‘Forbidden Door’,type:‘ppv’,stip:{id:‘interdojo’,label:‘Inter-Dojo Challenge’,icon:‘🌏’}},
+{id:‘fd’,label:‘Forbidden Door’,type:‘ppv’,stip:{id:‘interdojo’,label:‘Inter-Dojo Challenge’,icon:’\u{1F30F}’}},
 {id:‘w5’,label:‘Dynamite S5’,type:‘week’},{id:‘w6’,label:‘Collision S6’,type:‘week’},
 {id:‘w7’,label:‘Dynamite S7’,type:‘week’},{id:‘w8’,label:‘Collision S8’,type:‘week’},
-{id:‘bg’,label:‘Blood & Guts’,type:‘ppv’,stip:{id:‘bloodguts’,label:‘Blood & Guts Match’,icon:‘🏟️’}},
+{id:‘bg’,label:‘Blood & Guts’,type:‘ppv’,stip:{id:‘bloodguts’,label:‘Blood & Guts Match’,icon:’\u{1F3DF}\uFE0F’}},
 {id:‘w9’,label:‘Dynamite S9’,type:‘week’},{id:‘w10’,label:‘Collision S10’,type:‘week’},
 {id:‘ai’,label:‘All In’,type:‘ppv’}
 ]
@@ -365,22 +365,22 @@ reaction=‘Grosse reaction, le public est totalement investi.’;
 voice=‘Tres bonne semaine. Le booker sait ce qu'il fait.’;
 note=‘Tres solide. Peaufine encore les arcs secondaires.’;
 } else if(stars>=2.5){
-chant=pick(chants.warm);verdict=‘TIÈDE’;
+chant=pick(chants.warm);verdict=‘TI\u00C8DE’;
 reaction=‘Reaction correcte, le public suit sans etre transcende.’;
 voice=‘Correct mais on a vu mieux. Manque un peu de folie.’;
 note=‘Varie les actions pour eviter la repetition.’;
 } else if(stars>=1.5){
-chant=pick(chants.cold);verdict=‘HEAT NÉGATIF’;
+chant=pick(chants.cold);verdict=‘HEAT N\u00C9GATIF’;
 reaction=‘La salle est tiede. Le booking ne convainc pas vraiment.’;
 voice=‘On commence a perdre le fil. Ou va cette storyline ?’;
 note=‘Tes heels manquent de heat – reequilibre.’;
 } else {
-chant=pick(chants.cold);verdict=‘SILENCE GÊNANT’;
+chant=pick(chants.cold);verdict=‘SILENCE G\u00CANANT’;
 reaction=“Silence genant dans l’arene. Le booking rate sa cible.”;
 voice=‘On se demande qui book ce show…’;
 note=‘Recommence depuis les bases : 1 heel fort, 1 face fort.’;
 }
-const hlPool=[‘Bonne utilisation des rivalites’,‘Équilibre face/heel coherent’,‘Actions variees’,‘Superstar bien mise en avant’,‘Feud logique et convaincante’];
+const hlPool=[‘Bonne utilisation des rivalites’,’\u00C9quilibre face/heel coherent’,‘Actions variees’,‘Superstar bien mise en avant’,‘Feud logique et convaincante’];
 const errPool=[‘Trop d'actions identiques’,‘Heel sans heat suffisant’,‘Champion mal utilise’,‘Incoherence role/action’];
 const highlights=pickN(hlPool,Math.min(2,Math.ceil(stars)));
 const mistakes=stars<3.5?pickN(errPool,1):[];
@@ -414,53 +414,53 @@ const rival=plan&&plan.rivalId?act.find(w=>w.id===plan.rivalId):pick(heels)||pic
 const rw=pick(act), rh=pick(heels)||pick(act), rf=pick(faces)||pick(act), r1=pick(rising)||pick(act);
 
 const pool=[
-{id:‘gm_fired’,icon:‘💼’,sev:‘critical’,title:isAEW?‘TONY KHAN SOUS PRESSION’:‘LE GM VIRÉ EN DIRECT’,
+{id:‘gm_fired’,icon:’\u{1F4BC}’,sev:‘critical’,title:isAEW?‘TONY KHAN SOUS PRESSION’:‘LE GM VIR\u00C9 EN DIRECT’,
 desc:isAEW?`Tony Khan prend le controle operationnel sur ${sh} -- les vestiaires en ebullition.`:`Le GM de ${sh} est licencie. Personne ne sait qui a le pouvoir.`,
 consequence:‘Tous les matchs prevus sont a rebooker.’},
-{id:‘locker_revolt’,icon:‘⚡’,sev:‘warning’,title:‘RÉVOLTE DU VESTIAIRE’,
+{id:‘locker_revolt’,icon:’\u26A1’,sev:‘warning’,title:‘R\u00C9VOLTE DU VESTIAIRE’,
 desc:`Des talents refusent de se presenter a ${sh}. Crise de management immediate.`,
 consequence:‘Comble les trous dans la carte.’},
-{id:‘injury_surprise’,icon:‘🚑’,sev:‘critical’,title:‘BLESSURE EN COULISSE’,
+{id:‘injury_surprise’,icon:’\u{1F691}’,sev:‘critical’,title:‘BLESSURE EN COULISSE’,
 desc:`${rw&&rw.name} se blesse a l'entrainement -- absent plusieurs semaines.`,
 consequence:‘Son slot doit etre recomble en urgence.’},
-{id:‘face_turns_heel’,icon:‘🔄’,sev:‘warning’,title:‘HEEL TURN SPONTANÉ’,
-desc:`${rf&&rf.name} vire heel en plein match -- attaque son partenaire. Ça prend massivement.`,
+{id:‘face_turns_heel’,icon:’\u{1F504}’,sev:‘warning’,title:‘HEEL TURN SPONTAN\u00C9’,
+desc:`${rf&&rf.name} vire heel en plein match -- attaque son partenaire. \u00C7a prend massivement.`,
 consequence:‘Exploite le heat pendant qu'il est chaud.’},
-{id:‘heel_turns_face’,icon:‘⚡’,sev:‘opportunity’,title:‘FACE TURN INATTENDU’,
+{id:‘heel_turns_face’,icon:’\u26A1’,sev:‘opportunity’,title:‘FACE TURN INATTENDU’,
 desc:`${rh&&rh.name} sauve ${rf&&rf.name} d'un beatdown -- face turn organique, pop massif.`,
 consequence:‘Push immediat ou ca retombe.’},
-{id:‘crowd_chant’,icon:‘📣’,sev:‘opportunity’,title:‘CHANT VIRAL’,
+{id:‘crowd_chant’,icon:’\u{1F4E3}’,sev:‘opportunity’,title:‘CHANT VIRAL’,
 desc:`${r1&&r1.name} recoit un chant monstre spontane -- les reseaux s'enflamment.`,
 consequence:‘C'est le moment de le pousher.’},
-{id:‘ratings_crash’,icon:‘📉’,sev:‘critical’,title:“CHUTE D’AUDIENCE”,
+{id:‘ratings_crash’,icon:’\u{1F4C9}’,sev:‘critical’,title:“CHUTE D’AUDIENCE”,
 desc:`Dernier ${sh} : plus bas historique depuis 3 ans. Shake-up immediat exige.`,
 consequence:‘Mets les plus gros noms en avant.’},
-{id:‘mystery_attacker’,icon:‘🎭’,sev:‘warning’,title:‘ATTAQUANT MASQUÉ’,
+{id:‘mystery_attacker’,icon:’\u{1F3AD}’,sev:‘warning’,title:‘ATTAQUANT MASQU\u00C9’,
 desc:`${winner&&winner.name} attaque en coulisse. Aucune camera n'a capte le visage.`,
 consequence:‘Revelation a planifier dans 2-3 semaines.’},
-{id:‘return_tease’,icon:‘⚡’,sev:‘opportunity’,title:‘TEASE DE RETOUR LÉGENDAIRE’,
+{id:‘return_tease’,icon:’\u26A1’,sev:‘opportunity’,title:‘TEASE DE RETOUR L\u00C9GENDAIRE’,
 desc:isAEW?‘Une silhouette en fin de Dynamite. Forums en feu. All In approche…’:‘Une musique en fin de Raw avant d'etre coupee. WrestleMania approche…’,
 consequence:‘Capitalise – revele ou entretiens le mystere.’}
 ];
 
 if(winner) pool.push(
-{id:‘winner_promo_’+winner.id,icon:‘🎤’,sev:‘opportunity’,title:‘PROMO BOMBE – ‘+winner.name.toUpperCase(),
+{id:‘winner_promo_’+winner.id,icon:’\u{1F3A4}’,sev:‘opportunity’,title:‘PROMO BOMBE – ‘+winner.name.toUpperCase(),
 desc:`${winner.name} lache une promo d'anthologie qui donne le ton pour ${gf}.`,consequence:‘Son momentum est au max.’},
-{id:‘winner_doubt_’+winner.id,icon:‘❓’,sev:‘warning’,title:‘DOUTES SUR ‘+winner.name.toUpperCase(),
+{id:‘winner_doubt_’+winner.id,icon:’\u2753’,sev:‘warning’,title:‘DOUTES SUR ‘+winner.name.toUpperCase(),
 desc:`${winner.name} perd un match non-televise. Les doutes pour ${gf} refont surface.`,consequence:‘Une victoire propre est indispensable.’}
 );
 if(rival) pool.push(
-{id:‘rival_snaps_’+rival.id,icon:‘😤’,sev:‘warning’,title:rival.name.toUpperCase()+’ PÈTE UN CÂBLE’,
+{id:‘rival_snaps_’+rival.id,icon:’\u{1F624}’,sev:‘warning’,title:rival.name.toUpperCase()+’ P\u00C8TE UN C\u00C2BLE’,
 desc:`${rival.name} frappe un cadreur en coulisse. Suspension envisagee.`,consequence:`Match a ${gf} en suspens.`},
-{id:‘rival_recruits_’+rival.id,icon:‘🤝’,sev:‘warning’,title:rival.name.toUpperCase()+’ RECRUTE’,
+{id:‘rival_recruits_’+rival.id,icon:’\u{1F91D}’,sev:‘warning’,title:rival.name.toUpperCase()+’ RECRUTE’,
 desc:`${rival.name} approche des allies pour neutraliser ${winner&&winner.name||'son rival'}.`,consequence:`Le match a ${gf} se complique.`}
 );
 if(inj.length) {
 const inj0=pick(inj);
-pool.push({id:‘return_’+inj0.id,icon:‘⚡’,sev:‘opportunity’,title:’RETOUR SURPRISE – ’+inj0.name.toUpperCase(),
+pool.push({id:‘return_’+inj0.id,icon:’\u26A1’,sev:‘opportunity’,title:‘RETOUR SURPRISE – ‘+inj0.name.toUpperCase(),
 desc:`${inj0.name} revient plus tot que prevu -- veut etre la pour ${gf}.`,consequence:‘Retour immediat ou repos ?’});
 }
-if(r1) pool.push({id:‘breakout_’+r1.id,icon:‘📈’,sev:‘opportunity’,title:’BREAKOUT – ’+r1.name.toUpperCase(),
+if(r1) pool.push({id:‘breakout_’+r1.id,icon:’\u{1F4C8}’,sev:‘opportunity’,title:’BREAKOUT – ’+r1.name.toUpperCase(),
 desc:`${r1.name} vole la vedette -- les fans votent massivement pour lui.`,consequence:‘Push ou jalousie du vestiaire.’});
 
 const fresh=pool.filter(e=>!CRISIS_SEEN.has(e.id));
@@ -486,7 +486,7 @@ winner.name+’ doit surmonter la trahison de ‘+(rival&&rival.name)+’ pour a
 ];
 return {winnerId:winner.id,winnerName:winner.name,rivalId:rival&&rival.id,rivalName:rival&&rival.name,
 championId:champ&&champ.id,championName:champ&&champ.name,
-narrative:pick(arcs),chaos:{who:chaos&&chaos.id,what:(chaos&&chaos.name)+’ perturbe le plan.’,impact:‘À rebooker.’}};
+narrative:pick(arcs),chaos:{who:chaos&&chaos.id,what:(chaos&&chaos.name)+’ perturbe le plan.’,impact:’\u00C0 rebooker.’}};
 }
 
 function applyTitleChange(roster, tc) {
@@ -535,9 +535,9 @@ window.scrollTo(0,0);
 function Stars(v=0, size=20, color=’#f5c518’) {
 const w=div({style:{display:‘inline-flex’,gap:‘1px’,lineHeight:‘1’}});
 const full=Math.floor(v), half=v%1>=.5, empty=5-full-(half?1:0);
-for(let i=0;i<full;i++) w.appendChild(span({style:{fontSize:size+‘px’,color,filter:`drop-shadow(0 0 3px ${color}55)`}},‘★’));
-if(half) w.appendChild(span({style:{fontSize:size+‘px’,color,opacity:’.5’}},‘★’));
-for(let i=0;i<empty;i++) w.appendChild(span({style:{fontSize:size+‘px’,color,opacity:’.1’}},‘★’));
+for(let i=0;i<full;i++) w.appendChild(span({style:{fontSize:size+‘px’,color,filter:`drop-shadow(0 0 3px ${color}55)`}},’\u2605’));
+if(half) w.appendChild(span({style:{fontSize:size+‘px’,color,opacity:’.5’}},’\u2605’));
+for(let i=0;i<empty;i++) w.appendChild(span({style:{fontSize:size+‘px’,color,opacity:’.1’}},’\u2605’));
 return w;
 }
 
@@ -598,7 +598,7 @@ return {page, inner};
 
 function NavBar(title, onHome, t, extras=[]) {
 const row=div({style:{display:‘flex’,alignItems:‘center’,gap:‘8px’,marginBottom:‘16px’,paddingBottom:‘12px’,borderBottom:`1px solid ${t.border}`,flexWrap:‘wrap’}});
-row.appendChild(Btn(‘← Home’,onHome,t,{ghost:true,small:true}));
+row.appendChild(Btn(’\u2190 Home’,onHome,t,{ghost:true,small:true}));
 row.appendChild(span({style:{color:t.accent,fontFamily:t.font,fontSize:‘16px’,letterSpacing:‘3px’,textTransform:‘uppercase’}},title));
 if(extras.length) {
 const ex=div({style:{marginLeft:‘auto’,display:‘flex’,gap:‘6px’,alignItems:‘center’}});
@@ -609,9 +609,9 @@ return row;
 }
 
 function CrowdResultUI(result, t) {
-const nc={1:{emoji:‘😶’,label:‘Silence de mort’,c:’#555’},2:{emoji:‘😑’,label:‘Indifferent’,c:’#888’},
-3:{emoji:‘👀’,label:‘Interesse’,c:’#f5c518’},4:{emoji:‘🔥’,label:‘En feu’,c:’#ff6b00’},5:{emoji:‘💥’,label:‘EXPLOSION’,c:’#ff003c’}};
-const vc={‘OVATION DEBOUT’:’#00e5aa’,‘CHAUD’:’#ff6b00’,‘TIÈDE’:’#f5c518’,‘HEAT NÉGATIF’:’#ff2244’,‘SILENCE GÊNANT’:’#555’};
+const nc={1:{emoji:’\u{1F636}’,label:‘Silence de mort’,c:’#555’},2:{emoji:’\u{1F611}’,label:‘Indifferent’,c:’#888’},
+3:{emoji:’\u{1F440}’,label:‘Interesse’,c:’#f5c518’},4:{emoji:’\u{1F525}’,label:‘En feu’,c:’#ff6b00’},5:{emoji:’\u{1F4A5}’,label:‘EXPLOSION’,c:’#ff003c’}};
+const vc={‘OVATION DEBOUT’:’#00e5aa’,‘CHAUD’:’#ff6b00’,‘TI\u00C8DE’:’#f5c518’,‘HEAT N\u00C9GATIF’:’#ff2244’,‘SILENCE G\u00CANANT’:’#555’};
 const nl=nc[result.noise]||nc[3];
 const vc2=vc[result.verdict]||’#888’;
 const wrap=div({cls:‘slide-up’,style:{background:t.surface,border:`1px solid ${vc2}33`,borderRadius:‘12px’,overflow:‘hidden’,marginTop:‘12px’}});
@@ -635,7 +635,7 @@ starRow.appendChild(span({style:{color:’#333’,fontSize:‘13px’}},’/5’
 body.appendChild(starRow);
 
 body.appendChild(div({style:{background:’#ffffff04’,border:`1px solid ${nl.c}15`,borderRadius:‘8px’,padding:‘8px 12px’,marginBottom:‘10px’,textAlign:‘center’},
-html:`<span style="color:${nl.c};font-family:${t.font};font-size:13px;letter-spacing:3px">📣 " ${result.chant} "</span>`}));
+html:`<span style="color:${nl.c};font-family:${t.font};font-size:13px;letter-spacing:3px">\u{1F4E3} " ${result.chant} "</span>`}));
 
 body.appendChild(div({style:{color:’#aaa’,fontSize:‘13px’,fontStyle:‘italic’,lineHeight:‘1.7’,marginBottom:‘10px’}},`"${result.reaction}"`));
 
@@ -647,19 +647,19 @@ body.appendChild(voiceBox);
 if(result.highlights&&result.highlights.length||result.mistakes&&result.mistakes.length) {
 const grid=div({style:{display:‘grid’,gridTemplateColumns:‘1fr 1fr’,gap:‘8px’,marginBottom:‘10px’}});
 const hl=div({style:{background:’#00e5aa08’,border:‘1px solid #00e5aa18’,borderRadius:‘8px’,padding:‘10px’}});
-hl.appendChild(Label(‘✓ Points forts’,’#00e5aa’));
-(result.highlights||[]).forEach(x=>hl.appendChild(div({style:{color:’#88e8cc’,fontSize:‘11px’,lineHeight:‘1.6’}},’· ‘+x)));
+hl.appendChild(Label(’\u2713 Points forts’,’#00e5aa’));
+(result.highlights||[]).forEach(x=>hl.appendChild(div({style:{color:’#88e8cc’,fontSize:‘11px’,lineHeight:‘1.6’}},’\u00B7 ‘+x)));
 grid.appendChild(hl);
 const ml=div({style:{background:’#ff224408’,border:‘1px solid #ff224418’,borderRadius:‘8px’,padding:‘10px’}});
-ml.appendChild(Label(‘✗ Erreurs’,’#ff2244’));
-if(result.mistakes&&result.mistakes.length) result.mistakes.forEach(x=>ml.appendChild(div({style:{color:’#f5a0a8’,fontSize:‘11px’,lineHeight:‘1.6’}},’· ‘+x)));
+ml.appendChild(Label(’\u2717 Erreurs’,’#ff2244’));
+if(result.mistakes&&result.mistakes.length) result.mistakes.forEach(x=>ml.appendChild(div({style:{color:’#f5a0a8’,fontSize:‘11px’,lineHeight:‘1.6’}},’\u00B7 ‘+x)));
 else ml.appendChild(div({style:{color:’#333’,fontSize:‘11px’}},‘Aucune’));
 grid.appendChild(ml);
 body.appendChild(grid);
 }
 
 const noteBox=div({style:{background:’#00e5aa06’,border:‘1px solid #00e5aa14’,borderRadius:‘8px’,padding:‘10px’}});
-noteBox.appendChild(Label(‘📋 Note de booking’,’#00e5aa’));
+noteBox.appendChild(Label(’\u{1F4CB} Note de booking’,’#00e5aa’));
 noteBox.appendChild(div({style:{color:’#88e8cc’,fontSize:‘12px’,lineHeight:‘1.7’}},result.note));
 body.appendChild(noteBox);
 wrap.appendChild(body);
@@ -679,9 +679,9 @@ shead.appendChild(div({style:{width:‘36px’,height:‘4px’,background:’#3
 const htop=div({style:{display:‘flex’,justifyContent:‘space-between’,alignItems:‘center’}});
 const hinfo=div();
 hinfo.appendChild(div({style:{color:c,fontFamily:t.font,fontSize:‘15px’,letterSpacing:‘3px’,textTransform:‘uppercase’}},wrestler.name));
-hinfo.appendChild(div({style:{color:’#444’,fontSize:‘10px’}},‘Choisir une action · ‘+role));
+hinfo.appendChild(div({style:{color:’#444’,fontSize:‘10px’}},‘Choisir une action \u00B7 ‘+role));
 htop.appendChild(hinfo);
-const xb=btn({style:{background:‘none’,border:`1px solid ${t.border}`,color:’#555’,width:‘28px’,height:‘28px’,borderRadius:‘6px’,fontSize:‘13px’}},‘×’);
+const xb=btn({style:{background:‘none’,border:`1px solid ${t.border}`,color:’#555’,width:‘28px’,height:‘28px’,borderRadius:‘6px’,fontSize:‘13px’}},’\u00D7’);
 xb.addEventListener(‘click’,onClose);
 htop.appendChild(xb);
 shead.appendChild(htop);
@@ -753,7 +753,7 @@ inner.appendChild(title);
 
 // Difficulty
 const diffWrap=div({style:{display:‘flex’,gap:‘8px’,marginBottom:‘20px’,justifyContent:‘center’}});
-const diffs=[[‘normal’,‘NORMAL’,‘Accessible’,‘🎮’,’#00e5aa’],[‘hard’,‘HARD’,‘Exigeant’,‘💀’,’#ff2244’]];
+const diffs=[[‘normal’,‘NORMAL’,‘Accessible’,’\u{1F3AE}’,’#00e5aa’],[‘hard’,‘HARD’,‘Exigeant’,’\u{1F480}’,’#ff2244’]];
 const dCards={};
 diffs.forEach(([v,label,desc,icon,col])=>{
 const d=div({style:{background:v===‘normal’?col+‘12’:’#0a0a0a’,border:`2px solid ${v==='normal'?col:'#1a1a1a'}`,borderRadius:‘10px’,padding:‘10px 16px’,cursor:‘pointer’,textAlign:‘center’,transition:‘all .2s’,minWidth:‘130px’}});
@@ -785,11 +785,11 @@ const card=div({style:{background:’#0a0a0a’,border:‘2px solid #1a1a1a’,b
 card.appendChild(div({style:{position:‘absolute’,top:‘0’,left:‘0’,width:‘0’,height:‘0’,borderStyle:‘solid’,borderWidth:‘26px 26px 0 0’,borderColor:`${p.accent} transparent transparent transparent`}}));
 card.appendChild(div({style:{fontFamily:p.font,fontSize:‘clamp(2rem,9vw,3.5rem)’,fontWeight:‘900’,letterSpacing:‘4px’,color:p.accent,lineHeight:‘1’,marginBottom:‘8px’,textTransform:‘uppercase’}},p.badge));
 card.appendChild(div({style:{color:’#444’,fontSize:‘9px’,letterSpacing:‘3px’,marginBottom:‘14px’}},p.tagline));
-card.appendChild(div({style:{color:’#333’,fontSize:‘10px’,marginBottom:‘14px’}},ROSTERS[p.id].length+’ superstars · ‘+ROSTERS[p.id].filter(w=>w.title).length+’ champions’));
-const pill=div({style:{background:p.accent+‘16’,border:`1px solid ${p.accent}44`,borderRadius:‘7px’,padding:‘7px 12px’,color:p.accent,fontFamily:p.font,fontSize:‘11px’,letterSpacing:‘3px’,textTransform:‘uppercase’}},‘SÉLECTIONNER’);
+card.appendChild(div({style:{color:’#333’,fontSize:‘10px’,marginBottom:‘14px’}},ROSTERS[p.id].length+’ superstars \u00B7 ‘+ROSTERS[p.id].filter(w=>w.title).length+’ champions’));
+const pill=div({style:{background:p.accent+‘16’,border:`1px solid ${p.accent}44`,borderRadius:‘7px’,padding:‘7px 12px’,color:p.accent,fontFamily:p.font,fontSize:‘11px’,letterSpacing:‘3px’,textTransform:‘uppercase’}},‘S\u00C9LECTIONNER’);
 card.appendChild(pill);
-card.addEventListener(‘mouseenter’,()=>{card.style.borderColor=p.accent;card.style.transform=‘scale(1.02)’;pill.textContent=‘ENTRER →’;});
-card.addEventListener(‘mouseleave’,()=>{card.style.borderColor=’#1a1a1a’;card.style.transform=‘scale(1)’;pill.textContent=‘SÉLECTIONNER’;});
+card.addEventListener(‘mouseenter’,()=>{card.style.borderColor=p.accent;card.style.transform=‘scale(1.02)’;pill.textContent=‘ENTRER \u2192’;});
+card.addEventListener(‘mouseleave’,()=>{card.style.borderColor=’#1a1a1a’;card.style.transform=‘scale(1)’;pill.textContent=‘S\u00C9LECTIONNER’;});
 card.addEventListener(‘click’,()=>{
 APP.promo=p.id; APP.difficulty=selDiff;
 APP.roster=JSON.parse(JSON.stringify(ROSTERS[p.id]));
@@ -834,15 +834,15 @@ right.appendChild(surf);
 }
 right.appendChild(Btn(‘Changer de promo’,showPromoSelect,t,{ghost:true,small:true}));
 const diffBadge=div({style:{background:APP.difficulty===‘hard’?’#ff224412’:’#00e5aa12’,border:`1px solid ${APP.difficulty==='hard'?'#ff244433':'#00e5aa33'}`,borderRadius:‘6px’,padding:‘4px 10px’,textAlign:‘center’}});
-diffBadge.appendChild(div({style:{color:APP.difficulty===‘hard’?’#ff2244’:’#00e5aa’,fontFamily:t.font,fontSize:‘9px’,letterSpacing:‘3px’}},APP.difficulty===‘hard’?‘💀 HARD’:‘🎮 NORMAL’));
+diffBadge.appendChild(div({style:{color:APP.difficulty===‘hard’?’#ff2244’:’#00e5aa’,fontFamily:t.font,fontSize:‘9px’,letterSpacing:‘3px’}},APP.difficulty===‘hard’?’\u{1F480} HARD’:’\u{1F3AE} NORMAL’));
 right.appendChild(diffBadge);
 header.appendChild(right);
 wrap.appendChild(header);
 
 // Mode cards
 const modes=[
-{key:‘storyline’,icon:‘🧵’,title:‘Storyline’,desc:‘Cree une feud sur 4 semaines + PPV.’,c:t.accent},
-{key:‘road’,icon:‘🎲’,title:‘Road to PPV’,desc:“L’IA planifie, le chaos frappe.”,c:’#f5c518’}
+{key:‘storyline’,icon:’\u{1F9F5}’,title:‘Storyline’,desc:‘Cree une feud sur 4 semaines + PPV.’,c:t.accent},
+{key:‘road’,icon:’\u{1F3B2}’,title:‘Road to PPV’,desc:“L’IA planifie, le chaos frappe.”,c:’#f5c518’}
 ];
 const modeGrid=div({style:{display:‘grid’,gridTemplateColumns:‘repeat(auto-fit,minmax(200px,1fr))’,gap:‘10px’,marginBottom:‘24px’}});
 modes.forEach(m=>{
@@ -854,7 +854,7 @@ card.appendChild(div({style:{color:m.c,fontFamily:t.font,fontSize:‘13px’,let
 card.appendChild(div({style:{color:’#555’,fontSize:‘12px’,lineHeight:‘1.6’,marginBottom:‘8px’}},m.desc));
 const go=div({style:{color:’#2a2a3a’,fontSize:‘9px’,letterSpacing:‘2px’,fontFamily:t.font}},‘JOUER’);
 card.appendChild(go);
-card.addEventListener(‘mouseenter’,()=>{card.style.borderColor=m.c;card.style.transform=‘translateY(-2px)’;bar.style.background=`linear-gradient(90deg,transparent,${m.c},transparent)`;go.style.color=m.c;go.textContent=‘JOUER →’;});
+card.addEventListener(‘mouseenter’,()=>{card.style.borderColor=m.c;card.style.transform=‘translateY(-2px)’;bar.style.background=`linear-gradient(90deg,transparent,${m.c},transparent)`;go.style.color=m.c;go.textContent=‘JOUER \u2192’;});
 card.addEventListener(‘mouseleave’,()=>{card.style.borderColor=t.border;card.style.transform=‘none’;bar.style.background=‘transparent’;go.style.color=’#2a2a3a’;go.textContent=‘JOUER’;});
 card.addEventListener(‘click’,()=>{
 if(m.key===‘storyline’) showStoryline();
@@ -872,7 +872,7 @@ APP.roster.forEach(w=>{
 const pill=div({style:{background:’#ffffff05’,border:`1px solid ${rc(w.role)}18`,borderRadius:‘6px’,padding:‘4px 9px’,display:‘flex’,alignItems:‘center’,gap:‘4px’}});
 pill.appendChild(div({style:{width:‘3px’,height:‘3px’,borderRadius:‘50%’,background:rc(w.role)}}));
 pill.appendChild(span({style:{color:’#666’,fontSize:‘11px’,fontFamily:t.font}},w.short));
-if(w.title) pill.appendChild(span({style:{fontSize:‘8px’}},‘🏆’));
+if(w.title) pill.appendChild(span({style:{fontSize:‘8px’}},’\u{1F3C6}’));
 rpills.appendChild(pill);
 });
 rsurf.appendChild(rpills);
@@ -896,7 +896,7 @@ function rebuild() {
 closeSheet();
 const {page,inner}=PageWrap(t);
 const wrap=div({style:{maxWidth:‘860px’,margin:‘0 auto’,padding:‘20px 14px 100px’}});
-wrap.appendChild(NavBar(‘🧵 Storyline’,showHome,t));
+wrap.appendChild(NavBar(’\u{1F9F5} Storyline’,showHome,t));
 if(step===0) wrap.appendChild(buildStep0());
 else if(step===1) wrap.appendChild(buildStep1());
 else wrap.appendChild(buildStep2());
@@ -916,7 +916,7 @@ const c=rc(w.role);
 const card=div({style:{background:sel?c+‘14’:t.surface,border:`1.5px solid ${sel?c:t.border}`,borderRadius:‘8px’,padding:‘9px 10px’,cursor:‘pointer’,transition:‘all .12s’,opacity:(!sel&&selected.length>=6)?’.35’:‘1’}});
 const top=div({style:{display:‘flex’,justifyContent:‘space-between’,marginBottom:‘3px’}});
 top.appendChild(span({style:{color:sel?c:’#ddd’,fontFamily:t.font,fontSize:‘11px’,fontWeight:‘700’,textTransform:‘uppercase’}},w.short));
-if(sel) top.appendChild(span({style:{color:c,fontSize:‘12px’}},‘✓’));
+if(sel) top.appendChild(span({style:{color:c,fontSize:‘12px’}},’\u2713’));
 card.appendChild(top);
 card.appendChild(Tag(w.role,c));
 card.addEventListener(‘click’,()=>{
@@ -956,7 +956,7 @@ if(selected.length>=2) {
       const card=div({style:{background:winner===w.id?c+'14':t.surface,border:`1.5px solid ${winner===w.id?c:t.border}`,borderRadius:'8px',padding:'8px 12px',cursor:'pointer',display:'flex',alignItems:'center',gap:'6px',transition:'all .12s'}});
       card.appendChild(div({style:{width:'5px',height:'5px',borderRadius:'50%',background:c}}));
       card.appendChild(span({style:{color:winner===w.id?c:'#ccc',fontFamily:t.font,fontSize:'12px',textTransform:'uppercase'}},w.name));
-      if(winner===w.id) card.appendChild(span({style:{color:c}},'✓'));
+      if(winner===w.id) card.appendChild(span({style:{color:c}},'\u2713'));
       card.addEventListener('click',()=>{winner=w.id;rebuild();});
       winRow.appendChild(card);
     });
@@ -964,7 +964,7 @@ if(selected.length>=2) {
     frag.appendChild(winSurf);
 
     if(winner) {
-      const nextBtn=Btn('Planifier les 4 semaines →',()=>{step=1;rebuild();},t,{full:true});
+      const nextBtn=Btn('Planifier les 4 semaines \u2192',()=>{step=1;rebuild();},t,{full:true});
       nextBtn.style.marginBottom='10px';
       frag.appendChild(nextBtn);
 
@@ -972,7 +972,7 @@ if(selected.length>=2) {
       const tcSurf=Surface(t,{marginBottom:'10px'});
       const tcRow=div({style:{display:'flex',alignItems:'center',justifyContent:'space-between'}});
       const tcLeft=div({style:{display:'flex',alignItems:'center',gap:'8px'}});
-      tcLeft.appendChild(span({style:{fontSize:'18px'}},'🏆'));
+      tcLeft.appendChild(span({style:{fontSize:'18px'}},'\u{1F3C6}'));
       const tcInfo=div();
       tcInfo.appendChild(div({style:{color:t.alt,fontFamily:t.font,fontSize:'11px',letterSpacing:'2px',textTransform:'uppercase'}},'Changement de titre'));
       tcInfo.appendChild(div({style:{color:'#444',fontSize:'10px'}},'Un titre change de mains ?'));
@@ -1007,14 +1007,14 @@ selW.forEach(w=>{
   const cheader=div({style:{display:'flex',alignItems:'center',gap:'10px',marginBottom:'10px'}});
   cheader.appendChild(div({style:{width:'3px',height:'28px',borderRadius:'2px',background:c,flexShrink:'0'}}));
   const cinfo=div({style:{flex:'1'}});
-  cinfo.appendChild(div({style:{color:'#ddd',fontFamily:t.font,fontSize:'13px',textTransform:'uppercase',letterSpacing:'1px'}},w.short+(w.title?' 🏆':'')+(w.status==='injured'?' 🚑':'')));
+  cinfo.appendChild(div({style:{color:'#ddd',fontFamily:t.font,fontSize:'13px',textTransform:'uppercase',letterSpacing:'1px'}},w.short+(w.title?' \u{1F3C6}':'')+(w.status==='injured'?' \u{1F691}':'')));
   const bars=div({style:{display:'flex',gap:'4px',marginTop:'4px'}});
   bars.appendChild(MiniBar('MOM',w.mom,t.accent));
   bars.appendChild(MiniBar('POP',w.pop,'#00e5aa'));
   cinfo.appendChild(bars);
   cheader.appendChild(cinfo);
   const filled=weeks.filter(wk=>wk[w.id]).length;
-  if(filled) cheader.appendChild(div({style:{background:c+'18',border:`1px solid ${c}44`,borderRadius:'10px',padding:'2px 7px',color:c,fontSize:'10px',fontWeight:'700'}},filled+'✓'));
+  if(filled) cheader.appendChild(div({style:{background:c+'18',border:`1px solid ${c}44`,borderRadius:'10px',padding:'2px 7px',color:c,fontSize:'10px',fontWeight:'700'}},filled+'\u2713'));
   card.appendChild(cheader);
 
   // Week slots
@@ -1028,7 +1028,7 @@ selW.forEach(w=>{
       const ainfo=div({style:{flex:'1'}});
       ainfo.appendChild(div({style:{color:c,fontSize:'11px',fontWeight:'700'}},act.action.label));
       actRow.appendChild(ainfo);
-      const clr=btn({style:{background:'none',border:`1px solid ${t.border}`,color:'#555',width:'22px',height:'22px',borderRadius:'4px',fontSize:'10px',flexShrink:'0'}},'×');
+      const clr=btn({style:{background:'none',border:`1px solid ${t.border}`,color:'#555',width:'22px',height:'22px',borderRadius:'4px',fontSize:'10px',flexShrink:'0'}},'\u00D7');
       clr.addEventListener('click',()=>{const n={...weeks[wi]};delete n[w.id];weeks=weeks.map((x,i)=>i===wi?n:x);rebuild();});
       actRow.appendChild(clr);
       card.appendChild(actRow);
@@ -1060,12 +1060,12 @@ sverd.appendChild(span({style:{color:rc(winW&&winW.role||'face')}},winW&&winW.na
 sinfo.appendChild(sverd);
 srow.appendChild(sinfo);
 const backBtn=div({style:{marginLeft:'auto'}});
-backBtn.appendChild(Btn('← Modifier',()=>{step=0;rebuild();},t,{ghost:true,small:true}));
+backBtn.appendChild(Btn('\u2190 Modifier',()=>{step=0;rebuild();},t,{ghost:true,small:true}));
 srow.appendChild(backBtn);
 summary.appendChild(srow);
 frag.appendChild(summary);
 
-const submitBtn=Btn(loading?'⏳ La foule reagit...':'📣 Soumettre la storyline',async()=>{
+const submitBtn=Btn(loading?'\u23F3 La foule reagit...':'\u{1F4E3} Soumettre la storyline',async()=>{
   if(loading) return;
   loading=true; rebuild();
   const selW2=APP.roster.filter(w=>selected.includes(w.id));
@@ -1087,7 +1087,7 @@ return frag;
 function buildStep2() {
 const frag=div();
 frag.appendChild(CrowdResultUI(result,t));
-const resetBtn=Btn(‘🔁 Nouvelle storyline’,()=>{
+const resetBtn=Btn(’\u{1F501} Nouvelle storyline’,()=>{
 step=0;selected=[];stip=null;winner=null;titleChange=null;weeks=[{},{},{},{}];result=null;loading=false;
 rebuild();
 },t,{full:true});
@@ -1169,21 +1169,21 @@ buildActive();
 function buildIntro() {
 const {page,inner}=PageWrap(t);
 const wrap=div({style:{maxWidth:‘620px’,margin:‘0 auto’,padding:‘32px 14px’,textAlign:‘center’}});
-wrap.appendChild(NavBar(‘🎲 Road to ‘+finalPPV,showHome,t));
+wrap.appendChild(NavBar(’\u{1F3B2} Road to ‘+finalPPV,showHome,t));
 const title=div({style:{fontFamily:t.font,fontSize:‘clamp(1.8rem,7vw,3.5rem)’,color:t.alt,letterSpacing:‘5px’,lineHeight:’.85’,marginBottom:‘20px’,textTransform:‘uppercase’}});
 title.appendChild(document.createTextNode(‘ROAD TO’));
 title.appendChild(h(‘br’));
 title.appendChild(document.createTextNode(finalPPV));
 wrap.appendChild(title);
 const surf=Surface(t,{textAlign:‘left’,marginBottom:‘20px’});
-[{i:‘🤖’,tx:“L’IA genere un plan : vainqueur, feuds, card finale.”},{i:‘💥’,tx:‘Elle declenche une crise qui brise son propre plan.’},{i:‘📅’,tx:“Tu books chaque semaine avec la grille d’actions.”},{i:‘🎲’,tx:‘Des crises aleatoires surgissent. Adapte-toi.’},{i:‘📣’,tx:‘La foule note chaque etape jusqu'a ‘+finalPPV+’.’}].forEach(({i,tx})=>{
+[{i:’\u{1F916}’,tx:“L’IA genere un plan : vainqueur, feuds, card finale.”},{i:’\u{1F4A5}’,tx:‘Elle declenche une crise qui brise son propre plan.’},{i:’\u{1F4C5}’,tx:“Tu books chaque semaine avec la grille d’actions.”},{i:’\u{1F3B2}’,tx:‘Des crises aleatoires surgissent. Adapte-toi.’},{i:’\u{1F4E3}’,tx:‘La foule note chaque etape jusqu'a ‘+finalPPV+’.’}].forEach(({i,tx})=>{
 const row=div({style:{display:‘flex’,gap:‘10px’,alignItems:‘flex-start’,marginBottom:‘8px’}});
 row.appendChild(span({style:{fontSize:‘16px’,flexShrink:‘0’}},i));
 row.appendChild(div({style:{color:’#666’,fontSize:‘12px’,lineHeight:‘1.6’}},tx));
 surf.appendChild(row);
 });
 wrap.appendChild(surf);
-wrap.appendChild(Btn(‘🎲 Lancer le chaos’,doStart,t));
+wrap.appendChild(Btn(’\u{1F3B2} Lancer le chaos’,doStart,t));
 inner.appendChild(wrap);
 render(page);
 }
@@ -1191,7 +1191,7 @@ render(page);
 function buildGen() {
 const {page,inner}=PageWrap(t);
 const wrap=div({style:{textAlign:‘center’,padding:‘100px 20px’}});
-wrap.appendChild(div({style:{fontSize:‘44px’,animation:‘spin 2s linear infinite’,marginBottom:‘14px’}},‘⚙️’));
+wrap.appendChild(div({style:{fontSize:‘44px’,animation:‘spin 2s linear infinite’,marginBottom:‘14px’}},’\u2699\uFE0F’));
 wrap.appendChild(div({style:{color:t.accent,fontFamily:t.font,fontSize:‘17px’,letterSpacing:‘4px’,textTransform:‘uppercase’}},“L’IA construit son plan…”));
 inner.appendChild(wrap);
 render(page);
@@ -1200,7 +1200,7 @@ render(page);
 function buildFinal() {
 const {page,inner}=PageWrap(t);
 const wrap=div({style:{maxWidth:‘680px’,margin:‘0 auto’,padding:‘26px 14px 80px’}});
-wrap.appendChild(NavBar(‘🏆 Bilan – ‘+finalPPV,showHome,t));
+wrap.appendChild(NavBar(’\u{1F3C6} Bilan – ‘+finalPPV,showHome,t));
 const avg=weekResults.length?(weekResults.reduce((s,r)=>s+r.stars,0)/weekResults.length).toFixed(1):‘0’;
 const scoreWrap=div({style:{textAlign:‘center’,marginBottom:‘20px’}});
 scoreWrap.appendChild(div({style:{color:t.alt,fontFamily:t.font,fontSize:‘clamp(3rem,11vw,5rem)’,lineHeight:‘1’}},avg));
@@ -1213,7 +1213,7 @@ ps.appendChild(Label(‘Le plan secret du booking’,t.accent));
 ps.appendChild(div({style:{color:’#666’,fontSize:‘12px’,lineHeight:‘1.7’,marginBottom:‘8px’}},plan.narrative));
 if(plan.chaos){
 const cb=div({style:{background:’#ff224408’,border:‘1px solid #ff224418’,borderRadius:‘8px’,padding:‘10px’}});
-cb.appendChild(Label(‘💥 Crise initiale’,’#ff2244’));
+cb.appendChild(Label(’\u{1F4A5} Crise initiale’,’#ff2244’));
 cb.appendChild(div({style:{color:’#f5a0a8’,fontSize:‘12px’}},plan.chaos.what));
 ps.appendChild(cb);
 }
@@ -1228,7 +1228,7 @@ row.appendChild(div({style:{color:’#444’,fontSize:‘10px’,flex:‘1’}},
 list.appendChild(row);
 });
 wrap.appendChild(list);
-wrap.appendChild(Btn(‘🔁 Nouvelle Route’,()=>{phase=‘intro’;weekResults=[];step=0;plan=null;crisis=null;lastResult=null;ppvStip=null;titleChange=null;initWeekPlan();rebuild();},t,{full:true}));
+wrap.appendChild(Btn(’\u{1F501} Nouvelle Route’,()=>{phase=‘intro’;weekResults=[];step=0;plan=null;crisis=null;lastResult=null;ppvStip=null;titleChange=null;initWeekPlan();rebuild();},t,{full:true}));
 inner.appendChild(wrap);
 render(page);
 }
@@ -1249,7 +1249,7 @@ if(weekResults.length){
   avgBadge.appendChild(span({style:{color:t.alt,fontFamily:t.font,fontSize:'13px'}},avg));
   extras.push(avgBadge);
 }
-wrap.appendChild(NavBar('🎲 Road to '+finalPPV,showHome,t,extras));
+wrap.appendChild(NavBar('\u{1F3B2} Road to '+finalPPV,showHome,t,extras));
 
 // Timeline
 const tlWrap=div({style:{overflowX:'auto',paddingBottom:'8px',marginBottom:'14px',WebkitOverflowScrolling:'touch'}});
@@ -1260,8 +1260,8 @@ road.forEach((s,i)=>{
   const bc=isCur?t.accent:done?(res&&res.stars>=4?'#00e5aa':res&&res.stars>=3?'#f5c518':'#ff2244'):'#111';
   const cell=div({style:{display:'flex',flexDirection:'column',alignItems:'center',gap:'2px',minWidth:isPpv?'68px':'40px'}});
   const box=div({style:{width:'100%',height:isPpv?'24px':'20px',borderRadius:'4px',background:isCur?t.accent+'14':done?bc+'12':'#ffffff03',border:`1.5px solid ${bc}`,display:'flex',alignItems:'center',justifyContent:'center',transition:'all .3s'}});
-  if(done&&res) box.appendChild(span({style:{fontSize:'8px',color:bc,fontFamily:t.font}},res.stars+'★'));
-  else if(isCur) box.appendChild(span({style:{color:t.accent,fontSize:'9px',animation:'pulse .7s infinite alternate'}},'▶'));
+  if(done&&res) box.appendChild(span({style:{fontSize:'8px',color:bc,fontFamily:t.font}},res.stars+'\u2605'));
+  else if(isCur) box.appendChild(span({style:{color:t.accent,fontSize:'9px',animation:'pulse .7s infinite alternate'}},'\u25B6'));
   else box.appendChild(span({style:{color:'#1a1a1a',fontSize:'7px'}},isPpv?'PPV':'--'));
   cell.appendChild(box);
   cell.appendChild(div({style:{color:isCur?t.accent:done?'#444':'#1a1a1a',fontSize:'6px',textAlign:'center',fontFamily:t.font,lineHeight:'1.2'}},s.label||''));
@@ -1273,11 +1273,11 @@ wrap.appendChild(tlWrap);
 // Plan reveal
 if(showPlan&&plan){
   const ps=Surface(t,{marginBottom:'12px',borderColor:t.accent+'33'});
-  ps.appendChild(Label('🤖 Plan IA (secret)',t.accent));
+  ps.appendChild(Label('\u{1F916} Plan IA (secret)',t.accent));
   ps.appendChild(div({style:{color:'#666',fontSize:'12px',lineHeight:'1.7',marginBottom:'8px'}},plan.narrative));
   if(plan.chaos){
     const cb=div({style:{background:'#ff224408',border:'1px solid #ff224418',borderRadius:'8px',padding:'10px'}});
-    cb.appendChild(Label('💥 Crise initiale','#ff2244'));
+    cb.appendChild(Label('\u{1F4A5} Crise initiale','#ff2244'));
     cb.appendChild(div({style:{color:'#f5a0a8',fontSize:'12px'}},plan.chaos.what));
     ps.appendChild(cb);
   }
@@ -1297,7 +1297,7 @@ if(crisis){
   cb.appendChild(crow);
   if(crisis.consequence){
     const cq=div({style:{display:'flex',alignItems:'center',gap:'8px',background:'#ffffff05',border:`1px solid ${sc}22`,borderRadius:'7px',padding:'8px 11px'}});
-    cq.appendChild(span({style:{fontSize:'13px'}},'⚠️'));
+    cq.appendChild(span({style:{fontSize:'13px'}},'\u26A0\uFE0F'));
     cq.appendChild(span({style:{color:'#777',fontSize:'11px',fontStyle:'italic'}},crisis.consequence));
     cb.appendChild(cq);
   }
@@ -1312,7 +1312,7 @@ const cur=road[step];
 const stepSurf=Surface(t,{marginBottom:'10px',borderColor:cur&&cur.type==='ppv'?t.accent+'55':t.border});
 const stepRow=div({style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:cur&&cur.type==='ppv'?'10px':'0'}});
 const stepLeft=div({style:{display:'flex',alignItems:'center',gap:'8px'}});
-stepLeft.appendChild(Tag(cur&&cur.type==='ppv'?'🏆 PPV':'📅 Semaine',cur&&cur.type==='ppv'?t.alt:t.accent));
+stepLeft.appendChild(Tag(cur&&cur.type==='ppv'?'\u{1F3C6} PPV':'\u{1F4C5} Semaine',cur&&cur.type==='ppv'?t.alt:t.accent));
 stepLeft.appendChild(span({style:{color:'#fff',fontFamily:t.font,fontSize:'15px',letterSpacing:'3px',textTransform:'uppercase'}},cur&&cur.label||''));
 stepRow.appendChild(stepLeft);
 stepRow.appendChild(span({style:{color:'#222',fontSize:'10px',fontFamily:t.font}},(step+1)+'/'+road.length));
@@ -1350,7 +1350,7 @@ weekPlan.forEach(entry=>{
   const wrow=div({style:{background:t.surface,border:`1px solid ${c}18`,borderRadius:'8px',padding:'9px 11px',display:'flex',alignItems:'center',gap:'8px',marginBottom:'4px'}});
   wrow.appendChild(div({style:{width:'3px',height:'20px',borderRadius:'2px',background:c,flexShrink:'0'}}));
   const winfo=div({style:{flex:'1'}});
-  winfo.appendChild(div({style:{color:'#ccc',fontFamily:t.font,fontSize:'12px',textTransform:'uppercase'}},w.short+(w.title?' 🏆':'')));
+  winfo.appendChild(div({style:{color:'#ccc',fontFamily:t.font,fontSize:'12px',textTransform:'uppercase'}},w.short+(w.title?' \u{1F3C6}':'')));
   wrow.appendChild(winfo);
   const roleRow=div({style:{display:'flex',gap:'2px'}});
   ['face','heel','tweener'].forEach(r=>{
@@ -1373,7 +1373,7 @@ weekPlan.forEach(entry=>{
         closeSheet();rebuild();
       },closeSheet,t,APP.promo);
     });
-    const clr=btn({style:{background:'none',border:`1px solid ${t.border}`,color:'#555',width:'22px',height:'22px',borderRadius:'4px',fontSize:'10px',flexShrink:'0'}},'×');
+    const clr=btn({style:{background:'none',border:`1px solid ${t.border}`,color:'#555',width:'22px',height:'22px',borderRadius:'4px',fontSize:'10px',flexShrink:'0'}},'\u00D7');
     clr.addEventListener('click',e=>{e.stopPropagation();weekPlan=weekPlan.map(en=>en.wid===entry.wid?{...en,action:null}:en);rebuild();});
     actRow.appendChild(clr);
     row.appendChild(actRow);
@@ -1394,7 +1394,7 @@ weekPlan.forEach(entry=>{
 const tcSurf=Surface(t,{marginBottom:'10px',marginTop:'10px'});
 const tcRow=div({style:{display:'flex',alignItems:'center',justifyContent:'space-between'}});
 const tcLeft=div({style:{display:'flex',alignItems:'center',gap:'8px'}});
-tcLeft.appendChild(span({style:{fontSize:'18px'}},'🏆'));
+tcLeft.appendChild(span({style:{fontSize:'18px'}},'\u{1F3C6}'));
 const tcInfo=div();
 tcInfo.appendChild(div({style:{color:t.alt,fontFamily:t.font,fontSize:'11px',letterSpacing:'2px',textTransform:'uppercase'}},'Changement de titre'));
 tcLeft.appendChild(tcInfo);
@@ -1410,7 +1410,7 @@ tcSurf.appendChild(tcRow);
 wrap.appendChild(tcSurf);
 
 // Submit
-const subBtn=Btn(loading?'⏳ La foule reagit...':'📣 Soumettre -- '+(cur&&cur.label||''),doSubmit,t,{full:true,disabled:loading});
+const subBtn=Btn(loading?'\u23F3 La foule reagit...':'\u{1F4E3} Soumettre -- '+(cur&&cur.label||''),doSubmit,t,{full:true,disabled:loading});
 subBtn.style.marginTop='12px';
 wrap.appendChild(subBtn);
 
